@@ -15,8 +15,5 @@
   "bugs": {
     "url": "https://github.com/fei-protocol/fei-docs/issues"
   },
-  "homepage": "https://github.com/fei-protocol/fei-docs#readme",
-  "devDependencies": {
-    "vuepress": "^1.8.2"
-  }
+  "homepage": "https://github.com/fei-protocol/fei-docs#readme"
 }
