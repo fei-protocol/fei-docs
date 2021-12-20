@@ -1,9 +1,19 @@
----
-description: "The Fei Protocol Documentation \U0001F332"
----
-
 # Overview
 
-Welcome to the Fei Protocol documentation guide! This is the up-to-date source of truth for Fei Protocol functionality and production contracts. If there is anything unclear or out of date, please[ submit a pull request](https://github.com/fei-protocol/fei-docs/pulls) to the `fei-docs` repository.
+Welcome to the Fei Protocol documentation guide! 
 
-{% embed url="https://medium.com/fei-protocol/introducing-fei-protocol-2db79bd7a82b" caption="" %}
+The docs are organized into 3 categories:
+* User
+* Developer
+* Operator
+
+For a high level overview of Fei v2 check out our [introduction post](https://medium.com/fei-protocol/introducing-fei-v2-6f56afe7a1b5)!
+
+---
+## User Docs
+
+---
+## Developer Docs
+
+---
+## Operator Docs

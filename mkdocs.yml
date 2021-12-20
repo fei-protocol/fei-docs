@@ -1,0 +1,8 @@
+site_name: Fei Protocol Docs
+repo_url: https://github.com/fei-protocol/fei-docs
+edit_uri: edit/main/docs/
+nav:
+  - Overview: 'README.md'
+  - User: 'user/user.md'
+  - Developer: 'developers/developers.md'
+  - Operator: 'operator/operator.md'
