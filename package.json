@@ -1,0 +1,22 @@
+{
+  "name": "fei-docs",
+  "version": "1.0.0",
+  "description": "--- description: \"The Fei Protocol Documentation \\U0001F332\" ---",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fei-protocol/fei-docs.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fei-protocol/fei-docs/issues"
+  },
+  "homepage": "https://github.com/fei-protocol/fei-docs#readme",
+  "devDependencies": {
+    "vuepress": "^1.8.2"
+  }
+}
