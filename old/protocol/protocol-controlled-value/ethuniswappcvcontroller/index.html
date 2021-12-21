@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../../../img/favicon.ico">
+        <title>EthUniswapPCVController - Fei Protocol Docs</title>
+        <link href="../../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../../..">Fei Protocol Docs</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../../.." class="nav-link">Overview</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../user/user/" class="nav-link">User</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../developers/developers/" class="nav-link">Developer</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../operator/operator/" class="nav-link">Operator</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/fei-protocol/fei-docs/edit/main/docs/old/protocol/protocol-controlled-value/ethuniswappcvcontroller.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#ethuniswappcvcontroller" class="nav-link">EthUniswapPCVController</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#contract" class="nav-link">Contract</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#description" class="nav-link">Description</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#access-control" class="nav-link">Access Control</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#events" class="nav-link">Events</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#read-only-functions" class="nav-link">Read-Only Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#eoa-only-state-changing-functions" class="nav-link">EOA-Only 👤 State-Changing Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#governor-or-guardian-only-state-changing-functions" class="nav-link">Governor- Or Guardian-Only⚖️🛡 State-Changing Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#governor-only-state-changing-functions" class="nav-link">Governor-Only⚖️ State-Changing Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#abis" class="nav-link">ABIs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="ethuniswappcvcontroller">EthUniswapPCVController</h1>
+<h2 id="contract">Contract</h2>
+<p><a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/pcv/EthUniswapPCVController.sol">EthUniswapPCVController.sol</a> implements <a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/pcv/IUniswapPCVController.sol">IUniswapPCVController</a>, <a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/refs/UniRef.sol">UniRef</a></p>
+<h2 id="description">Description</h2>
+<p>A contract for moving reweighting Uniswap prices to the peg from a Uniswap PCV Deposit. ETH specific implementation.</p>
+<h3 id="reweight">Reweight</h3>
+<p>Reweights are used to return the Uniswap spot price of an associated PCV Deposit to the peg. The algorithm is as follows:</p>
+<ol>
+<li>withdraw 99% of the ETH from the UniswapPCVDeposit</li>
+<li>execute a trade with held ETH to bring the spot price back up to peg</li>
+<li>deposit remaining ETH balance back into the Uniswap PCV Deposit</li>
+<li>burn excess held FEI</li>
+</ol>
+<p>{% hint style="info" %}
+Only 99% is withdrawn because if there are no other LPs there could be rounding errors against dust
+{% endhint %}</p>
+<h3 id="reweight-eligibility">Reweight eligibility</h3>
+<p>The reweight is open to a keeper when both of the following conditions are met:</p>
+<ul>
+<li>the distance from the peg is at least the minimum (initially 1%)</li>
+<li>the <a href="../../fei-stablecoin/uniswapincentive/">UniswapIncentive</a> contract is at incentive parity</li>
+</ul>
+<p>Governor⚖️and Guardian🛡contracts can force a reweight at any time, or update the minimum distance requirement.</p>
+<h3 id="reweight-incentives">Reweight incentives</h3>
+<p>Reweight executions are incentivized with 500 FEI if the controller is appointed as a Minter💰. Governance can adjust this incentive amount.</p>
+<h2 id="access-control"><a href="../access-control/">Access Control</a></h2>
+<ul>
+<li>Minter💰</li>
+<li>PCV Controller⚙️</li>
+</ul>
+<h2 id="events">Events</h2>
+<p>{% tabs %}
+{% tab title="Reweight" %}
+A Uniswap Reweight event</p>
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">address indexed</td>
+<td align="left">_caller</td>
+<td align="left">the address triggering the reweight</td>
+</tr>
+<tr>
+<td align="left">{% endtab %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>{% tab title="PCVDepositUpdate" %}
+Change the PCV Deposit contract</p>
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">address indexed</td>
+<td align="left">_pcvDeposit</td>
+<td align="left">new pcv deposit contract</td>
+</tr>
+<tr>
+<td align="left">{% endtab %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>{% tab title="ReweightIncentiveUpdate" %}
+Change the FEI reward for reweighting</p>
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">uint256</td>
+<td align="left">_amount</td>
+<td align="left">FEI reward amount</td>
+</tr>
+<tr>
+<td align="left">{% endtab %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>{% tab title="ReweightMinDistanceUpdate" %}
+Change the min distance for a reweight</p>
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">uint256</td>
+<td align="left">_basisPoints</td>
+<td align="left">Minimum reweight amount in basis points (i.e. 1/10000)</td>
+</tr>
+<tr>
+<td align="left">{% endtab %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>{% tab title="ReweightWithdrawBPsUpdate" %}
+Change the amount of PCV withdrawn during a reweight</p>
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">uint256</td>
+<td align="left">_reweightWithdrawBPs</td>
+<td align="left">amount of PCV withdrawn for a reweight in basis point terms (1/10000).</td>
+</tr>
+<tr>
+<td align="left">{% endtab %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">{% endtabs %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="read-only-functions">Read-Only Functions</h2>
+<h3 id="pcvdeposit">pcvDeposit</h3>
+<pre><code class="language-javascript">function pcvDeposit() external returns (IPCVDeposit);
+</code></pre>
+<p>Returns the PCV Deposit address this controller focuses on reweighting.</p>
+<h3 id="incentivecontract">incentiveContract</h3>
+<pre><code class="language-javascript">function incentiveContract() external returns (IUniswapIncentive);
+</code></pre>
+<p>Returns the <a href="../../fei-stablecoin/uniswapincentive/">UniswapIncentive</a> contract used to determine reweight eligibility.</p>
+<h3 id="reweightincentiveamount">reweightIncentiveAmount</h3>
+<pre><code class="language-javascript">function reweightIncentiveAmount() external returns (uint256);
+</code></pre>
+<p>Returns the amount of FEI received by any keeper who successfully executes a reweight.</p>
+<h3 id="reweightwithdrawbps">reweightWithdrawBPs</h3>
+<pre><code class="language-javascript">function reweightWithdrawBPs() external returns (uint256);
+</code></pre>
+<p>Returns the amount of PCV withdrawn during a reweight in basis points terms.</p>
+<h3 id="reweighteligible">reweightEligible</h3>
+<pre><code class="language-javascript">function reweightEligible() external view returns (bool);
+</code></pre>
+<p>Returns true when the distance from the peg is at least the minimum (initially 1%) and the <a href="../../fei-stablecoin/uniswapincentive/">UniswapIncentive</a> contract is at incentive parity, otherwise false.</p>
+<h3 id="mindistanceforreweight">minDistanceForReweight</h3>
+<pre><code class="language-javascript">function minDistanceForReweight()
+    external
+    view
+    returns (Decimal.D256 memory);
+</code></pre>
+<p>Returns the minimum percent distance from the peg needed for keepers to reweight the peg.</p>
+<h2 id="eoa-only-state-changing-functions">EOA-Only 👤 State-Changing Functions</h2>
+<h3 id="reweight_1">reweight</h3>
+<pre><code class="language-javascript">function reweight() external;
+</code></pre>
+<p>Executes a reweight if <code>reweightEligible.</code></p>
+<p>Rewards the caller with 500 FEI.</p>
+<p>{% hint style="info" %}
+This method is <a href="../../../governance/fei-guardian/">pausable</a>
+{% endhint %}</p>
+<h2 id="governor-or-guardian-only-state-changing-functions">Governor- Or Guardian-Only⚖️🛡 State-Changing Functions</h2>
+<h3 id="forcereweight">forceReweight</h3>
+<pre><code class="language-javascript">function forceReweight() external;
+</code></pre>
+<p>Forces a reweight execution. No FEI incentive for doing this. Fails if the Uniswap spot price is already at or above the peg.</p>
+<h2 id="governor-only-state-changing-functions">Governor-Only⚖️ State-Changing Functions</h2>
+<h3 id="setreweightmindistance">setReweightMinDistance</h3>
+<pre><code class="language-javascript">function setReweightMinDistance(uint256 basisPoints) external;
+</code></pre>
+<p>Sets the minimum distance from the peg for a reweight to be eligible to <code>basisPoints</code>, measured in basis points (i.e. 1/10000).</p>
+<p>emits <code>ReweightMinDistanceUpdate</code></p>
+<h3 id="setreweightwithdrawbps">setReweightWithdrawBPs</h3>
+<pre><code class="language-javascript">function setReweightWithdrawBPs(uint256 _reweightWithdrawBPs) external;
+</code></pre>
+<p>Sets the percentage of the PCV withdrawn when executing a reweight in terms of basis points</p>
+<p>emits <code>ReweightWithdrawBPsUpdate</code></p>
+<h3 id="setpcvdeposit">setPCVDeposit</h3>
+<pre><code class="language-javascript">function setPCVDeposit(address _pcvDeposit) external;
+</code></pre>
+<p>Sets the target PCV Deposit contract for reweight to <code>_pcvDeposit</code></p>
+<p>emits <code>PCVDepositUpdate</code></p>
+<h3 id="setreweightincentive">setReweightIncentive</h3>
+<pre><code class="language-javascript">function setReweightIncentive(uint256 amount) external;
+</code></pre>
+<p>Sets the keeper incentive for executing a reweight to <code>amount</code> of FEI</p>
+<p>emits <code>ReweightIncentiveUpdate</code></p>
+<h2 id="abis">ABIs</h2>
+<p>{% file src="../../.gitbook/assets/ethuniswappcvcontroller.json" caption="EthUniswapPCVController ABI" %}</p>
+<p>{% file src="../../.gitbook/assets/iuniswappcvcontroller.json" caption="UniswapPCVController Interface ABI" %}</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../../js/base.js" defer></script>
+        <script src="../../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

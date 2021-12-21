@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../../../img/favicon.ico">
+        <title>EthBondingCurve - Fei Protocol Docs</title>
+        <link href="../../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../../..">Fei Protocol Docs</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../../.." class="nav-link">Overview</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../user/user/" class="nav-link">User</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../developers/developers/" class="nav-link">Developer</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../operator/operator/" class="nav-link">Operator</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/fei-protocol/fei-docs/edit/main/docs/old/protocol/bondingcurve/ethbondingcurve.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#ethbondingcurve" class="nav-link">EthBondingCurve</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#contract" class="nav-link">Contract</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#description" class="nav-link">Description</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#access-control" class="nav-link">Access Control</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#abis" class="nav-link">ABIs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="ethbondingcurve">EthBondingCurve</h1>
+<h2 id="contract">Contract</h2>
+<p><a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/bondingcurve/EthBondingCurve.sol">EthBondingCurve.sol</a> implements <a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/bondingcurve/BondingCurve.sol">BondingCurve</a></p>
+<h2 id="description">Description</h2>
+<p>A bonding curve implementation for purchasing FEI with ETH.</p>
+<p>The price function used is:</p>
+<ul>
+<li><em>x</em> - the current amount of FEI issued from the bonding curve</li>
+<li><em>S</em> - the Scale target</li>
+<li><em>O</em> - the oracle price reported as underlying per FEI</li>
+</ul>
+<p><img alt="Price function for FEI/ETH bonding curve" src="../../.gitbook/assets/screen-shot-2021-02-14-at-4.11.48-pm.png" /></p>
+<p>The "k" shift is an additional feature since the white paper release. It shifts the starting price upward so the protocol can retain more <a href="../protocol-controlled-value/">PCV</a>. k is initially set to <code>S/3</code> which makes the starting price $0.50 per FEI.</p>
+<p>The amount of FEI out for a given quantity of ETH input <em>Q</em> is equal to the following:</p>
+<p><img alt="The amount out from the bonding curve for ETH input Q" src="../../.gitbook/assets/screen-shot-2021-02-23-at-8.01.30-am.png" /></p>
+<p>y is the cumulative amount of FEI sold by the bonding curve after the trade and C is the current cumulative, so their difference is the amount sent to the user.</p>
+<p>The Scale target is 100,000,000 FEI.</p>
+<p><strong>‌</strong>Post-Scale, the Bonding curve sets the exchange rate at $1 + b, where <em>b</em> is a buffer. The buffer is initially set to 1% to allow for variance above $1. Governance can vote to converge b to 0 as the liquidity increases and volatility decreases.</p>
+<p><img alt="Price function for FEI/ETH bonding curve post-Scale" src="../../.gitbook/assets/screen-shot-2021-03-04-at-3.12.28-pm.png" /></p>
+<p>The oracle used is the <a href="https://github.com/fei-protocol/fei-protocol-core/wiki/UniswapOracle">UniswapOracle</a>.</p>
+<h2 id="access-control"><a href="../access-control/">Access Control</a></h2>
+<ul>
+<li>Minter💰</li>
+</ul>
+<h2 id="abis">ABIs</h2>
+<p>{% file src="../../.gitbook/assets/ethbondingcurve.json" caption="EthBondingCurve ABI" %}</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../../js/base.js" defer></script>
+        <script src="../../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

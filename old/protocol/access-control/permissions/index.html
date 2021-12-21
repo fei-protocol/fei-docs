@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../../../img/favicon.ico">
+        <title>Permissions - Fei Protocol Docs</title>
+        <link href="../../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../../..">Fei Protocol Docs</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../../.." class="nav-link">Overview</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../user/user/" class="nav-link">User</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../developers/developers/" class="nav-link">Developer</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../operator/operator/" class="nav-link">Operator</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/fei-protocol/fei-docs/edit/main/docs/old/protocol/access-control/permissions.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#permissions" class="nav-link">Permissions</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#contract" class="nav-link">Contract</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#description" class="nav-link">Description</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#read-only-functions" class="nav-link">Read-Only Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#governor-only-state-changing-functions" class="nav-link">Governor-Only⚖️ State-Changing Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#guardian-onlystate-changing-functions" class="nav-link">Guardian-Only🛡State-Changing Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#abis" class="nav-link">ABIs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="permissions">Permissions</h1>
+<h2 id="contract">Contract</h2>
+<p><a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/core/Permissions.sol">Permissions.sol</a> implements <a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/core/IPermissions.sol">IPermissions</a>, <a href="https://docs.openzeppelin.com/contracts/3.x/api/access#AccessControl">AccessControl</a></p>
+<h2 id="description">Description</h2>
+<p>The <a href="./">access control</a> module of the <a href="../core/">Core</a> contract. It maintains which roles exist, role admins, and which addresses have which roles.</p>
+<p>The contract expands the OpenZeppelin Access Control contract with additional Fei Protocol-specific roles and functionality.</p>
+<p>{% embed url="https://docs.openzeppelin.com/contracts/3.x/api/access#AccessControl" %}</p>
+<p>Granting and revoking roles is gated for only Governor ⚖️ access. The Guardian🛡role can also revoke roles in certain circumstances.</p>
+<h2 id="read-only-functions">Read-Only Functions</h2>
+<h3 id="isburner">isBurner</h3>
+<pre><code class="language-javascript">function isBurner(address _address) external view returns (bool);
+</code></pre>
+<p>returns true if <code>_address</code> has the Burner🔥role</p>
+<h3 id="isminter">isMinter</h3>
+<pre><code class="language-javascript">function isMinter(address _address) external view returns (bool);
+</code></pre>
+<p>returns true if <code>_address</code> has the Minter💰role</p>
+<h3 id="isgovernor">isGovernor</h3>
+<pre><code class="language-javascript">function isGovernor(address _address) external view returns (bool);
+</code></pre>
+<p>returns true if <code>_address</code> has the Governor⚖️role</p>
+<h3 id="isguardian">isGuardian</h3>
+<pre><code class="language-javascript">function isGuardian(address _address) external view returns (bool);
+</code></pre>
+<p>returns true if <code>_address</code> has the Guardian🛡role</p>
+<h3 id="ispcvcontroller">isPCVController</h3>
+<pre><code class="language-javascript">function isPCVController(address _address) external view returns (bool);
+</code></pre>
+<p>returns true if <code>_address</code> has the PCV Controller⚙️role</p>
+<h2 id="governor-only-state-changing-functions">Governor-Only⚖️ State-Changing Functions</h2>
+<h3 id="createrole">createRole</h3>
+<pre><code class="language-javascript">function createRole(bytes32 role, bytes32 adminRole) external;
+</code></pre>
+<p>assigns role <code>role</code> a new admin role <code>adminRole</code></p>
+<p>This function can be used either to create a new access control role or reassign an admin for an existing role.</p>
+<h3 id="grantminter">grantMinter</h3>
+<pre><code class="language-javascript">function grantMinter(address minter) external;
+</code></pre>
+<p>assigns Minter💰role to <code>minter</code></p>
+<h3 id="grantburner">grantBurner</h3>
+<pre><code class="language-javascript">function grantBurner(address burner) external;
+</code></pre>
+<p>assigns Burner🔥role to <code>burner</code></p>
+<h3 id="grantpcvcontroller">grantPCVController</h3>
+<pre><code class="language-javascript">function grantPCVController(address pcvController) external;
+</code></pre>
+<p>assigns PCV Controller⚙️ role to <code>pcvController</code></p>
+<h3 id="grantgovernor">grantGovernor</h3>
+<pre><code class="language-javascript">function grantGovernor(address governor) external;
+</code></pre>
+<p>assigns Governor⚖️role to <code>governor</code></p>
+<h3 id="grantguardian">grantGuardian</h3>
+<pre><code class="language-javascript">function grantGuardian(address guardian) external;
+</code></pre>
+<p>assigns Guardian🛡role to <code>guardian</code></p>
+<h3 id="revokeminter">revokeMinter</h3>
+<pre><code class="language-javascript">function revokeMinter(address minter) external;
+</code></pre>
+<p>revokes Minter💰role from <code>minter</code></p>
+<h3 id="revokeburner">revokeBurner</h3>
+<pre><code class="language-javascript">function revokeBurner(address burner) external;
+</code></pre>
+<p>revokes Burner🔥role from <code>burner</code></p>
+<h3 id="revokepcvcontroller">revokePCVController</h3>
+<pre><code class="language-javascript">function revokePCVController(address pcvController) external;
+</code></pre>
+<p>revokes PCV Controller⚙️ role from <code>pcvController</code></p>
+<h3 id="revokegovernor">revokeGovernor</h3>
+<pre><code class="language-javascript">function revokeGovernor(address governor) external;
+</code></pre>
+<p>revokes Governor⚖️role from <code>governor</code></p>
+<h3 id="revokeguardian">revokeGuardian</h3>
+<pre><code class="language-javascript">function revokeGuardian(address guardian) external;
+</code></pre>
+<p>revokes Guardian🛡role from <code>guardian</code></p>
+<h2 id="guardian-onlystate-changing-functions">Guardian-Only🛡State-Changing Functions</h2>
+<h3 id="revokeoverride">revokeOverride</h3>
+<pre><code class="language-javascript">function revokeOverride(bytes32 role, address account) external;
+</code></pre>
+<p>revokes <code>role</code> from <code>account</code></p>
+<p>fails if role is equal to Governor⚖️</p>
+<h2 id="abis">ABIs</h2>
+<p>{% file src="../../.gitbook/assets/permissions.json" caption="Permissions ABI" %}</p>
+<p>{% file src="../../.gitbook/assets/ipermissions.json" caption="Permissions Interface ABI" %}</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../../js/base.js" defer></script>
+        <script src="../../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../../../img/favicon.ico">
+        <title>Core - Fei Protocol Docs</title>
+        <link href="../../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../../..">Fei Protocol Docs</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../../.." class="nav-link">Overview</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../user/user/" class="nav-link">User</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../developers/developers/" class="nav-link">Developer</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../operator/operator/" class="nav-link">Operator</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/fei-protocol/fei-docs/edit/main/docs/old/protocol/access-control/core.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#core" class="nav-link">Core</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#contract" class="nav-link">Contract</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#description" class="nav-link">Description</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#access-control" class="nav-link">Access Control</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#events" class="nav-link">Events</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#read-only-functions" class="nav-link">Read-Only Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#governor-only-state-changing-functions" class="nav-link">Governor-Only⚖️ State-Changing Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#genesisgroup-only-state-changing-functions" class="nav-link">GenesisGroup-Only🚀 State-Changing Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#abis" class="nav-link">ABIs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="core">Core</h1>
+<h2 id="contract">Contract</h2>
+<p><a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/core/Core.sol">Core.sol</a> implements <a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/core/ICore.sol">ICore</a>, <a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/core/Permissions.sol">Permissions</a></p>
+<h2 id="description">Description</h2>
+<p>The Core contract responsibilities:</p>
+<ul>
+<li>Access control</li>
+<li>Pointing to <a href="../fei-stablecoin/">FEI</a>, <a href="../../../governance/tribe/">TRIBE</a>, and <a href="../../genesis/genesisgroup/">GenesisGroup</a> contracts</li>
+<li>Stores whether GenesisGroup has completed</li>
+<li>Escrowing DAO TRIBE treasury</li>
+</ul>
+<p>The access control module is managed by Permissions.</p>
+<p>{% page-ref page="permissions.md" %}</p>
+<p>Most other Fei Protocol contracts should refer to Core by implementing the <a href="../../references/coreref/">CoreRef</a> contract.</p>
+<p>When Core is constructed and initialized it does the following:</p>
+<ul>
+<li>Set sender as governor</li>
+<li>Create and reference FEI and TRIBE contracts</li>
+</ul>
+<p>The governor will then set the genesis group contract.</p>
+<p>When the genesis group conditions are met, the GenesisGroup contract should complete the genesis group by calling <code>completeGenesisGroup()</code></p>
+<h2 id="access-control"><a href="./">Access Control</a></h2>
+<ul>
+<li>Governor ⚖️</li>
+</ul>
+<h2 id="events">Events</h2>
+<p>{% tabs %}
+{% tab title="FeiUpdate" %}
+Governance change of FEI token address</p>
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">address indexed</td>
+<td align="left">_fei</td>
+<td align="left">new FEI address</td>
+</tr>
+<tr>
+<td align="left">{% endtab %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>{% tab title="TribeUpdate" %}
+Governance change of TRIBE token address</p>
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">address indexed</td>
+<td align="left">_tribe</td>
+<td align="left">new TRIBE address</td>
+</tr>
+<tr>
+<td align="left">{% endtab %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>{% tab title="GenesisGroupUpdate" %}
+Governance change of GenesisGroup address</p>
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">address indexed</td>
+<td align="left">_genesisGroup</td>
+<td align="left">new Genesis Group address</td>
+</tr>
+<tr>
+<td align="left">{% endtab %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>{% tab title="TribeAllocation" %}
+Governance deployment of TRIBE tokens from treasury</p>
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">address indexed</td>
+<td align="left">_to</td>
+<td align="left">The address to receive TRIBE</td>
+</tr>
+<tr>
+<td align="left">uint256</td>
+<td align="left">_amount</td>
+<td align="left">The amount of TRIBE distributed</td>
+</tr>
+<tr>
+<td align="left">{% endtab %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>{% tab title="GenesisPeriodComplete" %}
+Signals completion of Genesis Period and full launch of FEI protocol</p>
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">uint256</td>
+<td align="left">_timestamp</td>
+<td align="left">The block timestamp at Genesis completion</td>
+</tr>
+<tr>
+<td align="left">{% endtab %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">{% endtabs %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="read-only-functions">Read-Only Functions</h2>
+<h3 id="fei">fei</h3>
+<pre><code class="language-javascript">function fei() external view returns (IFei);
+</code></pre>
+<p>returns the address of the <a href="../../fei-stablecoin/fei-fei-usd/">FEI</a> contract as an interface for consumption</p>
+<h3 id="tribe">tribe</h3>
+<pre><code class="language-javascript">function tribe() external view returns (IERC20);
+</code></pre>
+<p>returns the address of the <a href="../../../governance/tribe/">TRIBE</a> contract as an interface for consumption</p>
+<h3 id="genesisgroup">genesisGroup</h3>
+<pre><code class="language-javascript">function genesisGroup() external view returns (address);
+</code></pre>
+<p>returns the address of the <a href="../../genesis/genesisgroup/">GenesisGroup</a> contract</p>
+<h3 id="hasgenesisgroupcompleted">hasGenesisGroupCompleted</h3>
+<pre><code class="language-javascript">function hasGenesisGroupCompleted() external view returns (bool);
+</code></pre>
+<p>returns true if after genesis period and launched, false otherwise</p>
+<h2 id="governor-only-state-changing-functions">Governor-Only⚖️ State-Changing Functions</h2>
+<h3 id="setfei">setFei</h3>
+<pre><code class="language-javascript">function setFei(address token) external;
+</code></pre>
+<p>sets the reference <a href="../../fei-stablecoin/fei-fei-usd/">FEI</a> contract</p>
+<p>emits <code>FeiUpdate</code></p>
+<h3 id="settribe">setTribe</h3>
+<pre><code class="language-javascript">function setTribe(address token) external;
+</code></pre>
+<p>sets the reference <a href="../../../governance/tribe/">TRIBE</a> contract</p>
+<p>emits <code>TribeUpdate</code></p>
+<h3 id="setgenesisgroup">setGenesisGroup</h3>
+<pre><code class="language-javascript">function setGenesisGroup(address _genesisGroup) external;
+</code></pre>
+<p>sets the reference <a href="../../genesis/genesisgroup/">GenesisGroup</a> contract to <code>_genesisGroup</code></p>
+<p>emits <code>GenesisGroupUpdate</code></p>
+<h3 id="allocatetribe">allocateTribe</h3>
+<pre><code class="language-javascript">function allocateTribe(address to, uint256 amount) external;
+</code></pre>
+<p>distribute <code>amount</code> <a href="../../../governance/tribe/">TRIBE</a> from Core to an external address <code>to</code></p>
+<p>emits <code>TribeAllocation</code></p>
+<h2 id="genesisgroup-only-state-changing-functions">GenesisGroup-Only🚀 State-Changing Functions</h2>
+<h3 id="completegenesisgroup">completeGenesisGroup</h3>
+<pre><code class="language-javascript">function completeGenesisGroup() external;
+</code></pre>
+<p>called during Fei Protocol launch to unlock the remaining protocol functionality</p>
+<p>emits <code>GenesisPeriodComplete</code></p>
+<p>{% page-ref page="../genesis/genesisgroup.md" %}</p>
+<h2 id="abis">ABIs</h2>
+<p>{% file src="../../.gitbook/assets/core.json" caption="Core ABI" %}</p>
+<p>{% file src="../../.gitbook/assets/icore.json" caption="Core Interface ABI" %}</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../../js/base.js" defer></script>
+        <script src="../../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

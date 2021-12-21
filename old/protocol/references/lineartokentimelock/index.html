@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../../../img/favicon.ico">
+        <title>LinearTokenTimelock - Fei Protocol Docs</title>
+        <link href="../../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../../..">Fei Protocol Docs</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../../.." class="nav-link">Overview</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../user/user/" class="nav-link">User</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../developers/developers/" class="nav-link">Developer</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../operator/operator/" class="nav-link">Operator</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/fei-protocol/fei-docs/edit/main/docs/old/protocol/references/lineartokentimelock.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#lineartokentimelock" class="nav-link">LinearTokenTimelock</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#contract" class="nav-link">Contract</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#description" class="nav-link">Description</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#events" class="nav-link">Events</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#read-only-functions" class="nav-link">Read-Only Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#public-state-changing-functions" class="nav-link">Public State-Changing Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#beneficiary-only-state-changing-functions" class="nav-link">Beneficiary-Only👑 State-Changing Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#abis" class="nav-link">ABIs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="lineartokentimelock">LinearTokenTimelock</h1>
+<h2 id="contract">Contract</h2>
+<p><a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/utils/LinearTokenTimelock.sol">LinearTokenTimelock.sol</a> implements <a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/utils/Timed.sol">Timed</a></p>
+<h2 id="description">Description</h2>
+<p>A timelock for releasing tokens over a continuous linear schedule. There is an appointed beneficiary who controls the tokens when vested. The beneficiary can set a new one if needed using the offer-accept pattern.</p>
+<h3 id="release-calculation">Release Calculation</h3>
+<p>Uses <a href="https://github.com/fei-protocol/fei-protocol-core/wiki/Timed">Timed</a> to have a fixed period <em>d</em> of release. The elapsed time <em>t</em> is on the range [0,d].</p>
+<p>The contract maintains the following:</p>
+<ul>
+<li><code>T</code> - a total token amount which includes any already released and locked tokens. It can increase if new tokens enter the timelock but it cannot decrease.</li>
+<li><code>C</code> - the current held tokens in the contract</li>
+</ul>
+<p>The portion of <em>T</em> available for release is <em>T*t/d</em>.</p>
+<p>The already released amount is <em>T - C</em>.</p>
+<p>The net amount available for release is the total available minus already released. The beneficiary can claim these at any time, and distribute to any address.</p>
+<h2 id="events">Events</h2>
+<p>{% tabs %}
+{% tab title="Release" %}
+A release of timelocked tokens</p>
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">address indexed</td>
+<td align="left">_beneficiary</td>
+<td align="left">the address that owns the timelocked tokens</td>
+</tr>
+<tr>
+<td align="left">address indexed</td>
+<td align="left">_recipient</td>
+<td align="left">the address receiving this unlocked distribution</td>
+</tr>
+<tr>
+<td align="left">uint256</td>
+<td align="left">_amount</td>
+<td align="left">the amount of unlocked tokens released</td>
+</tr>
+<tr>
+<td align="left">{% endtab %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>{% tab title="BeneficiaryUpdate" %}
+A change in beneficiary to the timelock</p>
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">address indexed</td>
+<td align="left">_beneficiary</td>
+<td align="left">the new beneficiary address</td>
+</tr>
+<tr>
+<td align="left">{% endtab %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>{% tab title="PendingBeneficiaryUpdate" %}
+A change in pending beneficiary to the timelock</p>
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">address indexed</td>
+<td align="left">_pendingBeneficiary</td>
+<td align="left">the new beneficiary address</td>
+</tr>
+<tr>
+<td align="left">{% endtab %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">{% endtabs %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="read-only-functions">Read-Only Functions</h2>
+<h3 id="lockedtoken">lockedToken</h3>
+<pre><code class="language-javascript">function lockedToken() external view returns (IERC20);
+</code></pre>
+<p>Returns the address of the locked token casted as an IERC20 interface.</p>
+<h3 id="beneficiary">beneficiary</h3>
+<pre><code class="language-javascript">function beneficiary() external view returns (address);
+</code></pre>
+<p>Returns the current beneficiary address.</p>
+<h3 id="pendingbeneficiary">pendingBeneficiary</h3>
+<pre><code class="language-javascript">function pendingBeneficiary() external view returns (address);
+</code></pre>
+<p>Returns the pending beneficiary, which could assume the beneficiary role at any time by calling <code>acceptBeneficiary()</code></p>
+<h3 id="initialbalance">initialBalance</h3>
+<pre><code class="language-javascript">function initialBalance() external view returns (uint256);
+</code></pre>
+<p>Returns the initial total amount of locked tokens. If new tokens are dropped into the timelock, this number increases to prevent accounting errors.</p>
+<h3 id="availableforrelease">availableForRelease</h3>
+<pre><code class="language-javascript">function availableForRelease() external view returns (uint256);
+</code></pre>
+<p>The amount of <code>lockedToken</code> available to be released by the beneficiary.</p>
+<h3 id="totaltoken">totalToken</h3>
+<pre><code class="language-javascript">function totalToken() external view returns(uint256);
+</code></pre>
+<p>Returns the total amount of tokens held by the timelock pending release.</p>
+<h3 id="alreadyreleasedamount">alreadyReleasedAmount</h3>
+<pre><code class="language-javascript">function alreadyReleasedAmount() external view returns (uint256);
+</code></pre>
+<p>The amount of <code>lockedToken</code> already released by the beneficiary.</p>
+<h2 id="public-state-changing-functions">Public State-Changing Functions</h2>
+<h3 id="acceptbeneficiary">acceptBeneficiary</h3>
+<pre><code class="language-javascript">function acceptBeneficiary() external;
+</code></pre>
+<p>Accepts the beneficiary role for <code>msg.sender</code>. Must already be the pending beneficiary.</p>
+<p>emits <code>BeneficiaryUpdate</code></p>
+<h2 id="beneficiary-only-state-changing-functions">Beneficiary-Only👑 State-Changing Functions</h2>
+<pre><code class="language-javascript">function release(address to, uint amount) external;
+</code></pre>
+<p>Releases <code>amount</code> of timelocked tokens to address <code>to</code>. The <code>amount</code> must be less than or equal to the released amount of tokens.</p>
+<p>emits <code>Release</code></p>
+<h3 id="setpendingbeneficiary">setPendingBeneficiary</h3>
+<pre><code class="language-javascript">function setPendingBeneficiary(address _pendingBeneficiary) external;
+</code></pre>
+<p>Sets the pending beneficiary to <code>_pendingBeneficiary</code>.</p>
+<p>emits <code>PendingBeneficiaryUpdate</code></p>
+<h2 id="abis">ABIs</h2>
+<p>{% file src="../../.gitbook/assets/lineartokentimelock.json" caption="LinearTokenTimelock ABI" %}</p>
+<p>{% file src="../../.gitbook/assets/ilineartokentimelock.json" caption="LinearTokenTimelock Interface ABI" %}</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../../js/base.js" defer></script>
+        <script src="../../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../../../img/favicon.ico">
+        <title>GenesisGroup - Fei Protocol Docs</title>
+        <link href="../../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../../..">Fei Protocol Docs</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../../.." class="nav-link">Overview</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../user/user/" class="nav-link">User</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../developers/developers/" class="nav-link">Developer</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../operator/operator/" class="nav-link">Operator</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/fei-protocol/fei-docs/edit/main/docs/old/protocol/genesis/genesisgroup.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#genesisgroup" class="nav-link">GenesisGroup</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#contract" class="nav-link">Contract</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#description" class="nav-link">Description</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#events" class="nav-link">Events</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#read-only-functions" class="nav-link">Read-Only Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#public-state-changing-functions" class="nav-link">Public State-Changing Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#eoa-only-state-changing-functions" class="nav-link">EOA-Only 👤 State-Changing Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#abis" class="nav-link">ABIs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="genesisgroup">GenesisGroup</h1>
+<h2 id="contract">Contract</h2>
+<p><a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/genesis/GenesisGroup.sol">GenesisGroup.sol</a> implements <a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/genesis/IGenesisGroup.sol">IGenesisGroup</a>, <a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/refs/CoreRef.sol">CoreRef</a>, <a href="https://docs.openzeppelin.com/contracts/3.x/api/token/erc20#ERC20">ERC20</a>, <a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/utils/Timed.sol">Timed</a></p>
+<h2 id="description">Description</h2>
+<p>The Genesis Group Contract is responsible for launching Fei Protocol. It allows for pro-rata access to the first bonding curve transaction and includes a TRIBE distribution.</p>
+<h3 id="fgen">FGEN</h3>
+<p>The user's Genesis balances are managed by an FGEN ERC-20 token. FGEN are a tokenized version of the committed ETH. FGEN tokens are fungible and can be transferred and even sold if secondary markets arise.</p>
+<p>FGEN are used to account for the user's final outcome in Genesis.</p>
+<h3 id="outcome-determination">Outcome determination</h3>
+<p>{% hint style="info" %}
+FGEN maps to "committed ETH" and converted-FGEN maps to "pre-swapping" TRIBE.
+{% endhint %}</p>
+<p>At redemption time, users could have a combination of FGEN and converted-FGEN (cFGEN) tokens. cFGEN are not ERC-20 tokens and are only utilized during Genesis. The ratios of FGEN and cFGEN to the totals determine how much FEI and TRIBE each user receives. The TRIBE can be further split into "Genesis TRIBE" which are the additional allocation to the Genesis Group and "IDO TRIBE" which come from exchanging pre-converted FEI in the IDO.</p>
+<p>Genesis allocation formulas:</p>
+<p><img alt="" src="../../.gitbook/assets/screen-shot-2021-02-14-at-7.32.33-pm.png" /></p>
+<p>Both the held FGEN and pre-converted balance are used to determine ownership of the Genesis TRIBE. Only the held FGEN is used for determining FEI ownership because the pre-converted FGEN FEI allocation is used to swap for TRIBE. Of the IDO TRIBE allocation, users get the pro-rata percentage of their pre-converted FGEN over all of the pre-converted FGEN.</p>
+<h2 id="events">Events</h2>
+<p>{% tabs %}
+{% tab title="Purchase" %}
+A purchase into the Genesis Group</p>
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">address indexed</td>
+<td align="left">_to</td>
+<td align="left">the address to send Fei Genesis share tokens (FGEN) to</td>
+</tr>
+<tr>
+<td align="left">uint256</td>
+<td align="left">_value</td>
+<td align="left">the amount of ETH deposited</td>
+</tr>
+<tr>
+<td align="left">{% endtab %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>{% tab title="Commit" %}
+Pre-commit Genesis share tokens (FGEN) to buy TRIBE in IDO</p>
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">address indexed</td>
+<td align="left">_from</td>
+<td align="left">account with the FGEN to commit</td>
+</tr>
+<tr>
+<td align="left">address indexed</td>
+<td align="left">_to</td>
+<td align="left">account to receive and redeem the rewards post-genesis</td>
+</tr>
+<tr>
+<td align="left">uint256</td>
+<td align="left">_amount</td>
+<td align="left">amount of FGEN committed</td>
+</tr>
+<tr>
+<td align="left">{% endtab %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>{% tab title="Redeem" %}
+Redeem Fei Genesis share tokens (FGEN) for FEI and TRIBE</p>
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">address indexed</td>
+<td align="left">_to</td>
+<td align="left">the address to send TRIBE and FEI to</td>
+</tr>
+<tr>
+<td align="left">uint256</td>
+<td align="left">_amountIn</td>
+<td align="left">amount of FGEN redeemed</td>
+</tr>
+<tr>
+<td align="left">uint256</td>
+<td align="left">_amountFei</td>
+<td align="left">amount of FEI received</td>
+</tr>
+<tr>
+<td align="left">uint256</td>
+<td align="left">_amountTribe</td>
+<td align="left">amount of TRIBE received</td>
+</tr>
+<tr>
+<td align="left">{% endtab %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>{% tab title="Launch" %}
+The completion of the Genesis Group and launch of Fei Protocol. Only emitted once</p>
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">uint256</td>
+<td align="left">_timestamp</td>
+<td align="left">the block timestamp of deployment</td>
+</tr>
+<tr>
+<td align="left">{% endtab %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">{% endtabs %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="read-only-functions">Read-Only Functions</h2>
+<h3 id="getamountout">getAmountOut</h3>
+<pre><code class="language-javascript">function getAmountOut(uint256 amountIn, bool inclusive)
+    external
+    view
+    returns (uint256 feiAmount, uint256 tribeAmount);
+</code></pre>
+<p>Returns the hypothetical <code>feiAmount</code> of FEI and <code>tribeAmount</code>of TRIBE that the user would receive if they have <code>amountIn</code> FGEN and genesis were to launch immediately. </p>
+<p>The <code>inclusive</code> flag would signify that the <code>amounIn</code> is already a part of the existing FGEN total supply, otherwise it is added on to simulate a purchase.</p>
+<h3 id="getamountstoredeem">getAmountsToRedeem</h3>
+<pre><code class="language-javascript">function getAmountsToRedeem(address to)
+    external
+    view
+    returns (
+        uint256 feiAmount,
+        uint256 genesisTribe,
+        uint256 idoTribe
+    )
+</code></pre>
+<p>For an address <code>to</code>, returns how much FEI is available for redemption <code>feiAmount</code>, how much TRIBE is available from the Genesis bonus <code>genesisTribe</code>, and how much TRIBE is available from the IDO pre-commitment <code>idoTribe</code>, if any.</p>
+<p>{% hint style="danger" %}
+Reverts if called pre-launch, as there is no way to know the redeemable amount for a user
+{% endhint %}</p>
+<h2 id="public-state-changing-functions">Public State-Changing Functions</h2>
+<h3 id="purchase">purchase</h3>
+<pre><code class="language-javascript">function purchase(address to, uint256 value) external payable;
+</code></pre>
+<p>Purchase awards the user with an ERC-20 token 1:1 for their ETH called FGEN. This amount equals to <code>value</code>.  Only available during the Genesis Period.</p>
+<p>emits <code>Purchase</code></p>
+<p>{% hint style="info" %}
+purchase() maps to an "ETH commitment" which outputs FGEN.
+{% endhint %}</p>
+<h3 id="commit">commit</h3>
+<pre><code class="language-javascript">function commit(
+    address from,
+    address to,
+    uint256 amount
+) external;
+</code></pre>
+<p>Pre-commit <code>amount</code> of FGEN to have the associated Genesis FEI participate in the initial DEX offering of TRIBE on Uniswap. Burn FGEN from the <code>from</code> address and grant the pre-commitment rewards to the <code>to</code> address. This can only be done during the Genesis Period.</p>
+<p>emits <code>Commit</code></p>
+<p>{% hint style="info" %}
+<code>commit</code>() maps conceptually to a "TRIBE pre-swap"
+{% endhint %}</p>
+<p>{% hint style="warning" %}
+When a user pre-converts, their FGEN is burned. This makes it a one-way action. 
+{% endhint %}</p>
+<h3 id="redeem">redeem</h3>
+<pre><code class="language-javascript">function redeem(address to) external;
+</code></pre>
+<p>Redeem FGEN and cFGEN from <code>to</code> for a pro rata share of the FEI purchased on the bonding curve and the Genesis TRIBE allocation. Any contract can redeem on behalf of a user if they have FGEN approval. Redemptions must be for the entire held balance of FGEN and cFGEN.</p>
+<p>emits <code>Redeem</code></p>
+<h3 id="emergencyexit">emergencyExit</h3>
+<pre><code class="language-javascript">function emergencyExit(address from, address payable to) external;
+</code></pre>
+<p>Redeem all FGEN and cFGEN held by the address <code>from</code> for ETH 1:1, sending the ETH to address <code>to</code>. This is intended only for the scenario where the launch functionality is bricked as a way for users to get their ETH back.</p>
+<p>Only available 3 days AFTER the Genesis Period ends, if launch has not been called.</p>
+<h2 id="eoa-only-state-changing-functions">EOA-Only 👤 State-Changing Functions</h2>
+<h3 id="launch">launch</h3>
+<pre><code class="language-javascript">function launch() external;
+</code></pre>
+<p>Launching is only open at the end of the Genesis Period. The following actions happen at launch:</p>
+<ul>
+<li>Mark Genesis Group as completed in Core (for other contracts to reference)</li>
+<li>Initializing the BondingCurveOracle price for thawing</li>
+<li>Making the first bonding curve purchase of FEI with all held ETH. (needs to happen after oracle init so the FEI is deployed at right ratio on Uniswap)</li>
+<li>Allocate bonding curve ETH to the PCV deposit</li>
+<li>Initialize the FEI/TRIBE staking pool</li>
+<li>Deploy the IDO FEI/TRIBE funds to Uniswap.</li>
+<li>Execute the swap of FEI for pre-swappingTRIBE on the IDO</li>
+</ul>
+<p>emits <code>Launch</code></p>
+<h2 id="abis">ABIs</h2>
+<p>{% file src="../../.gitbook/assets/genesisgroup.json" caption="GenesisGroup ABI" %}</p>
+<p>{% file src="../../.gitbook/assets/igenesisgroup.json" caption="GenesisGroup Interface ABI" %}</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../../js/base.js" defer></script>
+        <script src="../../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

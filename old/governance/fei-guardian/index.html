@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>Fei Guardian - Fei Protocol Docs</title>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../..">Fei Protocol Docs</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../.." class="nav-link">Overview</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../user/user/" class="nav-link">User</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../developers/developers/" class="nav-link">Developer</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../operator/operator/" class="nav-link">Operator</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/fei-protocol/fei-docs/edit/main/docs/old/governance/fei-guardian.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#fei-guardian" class="nav-link">Fei Guardian</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#responsibilities" class="nav-link">Responsibilities</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#pausability" class="nav-link">Pausability</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="fei-guardian">Fei Guardian</h1>
+<p>The Fei Guardian is the single address to be granted the Guardian🛡role at Genesis. Initially held by the Fei Core Team in a multi-sig, with the intention of either renouncing the role or transitioning to a community held multi-sig within a few months of launch.</p>
+<p>The rationale for a Guardian is that there could be issues in the protocol which are time sensitive. The minimum 3 day window between a proposal and execution for a fix coming through the <a href="../fei-dao/">Fei DAO</a> could be too long. For instance, if there is a bug in the incentive calculation where an attacker can systematically make a profit, this functionality should be shut down as quickly as possible. The Guardian would step in and revoke the Minter💰role from the <a href="../../protocol/fei-stablecoin/uniswapincentive/">UniswapIncentive</a> contract.</p>
+<p>The Guardian can only revoke or pause functionality, with the additional ability to force a reweight.</p>
+<p>{% hint style="info" %}
+The Governor⚖️ can revoke the Guardian🛡ability at any time
+{% endhint %}</p>
+<h2 id="responsibilities">Responsibilities</h2>
+<ul>
+<li>revoke any role from any contract, except Governor⚖️</li>
+<li>pause and unpause contracts</li>
+<li>force a reweight</li>
+</ul>
+<h2 id="pausability">Pausability</h2>
+<p>Any contract implementing <a href="../../protocol/references/coreref/">CoreRef</a> has the ability to be pausable. Any external method marked as pausable would revert when the contract is in the paused state.</p>
+<p>List of pausable methods by contract:</p>
+<h3 id="ethbondingcurve"><a href="../../protocol/bondingcurve/ethbondingcurve/">EthBondingCurve</a></h3>
+<ul>
+<li><code>allocate()</code></li>
+<li><code>purchase(address to, uint256 amountIn)</code></li>
+</ul>
+<p>Pause would prevent both purchasing FEI and allocating PCV from the bonding curve</p>
+<h3 id="ethuniswappcvdeposit"><a href="../../protocol/protocol-controlled-value/ethuniswappcvdeposit/">EthUniswapPCVDeposit</a></h3>
+<ul>
+<li><code>deposit(uint256 ethAmount)</code></li>
+<li><code>withdraw(uint256 ethAmount)</code></li>
+</ul>
+<p>Pause would prevent new PCV from being provided as liquidity to Uniswap or withdrawn</p>
+<h3 id="ethuniswappcvcontroller"><a href="../../protocol/protocol-controlled-value/ethuniswappcvcontroller/">EthUniswapPCVController</a></h3>
+<ul>
+<li><code>reweight()</code></li>
+</ul>
+<p>Pause would prevent external actors from triggering reweights when the criteria are met.</p>
+<p>{% hint style="info" %}
+The <code>forceReweight()</code> function would still be available for the Guardian to manually support the peg
+{% endhint %}</p>
+<h3 id="fei"><a href="../../protocol/fei-stablecoin/fei-fei-usd/">Fei</a></h3>
+<ul>
+<li><code>burnFrom()</code></li>
+<li><code>mint()</code></li>
+</ul>
+<p>Pause would render all Minter💰and Burner🔥contracts unable to mint and burn FEI, respectively</p>
+<h3 id="uniswaporacle"><a href="../../protocol/oracles/uniswaporacle/">UniswapOracle</a></h3>
+<ul>
+<li><code>read()</code></li>
+<li><code>update()</code></li>
+</ul>
+<p>Pause would render all Fei Protocol contracts which rely on this oracle unable to successfully execute function calls</p>
+<h3 id="bondingcurveoracle"><a href="../../protocol/oracles/bondingcurveoracle/">BondingCurveOracle</a></h3>
+<ul>
+<li><code>read()</code></li>
+</ul>
+<p>Pause would render all Fei Protocol contracts which rely on this oracle unable to successfully execute function calls</p>
+<h3 id="feirewardsdistributor"><a href="../../protocol/staking/feirewardsdistributor/">FeiRewardsDistributor</a></h3>
+<ul>
+<li><code>drip()</code></li>
+</ul>
+<p>Pause would stop any future TRIBE reward distributions to <a href="../../protocol/staking/feistakingrewards/">FeiStakingRewards</a> but leave the current reward cycle unchanged.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js" defer></script>
+        <script src="../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

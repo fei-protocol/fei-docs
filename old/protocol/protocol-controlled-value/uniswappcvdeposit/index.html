@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../../../img/favicon.ico">
+        <title>UniswapPCVDeposit - Fei Protocol Docs</title>
+        <link href="../../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../../..">Fei Protocol Docs</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../../.." class="nav-link">Overview</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../user/user/" class="nav-link">User</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../developers/developers/" class="nav-link">Developer</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../operator/operator/" class="nav-link">Operator</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/fei-protocol/fei-docs/edit/main/docs/old/protocol/protocol-controlled-value/uniswappcvdeposit.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#uniswappcvdeposit" class="nav-link">UniswapPCVDeposit</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#contract" class="nav-link">Contract</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#description" class="nav-link">Description</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#access-control" class="nav-link">Access Control</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#events" class="nav-link">Events</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#read-only-functions" class="nav-link">Read-Only Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#public-state-changing-functions" class="nav-link">Public State-Changing Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#pcv-controller-only-state-changing-functions" class="nav-link">PCV Controller-Only ⚙️ State-Changing Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#governor-only-state-changing-functions" class="nav-link">Governor-Only⚖️ State-Changing Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#abis" class="nav-link">ABIs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="uniswappcvdeposit">UniswapPCVDeposit</h1>
+<h2 id="contract">Contract</h2>
+<p><a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/pcv/UniswapPCVDeposit.sol">UniswapPCVDeposit.sol</a> implements <a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/pcv/IPCVDeposit.sol">IPCVDeposit</a>, <a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/refs/UniRef.sol">UniRef</a></p>
+<h2 id="description">Description</h2>
+<p>An abstract contract for storing PCV in a Uniswap FEI liquidity pair</p>
+<p>Uniswap PCV deposits receive PCV, mint the corresponding amount of FEI to match the Uniswap spot price, and deposit to Uniswap. They can withdraw and read in the amount of non-FEI PCV on Uniswap held in the contract.</p>
+<p>When withdrawing, any excess FEI held is burned.</p>
+<p>When depositing, if no existing LP exists, the oracle price is used. The oracle is a <a href="https://github.com/fei-protocol/fei-protocol-core/wiki/BondingCurveOracle">BondingCurveOracle</a> subject to thawing and the bonding curve price.</p>
+<h2 id="access-control"><a href="../access-control/">Access Control</a></h2>
+<ul>
+<li>Minter💰</li>
+</ul>
+<h2 id="events">Events</h2>
+<p>{% tabs %}
+{% tab title="Deposit" %}
+Deposit to the PCV</p>
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">address indexed</td>
+<td align="left">_from</td>
+<td align="left">address of the depositor</td>
+</tr>
+<tr>
+<td align="left">uint256</td>
+<td align="left">_amount</td>
+<td align="left">amount deposited</td>
+</tr>
+<tr>
+<td align="left">{% endtab %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>{% tab title="Withdrawal" %}
+Withdrawal of PCV</p>
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">address indexed</td>
+<td align="left">_caller</td>
+<td align="left">the PCV controller calling this function</td>
+</tr>
+<tr>
+<td align="left">address indexed</td>
+<td align="left">_to</td>
+<td align="left">the recipient address of the PCV</td>
+</tr>
+<tr>
+<td align="left">uint256</td>
+<td align="left">_amount</td>
+<td align="left">amount withdrawn</td>
+</tr>
+<tr>
+<td align="left">{% endtab %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>{% tab title="MaxBasisPointsFromPegLPUpdate" %}
+update to maxBasisPointsFromPegLP</p>
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">uint256</td>
+<td align="left">oldMaxBasisPointsFromPegLP</td>
+<td align="left">old maxBasisPointsFromPegLP</td>
+</tr>
+<tr>
+<td align="left">uint256</td>
+<td align="left">newMaxBasisPointsFromPegLP</td>
+<td align="left">new maxBasisPointsFromPegLP</td>
+</tr>
+<tr>
+<td align="left">{% endtab %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">{% endtabs %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="read-only-functions">Read-Only Functions</h2>
+<h3 id="totalvalue">totalValue</h3>
+<pre><code class="language-javascript">function totalValue() external view returns (uint256);
+</code></pre>
+<p>Returns the effective amount of non-FEI PCV held by the contract. </p>
+<p>E.g., if the deposit holds 50% of all ETH/FEI liquidity on Uniswap, and there are 100,000 ETH in Uniswap, the function should return 50,000e18 wei.</p>
+<h3 id="maxbasispointsfrompeglp">maxBasisPointsFromPegLP</h3>
+<pre><code class="language-javascript">function maxBasisPointsFromPegLP() external view returns (uint256);
+</code></pre>
+<p>Returns an amount of basis points (1/10000) beyond which if the FEI-ETH spot price is trading outside of the peg, the deposit function will fail.</p>
+<h2 id="public-state-changing-functions">Public State-Changing Functions</h2>
+<h3 id="deposit">deposit</h3>
+<pre><code class="language-javascript">function deposit(uint256 amount) external payable;
+</code></pre>
+<p>Deposits <code>amount</code> PCV into Uniswap by minting the necessary amount of FEI to make the liquidity provision.</p>
+<p>E.g., if there are 50,000 ETH and 100,000,000 FEI on Uniswap, and the protocol receives another 500 ETH to deposit, the protocol will mint another 1,000,000 FEI to deposit at the current 2000 FEI/ETH spot price.</p>
+<h2 id="pcv-controller-only-state-changing-functions">PCV Controller-Only ⚙️ State-Changing Functions</h2>
+<h3 id="withdraw">withdraw</h3>
+<pre><code class="language-javascript">function withdraw(address to, uint256 amount) external;
+</code></pre>
+<p>Withdraws <code>amount</code> PCV from Uniswap to address <code>to</code> by withdrawing the necessary amount of liquidity and burning the corresponding FEI.</p>
+<p>E.g., if the protocol owns 50,000 ETH and 100,000,000 FEI worth of liquidity on Uniswap, a withdrawal of 500 ETH would liquidate 1% of the LP shares and burn the extra 1,000,000 FEI received before transferring the 500 ETH.</p>
+<h2 id="governor-only-state-changing-functions">Governor-Only⚖️ State-Changing Functions</h2>
+<h3 id="setmaxbasispointsfrompeglp">setMaxBasisPointsFromPegLP</h3>
+<pre><code class="language-javascript">function setMaxBasisPointsFromPegLP(uint256 _maxBasisPointsFromPegLP) external view;
+</code></pre>
+<p>Sets the new <code>maxBasisPointsFromPegLP</code></p>
+<p>emits MaxBasisPointsFromPegLPUpdate</p>
+<h2 id="abis">ABIs</h2>
+<p>{% file src="../../.gitbook/assets/uniswappcvdeposit.json" caption="UniswapPCVDeposit ABI" %}</p>
+<p>{% file src="../../.gitbook/assets/ipcvdeposit.json" caption="PCVDeposit Interface ABI" %}</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../../js/base.js" defer></script>
+        <script src="../../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

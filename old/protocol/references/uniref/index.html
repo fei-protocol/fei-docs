@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../../../img/favicon.ico">
+        <title>UniRef - Fei Protocol Docs</title>
+        <link href="../../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../../..">Fei Protocol Docs</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../../.." class="nav-link">Overview</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../user/user/" class="nav-link">User</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../developers/developers/" class="nav-link">Developer</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../operator/operator/" class="nav-link">Operator</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/fei-protocol/fei-docs/edit/main/docs/old/protocol/references/uniref.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#uniref" class="nav-link">UniRef</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#contract" class="nav-link">Contract</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#description" class="nav-link">Description</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#events" class="nav-link">Events</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#read-only-functions" class="nav-link">Read-Only Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#governor-only-state-changing-functions" class="nav-link">Governor-Only⚖️ State-Changing Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#abis" class="nav-link">ABIs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="uniref">UniRef</h1>
+<h2 id="contract">Contract</h2>
+<p><a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/refs/UniRef.sol">UniRef.sol</a> implements <a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/refs/IUniRef.sol">IUniRef</a>, <a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/refs/OracleRef.sol">OracleRef</a></p>
+<h2 id="description">Description</h2>
+<p>UniRef is an abstract contract which references a Uniswap pool. It defines basic utilities for contracts referencing Uniswap. It leverages the <a href="../oracleref/">OracleRef</a> contract to calculate various quantities relating to spot vs peg price. Let <em>R</em>  be the reserves of the referenced Uniswap pair, FEI/ETH for example. The UniRef calculates the price at the start and end of a hypothetical trade of size <em>x</em> via the below formulas. It can then calculate the magnitude of the distance from the peg <em>m</em> given an oracle price <em>O:</em> </p>
+<p><img alt="Formula for start and end price of a trade of size x, and distance from peg m" src="../../.gitbook/assets/screen-shot-2021-02-14-at-12.40.56-pm%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29%20%281%29.png" /></p>
+<p>It has other utilities relating to the peg <em>O</em>:</p>
+<ul>
+<li>Check whether below peg or not</li>
+<li>Get amount of a certain asset (fei or other) to trade to bring back to peg. This can be done by setting the end price in the above formula to <em>O</em> and solving for <em>x</em>, replacing the FEI reserves with the target asset reserves and ETH reserves with the other asset reserves. We take the absolute value here and infer the direction based on whether above or below peg.</li>
+</ul>
+<p><img alt="Formula for amount of assets to trade to the peg on Uniswap" src="../../.gitbook/assets/screen-shot-2021-02-14-at-9.07.55-pm.png" /></p>
+<p>{% hint style="info" %}
+When calculating the magnitude distance from the peg, the protocol only needs to know the deviation when underpegged. Therefore at or above the peg UniRef returns 0 for the deviation. 
+{% endhint %}</p>
+<h2 id="events">Events</h2>
+<p>{% tabs %}
+{% tab title="PairUpdate" %}
+Referenced Uniswap pair contract update</p>
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">address indexed</td>
+<td align="left">_pair</td>
+<td align="left">new Uniswap pair contract</td>
+</tr>
+<tr>
+<td align="left">{% endtab %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">{% endtabs %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="read-only-functions">Read-Only Functions</h2>
+<h3 id="router">router</h3>
+<pre><code class="language-javascript">function router() external view returns (IUniswapV2Router02);
+</code></pre>
+<p>Returns the address of the UniswapV2Router as an interface.</p>
+<p>{% embed url="https://uniswap.org/docs/v2/smart-contracts/router02/" caption="UniswapV2Router02" %}</p>
+<h3 id="pair">pair</h3>
+<pre><code class="language-javascript">function pair() external view returns (IUniswapV2Pair);
+</code></pre>
+<p>Returns the referenced UniswapV2Pair contract as an interface.</p>
+<p>{% embed url="https://uniswap.org/docs/v2/smart-contracts/pair/" caption="UniswapV2Pair" %}</p>
+<h3 id="token">token</h3>
+<pre><code class="language-javascript">function token() external view returns (address);
+</code></pre>
+<p>Returns the address of the ERC-20 token held in the UniswapV2Pair that is not FEI.</p>
+<h3 id="getreserves">getReserves</h3>
+<pre><code class="language-javascript">function getReserves()
+    external
+    view
+    returns (uint256 feiReserves, uint256 tokenReserves);
+</code></pre>
+<p>Returns the reserves of the referenced UniswapV2Pair contract, ordered as FEI, and the other token.</p>
+<h3 id="liquidityowned">liquidityOwned</h3>
+<pre><code class="language-javascript">function liquidityOwned() external view returns (uint256);
+</code></pre>
+<p>Returns the amount of UniswapV2Pair liquidity provider tokens owned by this contract.</p>
+<h3 id="deviationbelowpeg">deviationBelowPeg</h3>
+<pre><code class="language-javascript">function deviationBelowPeg(
+    Decimal.D256 calldata price,
+    Decimal.D256 calldata peg
+) external pure returns (Decimal.D256 memory);
+</code></pre>
+<p>Returns the percent deviation from the peg "m" in the above formulas. Assumes prices are reported as FEI per X e.g. 1720.95 FEI per ETH and pegs are reported as USD per X. </p>
+<p>If the price of FEI is above the peg (meaning the input value is below the input peg), then the function returns 0;</p>
+<h2 id="governor-only-state-changing-functions">Governor-Only⚖️ State-Changing Functions</h2>
+<h3 id="setpair">setPair</h3>
+<pre><code class="language-javascript">function setPair(address _pair) external;
+</code></pre>
+<p>Sets the referenced Uniswap pair contract to <code>_pair</code></p>
+<p>emits <code>PairUpdate</code></p>
+<h2 id="abis">ABIs</h2>
+<p>{% file src="../../.gitbook/assets/uniref.json" caption="UniRef ABI" %}</p>
+<p>{% file src="../../.gitbook/assets/iuniref.json" caption="UniRef Interface ABI" %}</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../../js/base.js" defer></script>
+        <script src="../../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../../../img/favicon.ico">
+        <title>UniswapIncentive - Fei Protocol Docs</title>
+        <link href="../../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../../..">Fei Protocol Docs</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../../.." class="nav-link">Overview</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../user/user/" class="nav-link">User</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../developers/developers/" class="nav-link">Developer</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../operator/operator/" class="nav-link">Operator</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/fei-protocol/fei-docs/edit/main/docs/old/protocol/fei-stablecoin/uniswapincentive.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#uniswapincentive" class="nav-link">UniswapIncentive</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#contract" class="nav-link">Contract</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#description" class="nav-link">Description</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#access-control" class="nav-link">Access Control</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#events" class="nav-link">Events</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#read-only-functions" class="nav-link">Read-Only Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#governor-only-state-changing-functions" class="nav-link">Governor-Only⚖️ State-Changing Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#fei-only" class="nav-link">Fei-Only🌲</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#abis" class="nav-link">ABIs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="uniswapincentive">UniswapIncentive</h1>
+<h2 id="contract">Contract</h2>
+<p><a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/token/UniswapIncentive.sol">UniswapIncentive.sol</a> implements <a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/token/IUniswapIncentive.sol">IUniswapIncentive</a>, <a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/refs/UniRef.sol">UniRef</a></p>
+<h2 id="description">Description</h2>
+<p>{% hint style="info" %}
+Because this contract can be swapped for a new UniswapIncentive, for integrations we recommend calling<code>incentiveContract(0x94B0A3d511b6EcDb17eBF877278Ab030acb0A878)</code>on the FEI token to always read the currently applied UniswapIncentive on the ETH-FEI pair
+{% endhint %}</p>
+<p>The FEI incentive contract applied on transfers involving a Uniswap pair.</p>
+<p>The UniswapIncentive contract assumes that all transfers involving Uniswap are either a sell or a buy. In either case, the hypothetical start and end price are calculated then compared to the peg to capture the magnitude distance <em>m</em>. See UniRef for more details on how these formulas are derived.</p>
+<p>{% page-ref page="../references/uniref.md" %}</p>
+<p>These parameters are fed into the incentive function to produce a mint (in the case of buy) or burn (in the case of sell) action. Any address can be exempted from incentives by governance.</p>
+<p>{% hint style="info" %}
+The below incentives only apply to the FEI portion of the trade that would be below the peg. When calculating "x", the contract uses the "distance from peg FEI" method in <a href="../../references/uniref/">UniRef</a>.
+{% endhint %}</p>
+<h3 id="sell-burn">Sell (Burn)</h3>
+<p>All FEI transfers going TO the uniswap pool are treated as a sell. This has the counterintuitive effect of treating liquidity provision as a sell.</p>
+<p>The implementation integrates the burn function from the <a href="../../../whitepaper/">white paper</a> with respect to the distance from the peg. This creates a nice path independent property where a trader is no better off doing one large trade or many small trades, ignoring fees. The burn formula for sell amount <em>x</em> is: </p>
+<p><img alt="Burn formula for selling FEI" src="../../.gitbook/assets/screen-shot-2021-02-23-at-8.10.49-am.png" /></p>
+<p>The burn is only applied to trades below the peg when the incentive contract is appointed as a Burner🔥.</p>
+<p>The burn is taken from the in-flight trade amount. If the burn is 5% on a 100 FEI transfer then the recipient gets 95 FEI. </p>
+<p>{% hint style="info" %}
+The entire trade size including the burn is used to calculate the slippage for the end deviation from the peg. This could lead to a higher than expected burn for large trades when below peg.
+{% endhint %}</p>
+<p>{% hint style="warning" %}
+The trade will revert if the burn would be greater than or equal to the entire transfer amount
+{% endhint %}</p>
+<h3 id="buy-mint">Buy (Mint)</h3>
+<p>All transfers going FROM the uniswap pool are treated as a buy. This has the counterintuitive effect of treating liquidity withdrawal events as buys.</p>
+<p>The initial magnitude <em>m</em> deviation from the peg before the hypothetical trade is used to maximize the potential mint amount. <em>w</em> is the time weight we discuss in the next section. The mint formula for buy amount <em>x</em> is: </p>
+<p><img alt="Incentive formula for buying FEI" src="../../.gitbook/assets/screen-shot-2021-02-23-at-8.21.09-am.png" /></p>
+<p>The incentive formula is normally just the right-hand side of the above min function. It is linear in the time weight <code>w(t)</code> and the distance from the peg <code>m</code></p>
+<p>When the incentive function for a trade reaches the same level as the burn for the same trade <em>in reverse</em>, the incentive function maxes out. This is because we don't want a trader to be able to profit by buying and selling with a flash loan under any circumstances.</p>
+<p>The mint should only apply if the trade starts below the peg and if the incentive contract is appointed as a Minter.</p>
+<h3 id="incentivized-amount">Incentivized Amount</h3>
+<p>The incentivized amount on Uniswap FEI-ETH trades is only calculated based on the amount that pushes FEI below the peg for a sell or up to the peg for a buy. For example say a trade starts 1% below the peg and ends 1% above, only approximately half of the trade will get the bonus.</p>
+<h3 id="time-weight">Time Weight</h3>
+<p>The time weight <em>w</em> is a scaling factor utilized to make the incentive mint structured like an auction. The trader willing to accept the lowest mint will execute a buy before the reward gets higher.</p>
+<p>The time weight grows linearly at a rate of 75/100,000 per block, which equals 1 after approximately 5 hours. It should only grow while "active" and will only be active when the last trade ended below the peg. The rate can be changed by governance. </p>
+<p>Trades should update the time weight as follows:</p>
+<ul>
+<li>If ending above peg, set to 0 and deactivate</li>
+<li>If ending below the peg but starting above, set to 0 and activate</li>
+<li>If starting and ending below peg, update pro-rata with a buy based on percent towards peg. E.g., if a trade starts at 10% deviation and ends at 1%, time weight should be scaled by 1%/10% =.10.</li>
+<li>If starting and ending below the peg, cap the time weight at the max incentive for the ending distance</li>
+</ul>
+<h3 id="incentive-parity">Incentive Parity</h3>
+<p>Incentive parity is defined as a boolean expression, which is true when the mint incentive equals its max for the current distance from the peg <code>m</code>. It simplifies down to the following:</p>
+<p><img alt="Condition for Incentive Parity" src="../../.gitbook/assets/screen-shot-2021-02-14-at-1.13.12-pm%20%281%29.png" /></p>
+<p>Parity is used as a trigger condition for reweights in the <a href="https://github.com/fei-protocol/fei-protocol-core/wiki/UniswapPCVController">UniswapPCVController</a></p>
+<h2 id="access-control"><a href="../access-control/">Access Control</a></h2>
+<ul>
+<li>Minter💰</li>
+<li>Burner🔥</li>
+</ul>
+<h2 id="events">Events</h2>
+<p>{% tabs %}
+{% tab title="TimeWeightUpdate" %}
+Time Weight change</p>
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">uint256</td>
+<td align="left">_weight</td>
+<td align="left">new time weight</td>
+</tr>
+<tr>
+<td align="left">uint256</td>
+<td align="left">_active</td>
+<td align="left">whether time weight is growing or not</td>
+</tr>
+<tr>
+<td align="left">{% endtab %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>{% tab title="GrowthRateUpdate" %}
+Governance change of time weight growth weight</p>
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">uint256</td>
+<td align="left">_growthRate</td>
+<td align="left">new growth rate</td>
+</tr>
+<tr>
+<td align="left">{% endtab %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>{% tab title="ExemptAddressUpdate" %}
+Governance change of an exempt address </p>
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">address indexed</td>
+<td align="left">_account</td>
+<td align="left">the address to update</td>
+</tr>
+<tr>
+<td align="left">bool</td>
+<td align="left">_isExempt</td>
+<td align="left">whether the account is exempt or not</td>
+</tr>
+<tr>
+<td align="left">{% endtab %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>{% tab title="SellAllowedAddressUpdate" %}
+Governance change of a sell allowlisted address </p>
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">address indexed</td>
+<td align="left">_account</td>
+<td align="left">the address to update</td>
+</tr>
+<tr>
+<td align="left">bool</td>
+<td align="left">_isSellAllowed</td>
+<td align="left">whether the account is allowlisted or not</td>
+</tr>
+<tr>
+<td align="left">{% endtab %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">{% endtabs %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="read-only-functions">Read-Only Functions</h2>
+<h3 id="isincentiveparity">isIncentiveParity</h3>
+<pre><code class="language-javascript">function isIncentiveParity() external view returns (bool);
+</code></pre>
+<p>returns true if the conditions for incentive parity (see above) are met, otherwise false.</p>
+<h3 id="isexemptaddress">isExemptAddress</h3>
+<pre><code class="language-javascript">function isExemptAddress(address account) external view returns (bool);
+</code></pre>
+<p>returns true if <code>account</code> is exempted from incentives, otherwise false</p>
+<h3 id="time_weight_granularity">TIME_WEIGHT_GRANULARITY</h3>
+<pre><code class="language-javascript">function TIME_WEIGHT_GRANULARITY() external view returns (uint32);
+</code></pre>
+<p>returns the granularity of the time weight variable, set as a constant to <code>100,000</code></p>
+<h3 id="getgrowthrate">getGrowthRate</h3>
+<pre><code class="language-javascript">function getGrowthRate() external view returns (uint32);
+</code></pre>
+<p>returns the current time weight growth rate, per block</p>
+<h3 id="gettimeweight">getTimeWeight</h3>
+<pre><code class="language-javascript">function getTimeWeight() external view returns (uint32);
+</code></pre>
+<p>returns the current time weight</p>
+<h3 id="istimeweightactive">isTimeWeightActive</h3>
+<pre><code class="language-javascript">function isTimeWeightActive() external view returns (bool);
+</code></pre>
+<p>returns true if the time weight is active and growing</p>
+<h3 id="getbuyincentive">getBuyIncentive</h3>
+<pre><code class="language-javascript">function getBuyIncentive(uint256 amount)
+    external
+    view
+    returns (
+        uint256 incentive,
+        uint32 weight,
+        Decimal.D256 memory initialDeviation,
+        Decimal.D256 memory finalDeviation
+    );
+</code></pre>
+<p>returns the buy incentive amount <code>incentive</code>for a FEI transfer of <code>amount</code>out of the FEI/ETH incentivized Uniswap pool. Also returns the updated time weight <code>weight</code> and the <code>initialDeviation</code> and <code>finalDeviation</code> which are equal to <em>m</em> start and end, respectively.</p>
+<h3 id="getsellpenalty">getSellPenalty</h3>
+<pre><code class="language-javascript">function getSellPenalty(uint256 amount)
+    external
+    view
+    returns (
+        uint256 penalty,
+        Decimal.D256 memory initialDeviation,
+        Decimal.D256 memory finalDeviation
+    );
+</code></pre>
+<p>returns the sell penalty amount <code>penalty</code> a FEI transfer of <code>amount</code> into the FEI/ETH incentivized Uniswap pool. Also returns the <code>initialDeviation</code> and <code>finalDeviation</code> which are equal to <em>m</em> start and end, respectively.</p>
+<h3 id="getsellpenaltymultiplier">getSellPenaltyMultiplier</h3>
+<pre><code class="language-javascript">function getSellPenaltyMultiplier(
+    Decimal.D256 calldata initialDeviation,
+    Decimal.D256 calldata finalDeviation
+) external view returns (Decimal.D256 memory);
+</code></pre>
+<p>Returns the sell penalty multiplier applied to a trade which starts at <code>initialDeviation</code> from the peg and ends at <code>finalDeviation</code> from the peg. To return the instantaneous multiplier, set initial and final equal to each other.</p>
+<h3 id="getbuyincentivemultiplier">getBuyIncentiveMultiplier</h3>
+<pre><code class="language-javascript">function getBuyIncentiveMultiplier(
+    Decimal.D256 calldata initialDeviation,
+    Decimal.D256 calldata finalDeviation
+) external view returns (Decimal.D256 memory);
+</code></pre>
+<p>Returns the buy incentive multiplier applied to a trade which starts at <code>initialDeviation</code> from the peg and ends at <code>finalDeviation</code> from the peg. To return the instantaneous multiplier, set initial and final equal to each other.</p>
+<p>{% hint style="info" %}
+<code>getBuyIncentiveMultiplier()</code> uses the current time weight for calculating incentives.
+{% endhint %}</p>
+<h2 id="governor-only-state-changing-functions">Governor-Only⚖️ State-Changing Functions</h2>
+<h3 id="setexemptaddress">setExemptAddress</h3>
+<pre><code class="language-javascript">function setExemptAddress(address account, bool isExempt) external;
+</code></pre>
+<p>set <code>account</code> incentive exempt status to <code>isExempt</code></p>
+<p>emits <code>ExemptAddressUpdate</code></p>
+<h3 id="settimeweight">setTimeWeight</h3>
+<pre><code class="language-javascript">function setTimeWeight(
+    uint32 weight,
+    uint32 growth,
+    bool active
+) external;
+</code></pre>
+<p>set the current time weight to <code>weight</code>, growing at a rate <code>growth</code> and active flag to <code>active</code> starting from the current block.</p>
+<p>emits <code>TimeWeightUpdate</code> and <code>GrowthRateUpdate</code> if the growth rate changes</p>
+<h2 id="fei-only">Fei-Only🌲</h2>
+<h3 id="incentivize">incentivize</h3>
+<pre><code class="language-javascript">function incentivize(
+    address sender,
+    address receiver,
+    address operator,
+    uint256 amountIn
+) external
+</code></pre>
+<p>updates the oracle at the beginning of the flow</p>
+<p>applies the buy reward based on <code>amountIn</code> if:</p>
+<ul>
+<li>below peg</li>
+<li>time weight non-zero</li>
+<li>contract is a Minter💰</li>
+<li><code>sender</code> is the ETH/FEI incentivized pair</li>
+<li><code>receiver</code> is not exempt</li>
+</ul>
+<p>applies the sell penalty based on <code>amountIn</code> if:</p>
+<ul>
+<li>trade ends below peg</li>
+<li>contract is a Burner🔥</li>
+<li><code>receiver</code> is the ETH/FEI incentivized pair</li>
+<li><code>sender</code> is not exempt</li>
+</ul>
+<h2 id="abis">ABIs</h2>
+<p>{% file src="../../.gitbook/assets/uniswapincentive.json" caption="UniswapIncentive ABI" %}</p>
+<p>{% file src="../../.gitbook/assets/iuniswapincentive.json" caption="UniswapIncentive Interface ABI" %}</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../../js/base.js" defer></script>
+        <script src="../../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

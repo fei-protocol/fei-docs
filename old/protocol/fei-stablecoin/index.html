@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../../img/favicon.ico">
+        <title>Fei Stablecoin - Fei Protocol Docs</title>
+        <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../..">Fei Protocol Docs</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../.." class="nav-link">Overview</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../user/user/" class="nav-link">User</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../developers/developers/" class="nav-link">Developer</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../operator/operator/" class="nav-link">Operator</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/fei-protocol/fei-docs/edit/main/docs/old/protocol/fei-stablecoin/README.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#fei-stablecoin" class="nav-link">Fei Stablecoin</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#design" class="nav-link">Design</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#direct-incentives" class="nav-link">Direct Incentives</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#collateralization" class="nav-link">Collateralization</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="fei-stablecoin">Fei Stablecoin</h1>
+<h2 id="design">Design</h2>
+<p>FEI (Fei USD) is designed to allow for flexible upgrades and arbitrary incentive mechanisms to support the $1 peg target. </p>
+<p>Its issuance is controlled by the Minter💰role, and any contract with this role can mint FEI to any address. The Burner🔥 role can burn FEI from any address, and is utilized for deflation and disincentives. </p>
+<h2 id="direct-incentives">Direct Incentives</h2>
+<p>Fei Protocol uses the Direct Incentive approach to peg stability. This means that user actions can lead to a mint or burn of FEI from their wallet. The magnitude and direction of the incentive is based on the action taken and the market conditions at the time. </p>
+<p>The Direct Incentives are applied only when interacting with an <em>incentivized address</em>. When FEI is transferred to or from an __incentivized address, the corresponding <em>incentive contract</em> is called, which is either a Minter💰, a Burner🔥, or both. The only incentivized address at launch is the ETH/FEI Uniswap v2 Pair and its incentive contract is <a href="uniswapincentive/">UniswapIncentive</a>.</p>
+<p><img alt="" src="../../.gitbook/assets/direct-incentives.png" /></p>
+<p>The Governor⚖️ can set and unset incentive contracts for any address. It can also exempt addresses from incentives.</p>
+<h3 id="inclusive-fee-on-transfer">Inclusive Fee On Transfer</h3>
+<p>Fees applied to incentivized trading or transfers can be either inclusive or exclusive. The inclusive fees are more commonly utilized in DeFi. Inclusive fees are applied "in-flight", meaning that the fee is extracted from the transfer or the trade amount itself.  Exclusive fees are applied on top of the transfer or trade amount itself. The exclusive fee is commonly applied to the party initiating the transaction.</p>
+<p>Fei Protocol v1 uses an "inclusive" fee on transfers when applying Direct Incentives on Uniswap sells. There are certain considerations with this approach, the main one being that Fei Protocol cannot differentiate between selling and liquidity provision. Therefore the fee applies to all FEI transfers to the pool including providing LP.</p>
+<p>{% hint style="warning" %}
+LPing the FEI/ETH Uniswap pool also incurs a burn penalty, because it transfers FEI into the pool like a sell would
+{% endhint %}</p>
+<h2 id="collateralization">Collateralization</h2>
+<p>The FEI stablecoin is collateralized by a <a href="../protocol-controlled-value/">PCV</a> reserve. Fei Protocol prioritizes liquidity when deploying this reserve to make sure users are able to trade FEI at high volume. </p>
+<p>Critically, FEI can be over- or under-collateralized depending on volatility on the PCV and other market conditions.</p>
+<p>The collateralization ratio of FEI at any time is calculated as follows, with the denominator being "User controlled FEI":</p>
+<p><img alt="Collateralization ratio of Fei Protocol " src="../../.gitbook/assets/screen-shot-2021-02-13-at-4.43.36-pm.png" /></p>
+<p>The formula ignores "Protocol controlled FEI" because any FEI that the protocol holds will never be sold for PCV, only burned. Protocol controlled FEI can have second-order, short-term inflationary effects. For instance, FEI deposited into a lending market by Fei Protocol could increase the circulating supply when borrowed. The interest accrued and eventual withdrawal of that FEI ultimately have a net deflationary effect in the long term.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../js/base.js" defer></script>
+        <script src="../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

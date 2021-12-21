@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../../../img/favicon.ico">
+        <title>IDO - Fei Protocol Docs</title>
+        <link href="../../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../../..">Fei Protocol Docs</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../../.." class="nav-link">Overview</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../user/user/" class="nav-link">User</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../developers/developers/" class="nav-link">Developer</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../operator/operator/" class="nav-link">Operator</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/fei-protocol/fei-docs/edit/main/docs/old/protocol/genesis/ido.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#ido" class="nav-link">IDO</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#contract" class="nav-link">Contract</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#description" class="nav-link">Description</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#access-control" class="nav-link">Access Control</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#events" class="nav-link">Events</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#genesisgroup-only-state-changing-functions" class="nav-link">GenesisGroup-Only🚀 State-Changing Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#governor-only-state-changing-functions" class="nav-link">Governor-Only⚖️ State-Changing Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#abis" class="nav-link">ABIs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="ido">IDO</h1>
+<h2 id="contract">Contract</h2>
+<p><a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/genesis/IDO.sol">IDO.sol</a> implements <a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/genesis/IDOInterface.sol">IDOInterface</a>, <a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/refs/UniRef.sol">UniRef</a>, <a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/utils/LinearTokenTimelock.sol">LinearTokenTimelock</a></p>
+<h2 id="description">Description</h2>
+<p>IDO is an Initial DeFi Offering contract for listing FEI and TRIBE at genesis launch.</p>
+<p>The IDO is deployed by the GenesisGroup contract. The GenesisGroup sets the initial exchange rate. The IDO should hold TRIBE tokens and mint the appropriate amount of FEI to match the given exchange rate. It will then send the TRIBE and FEI to Uniswap where it should be the only LP for the pair.</p>
+<p>The LP shares held by the contract timelock linearly to the Fei Core Team and early-backers over a 4 year window from contract creation.</p>
+<h3 id="normalization">Normalization</h3>
+<p>Because of slippage, when a Uniswap transaction occurs the next spot price is always higher than the price payed by the trader. </p>
+<p>For example, assume there are 100 FEI and 100 USDC in a pool. A trader sends 100 USDC to the pool to buy FEI and gets 50 FEI back. This is a 2:1 exchange rate. However now the reserves are 200 USDC and 50 FEI, implying a  4:1 spot exchange rate. An arbitrageur could estimate the true price is around 2:1 and back-run the trade to profit on the slippage.</p>
+<p>The IDO pre-swap will likely have a large amount of slippage and create a massive arbitrage opportunity. For this reason we will "normalize" the price to what the Genesis Group pays (2:1 in the above example). The IDO simply burns from the pool back to the rate payed and then "syncs" the pool using the low level Uniswap utility.</p>
+<p>Due to the symmetry in Uniswap trades, the burn amount is always equal to the amount of FEI swapped into the pool for TRIBE.</p>
+<h2 id="access-control"><a href="../access-control/">Access Control</a></h2>
+<ul>
+<li>Minter💰</li>
+<li>Burner🔥</li>
+</ul>
+<h2 id="events">Events</h2>
+<p>{% tabs %}
+{% tab title="Deploy" %}
+The IDO initialization with FEI and TRIBE. Only emitted once</p>
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">uint256</td>
+<td align="left">_amountFei</td>
+<td align="left">the amount of FEI deployed in the IDO</td>
+</tr>
+<tr>
+<td align="left">uint256</td>
+<td align="left">_amountTribe</td>
+<td align="left">the amount of TRIBE deployed in the IDO</td>
+</tr>
+<tr>
+<td align="left">{% endtab %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">{% endtabs %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="genesisgroup-only-state-changing-functions">GenesisGroup-Only🚀 State-Changing Functions</h2>
+<h3 id="deploy">deploy</h3>
+<pre><code class="language-javascript">function deploy(Decimal.D256 calldata feiRatio) external;
+</code></pre>
+<p>Initializes the FEI/TRIBE Uniswap pool with liquidity based on the amount of TRIBE held by the contract and <code>feiRatio</code> times that amount worth of FEI. The FEI for this are minted by the IDO to itself. </p>
+<h3 id="swapfei">swapFei</h3>
+<pre><code class="language-javascript">function swapFei(uint256 amountFei) external returns (uint256);
+</code></pre>
+<p>Swaps <code>amountFei</code> worth of FEI from the <a href="../genesisgroup/">GenesisGroup</a> contract to the FEI/TRIBE Uniswap pool and back. The IDO must be approved for the FEI transfer.</p>
+<p>Includes the "normalization" burn after the trade executes.</p>
+<h2 id="governor-only-state-changing-functions">Governor-Only⚖️ State-Changing Functions</h2>
+<h3 id="unlockliquidity">unlockLiquidity</h3>
+<pre><code class="language-javascript">function unlockLiquidity() external;
+</code></pre>
+<p>Unlocks all of the time-locked liquidity and early vests to the beneficiary. This function is intended to be used when upgrading the primary AMM for FEI-TRIBE liquidity by setting the beneficiary to a pre-set upgrade co</p>
+<h2 id="abis">ABIs</h2>
+<p>{% file src="../../.gitbook/assets/ido (1).json" caption="IDO ABI" %}</p>
+<p>{% file src="../../.gitbook/assets/idointerface (1).json" caption="IDO Interface ABI" %}</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../../js/base.js" defer></script>
+        <script src="../../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

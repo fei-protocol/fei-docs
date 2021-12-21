@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        
+        <link rel="shortcut icon" href="../../../../img/favicon.ico">
+        <title>FEI \(Fei USD\) - Fei Protocol Docs</title>
+        <link href="../../../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../../../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../../../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../../../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="../../../..">Fei Protocol Docs</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href="../../../.." class="nav-link">Overview</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../user/user/" class="nav-link">User</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../developers/developers/" class="nav-link">Developer</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../../../../operator/operator/" class="nav-link">Operator</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/fei-protocol/fei-docs/edit/main/docs/old/protocol/fei-stablecoin/fei-fei-usd.md" class="nav-link"><i class="fa fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#fei-fei-usd" class="nav-link">FEI (Fei USD)</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-level="2"><a href="#contract" class="nav-link">Contract</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#description" class="nav-link">Description</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#events" class="nav-link">Events</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#read-only-functions" class="nav-link">Read-Only Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#burner-only-state-changing-functions" class="nav-link">Burner-Only🔥 State-Changing Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#minter-only-state-changing-functions" class="nav-link">Minter-Only💰 State-Changing Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#governor-only-state-changing-functions" class="nav-link">Governor-Only⚖️ State-Changing Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#public-state-changing-functions" class="nav-link">Public State-Changing Functions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-level="2"><a href="#abis" class="nav-link">ABIs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="fei-fei-usd">FEI (Fei USD)</h1>
+<h2 id="contract">Contract</h2>
+<p><a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/token/Fei.sol">Fei.sol</a> implements <a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/token/IFei.sol">IFei.sol</a>, <a href="https://github.com/fei-protocol/fei-protocol-core/blob/master/contracts/refs/CoreRef.sol">CoreRef</a>, <a href="https://docs.openzeppelin.com/contracts/3.x/api/token/erc20#ERC20Burnable">ERC20Burnable</a></p>
+<h2 id="description">Description</h2>
+<p>FEI is a regular ERC-20 token, based on the OpenZeppelin ERC-20Burnable code with the following modifications:</p>
+<p>Minting and burning to any address are uncapped and accessible by any address with the Minter💰and Burner🔥 role, respectively.</p>
+<p>At each transfer (or transferFrom) the following addresses are checked for a mapped incentive contract:</p>
+<ul>
+<li>FEI sender</li>
+<li>FEI receiver</li>
+<li>FEI operator (msg.sender) - commonly the same as the sender unless using transferFrom with an approved contract</li>
+<li>the zero address - represens an incentive to be applied on ALL transfers</li>
+</ul>
+<p>If an incentive contract is found, it is called with all of the transfer parameters. Any incentive is applied after the token balances update from the transfer.</p>
+<h2 id="events">Events</h2>
+<p>{% tabs %}
+{% tab title="Minting" %}
+Minting FEI to an address</p>
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">address indexed</td>
+<td align="left">_to</td>
+<td align="left">The recipient of the minted FEI</td>
+</tr>
+<tr>
+<td align="left">address indexed</td>
+<td align="left">_minter</td>
+<td align="left">The contract that minted the FEI</td>
+</tr>
+<tr>
+<td align="left">uint256</td>
+<td align="left">_amount</td>
+<td align="left">The amount of FEI minted</td>
+</tr>
+<tr>
+<td align="left">{% endtab %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>{% tab title="Burning" %}
+Burning FEI from an address</p>
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">address indexed</td>
+<td align="left">_to</td>
+<td align="left">The target of the burned FEI</td>
+</tr>
+<tr>
+<td align="left">address indexed</td>
+<td align="left">_burner</td>
+<td align="left">The contract that burned the FEI</td>
+</tr>
+<tr>
+<td align="left">uint256</td>
+<td align="left">_amount</td>
+<td align="left">The amount of FEI minted</td>
+</tr>
+<tr>
+<td align="left">{% endtab %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<p>{% tab title="IncentiveContractUpdate" %}
+setting or unsetting an incentive contract for an incentivized address</p>
+<table>
+<thead>
+<tr>
+<th align="left">type</th>
+<th align="left">param</th>
+<th align="left">description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">address indexed</td>
+<td align="left">_incentivized</td>
+<td align="left">The incentivized address</td>
+</tr>
+<tr>
+<td align="left">address indexed</td>
+<td align="left">_incentiveContract</td>
+<td align="left">The new incentive contract. address(0) to unset</td>
+</tr>
+<tr>
+<td align="left">{% endtab %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">{% endtabs %}</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="read-only-functions">Read-Only Functions</h2>
+<h3 id="incentivecontract">incentiveContract</h3>
+<pre><code class="language-javascript">function incentiveContract(address account) external view returns (address);
+</code></pre>
+<p>returns the mapped incentive contract if <code>account</code> is an incentivized address, otherwise returns the 0 address.</p>
+<p>{% hint style="info" %}
+if the 0 address has a mapped incentive contract, then this incentive contract is called for every single FEI transfer.
+{% endhint %}</p>
+<h2 id="burner-only-state-changing-functions">Burner-Only🔥 State-Changing Functions</h2>
+<h3 id="burnfrom">burnFrom</h3>
+<pre><code class="language-javascript">function burnFrom(address account, uint256 amount) external;
+</code></pre>
+<p>Burns <code>amount</code> FEI from <code>account</code>. Reverts if the FEI balance of <code>account</code> is less than <code>amount</code></p>
+<p>emits <code>Burning</code></p>
+<h2 id="minter-only-state-changing-functions">Minter-Only💰 State-Changing Functions</h2>
+<h3 id="mint">mint</h3>
+<pre><code class="language-javascript">function mint(address account, uint256 amount) external;
+</code></pre>
+<p>Mints <code>amount</code> FEI to <code>account</code></p>
+<p>emits <code>Minting</code></p>
+<h2 id="governor-only-state-changing-functions">Governor-Only⚖️ State-Changing Functions</h2>
+<h3 id="setincentivecontract">setIncentiveContract</h3>
+<pre><code class="language-javascript">function setIncentiveContract(address account, address incentive) external;
+</code></pre>
+<p>Sets the incentive contract <code>incentive</code> for <code>account</code>. If <code>incentive</code> is the 0 address this functions as an unset.</p>
+<p>emits <code>IncentiveContractUpdate</code></p>
+<h2 id="public-state-changing-functions">Public State-Changing Functions</h2>
+<h3 id="burn">burn</h3>
+<pre><code class="language-javascript">function burn(uint256 amount) external;
+</code></pre>
+<p>Burns <code>amount</code> FEI from <code>msg.sender</code>. Reverts if the FEI balance of <code>msg.sender</code> is less than <code>amount</code></p>
+<p>emits <code>Burning</code></p>
+<h3 id="permit">permit</h3>
+<pre><code class="language-javascript">function permit(
+    address owner,
+    address spender,
+    uint256 value,
+    uint256 deadline,
+    uint8 v,
+    bytes32 r,
+    bytes32 s
+) external;
+</code></pre>
+<p>Sets the allowance for a <code>spender</code> for <code>value</code> FEI from <code>owner</code> via signature. Reverts if called after <code>deadline</code></p>
+<h2 id="abis">ABIs</h2>
+<p>{% file src="../../.gitbook/assets/fei.json" caption="Fei ABI" %}</p>
+<p>{% file src="../../.gitbook/assets/ifei.json" caption="Fei Interface ABI" %}</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "../../../..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../../../../js/base.js" defer></script>
+        <script src="../../../../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
