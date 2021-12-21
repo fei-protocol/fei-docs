@@ -12,12 +12,37 @@ contract.then((result) => {
 
   const addresses = result.default; 
   const keys = Object.keys(addresses);
-  const table = keys.map((key, index) => {
-    return [key, `[${addresses[key].address}](https://etherscan.io/address/${addresses[key].address})`];
+
+  const title = [['Name', 'Address']];
+  const categories = {
+    'Core' : title,
+    'Governance' : title,
+    'Peg' : title,
+    'PCV' : title,
+    'Collateralization' : title,
+    'Oracle' : title,
+    'Keeper' : title,
+    'Rewards' : title,
+    'FeiRari' : title
+  }
+
+  keys.map((key, index) => {
+    const category = addresses[key].category;
+    if (!categories[category]) {
+      return;
+    }
+    const address = addresses[key].address;
+    categories[category] = categories[category].concat([[key, `[${address}](https://etherscan.io/address/${address})`]]);
   });
 
-  const str = markdownTable([['Name', 'Address']].concat(table));
-  fs.writeFileSync(addressDocsPath, str, 'utf8');
+  const categoryList = Object.keys(categories);
+  for (var i = 0; i < categoryList.length; i++) {
+    const category = categoryList[i];
+    const str = markdownTable(categories[category]);
+    const flag = i === 0 ? 'w' : 'a'; // overwrite only first one, then append
+    fs.writeFileSync(addressDocsPath, `## ${category}\n\n\n${str}\n\n\n---\n\n\n`, { encoding: 'utf8', flag: flag});
+  }
+
   console.log(`Done`);
 });
 
