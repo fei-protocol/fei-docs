@@ -1,16 +1,15 @@
 import dotenv from 'dotenv';
 import fs from 'fs';
+import addresses from '../fei-protocol-core/contract-addresses/mainnetAddresses';
 
 dotenv.config();
 
-const protocolDir = process.env.PROTOCOL_DIR || '';
-const addressPath = process.env.ADDRESS_PATH || '';
 const addressDocsPath = process.env.ADDRESS_DOCS_PATH || '';
 
-const contract = import(`${protocolDir + addressPath}`);
-contract.then((result) => {
+address();
 
-  const addresses = result.default; 
+function address() {
+
   const keys = Object.keys(addresses);
 
   const title = [['Name', 'Address']];
@@ -44,8 +43,7 @@ contract.then((result) => {
   }
 
   console.log(`Done`);
-});
-
+}
 
 function markdownTable(table, options = {}) {
   const align = (options.align || []).concat()

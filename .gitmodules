@@ -1,0 +1,3 @@
+[submodule "fei-protocol-core"]
+	path = fei-protocol-core
+	url = git@github.com:fei-protocol/fei-protocol-core.git
