@@ -30,7 +30,6 @@
 | feiDAOTimelock     | [0xd51dbA7a94e1adEa403553A8235C302cEbF41a3c](https://etherscan.io/address/0xd51dbA7a94e1adEa403553A8235C302cEbF41a3c) |
 | guardian           | [0xB8f482539F2d3Ae2C9ea6076894df36D1f632775](https://etherscan.io/address/0xB8f482539F2d3Ae2C9ea6076894df36D1f632775) |
 | optimisticTimelock | [0xbC9C084a12678ef5B516561df902fdc426d95483](https://etherscan.io/address/0xbC9C084a12678ef5B516561df902fdc426d95483) |
-| timelock           | [0x639572471f2f318464dc01066a56867130e45E25](https://etherscan.io/address/0x639572471f2f318464dc01066a56867130e45E25) |
 | optimisticMultisig | [0x35ED000468f397AA943009bD60cc6d2d9a7d32fF](https://etherscan.io/address/0x35ED000468f397AA943009bD60cc6d2d9a7d32fF) |
 
 
@@ -50,7 +49,6 @@
 | compoundEthPCVDripController | [0xa84C8be28f3d560059339f06C6b6c5B23f53C58C](https://etherscan.io/address/0xa84C8be28f3d560059339f06C6b6c5B23f53C58C) |
 | daiBondingCurve              | [0xC0afe0E649e32528666F993ce63822c3840e941a](https://etherscan.io/address/0xC0afe0E649e32528666F993ce63822c3840e941a) |
 | ethReserveStabilizer         | [0x17305f0e18318994a57b494078CAC866A857F7b6](https://etherscan.io/address/0x17305f0e18318994a57b494078CAC866A857F7b6) |
-| raiBondingCurve              | [0x25d60212D47Dd8F6Ff0469367E4c6C98Cd3411A5](https://etherscan.io/address/0x25d60212D47Dd8F6Ff0469367E4c6C98Cd3411A5) |
 
 
 ---
@@ -119,12 +117,8 @@
 | balDepositWrapper                  | [0x7E28BA7a2D52Af88242E588d868E927119BA45dB](https://etherscan.io/address/0x7E28BA7a2D52Af88242E588d868E927119BA45dB) |
 | staticPcvDepositWrapper2           | [0xe72EB93de743F819fe91277582d7d0Fa9bb9b023](https://etherscan.io/address/0xe72EB93de743F819fe91277582d7d0Fa9bb9b023) |
 | feiBuybackLens                     | [0x107460564896377BA6CdcC7516c7eAb65E32E360](https://etherscan.io/address/0x107460564896377BA6CdcC7516c7eAb65E32E360) |
-| collateralizationOracleKeeper      | [0x62378C316a6161A613D02E11F65290aED79B3eD5](https://etherscan.io/address/0x62378C316a6161A613D02E11F65290aED79B3eD5) |
-| staticPcvDepositWrapper            | [0x8B41DcEfAe6064E6bc2A9B3ae20141d23EFD6cbd](https://etherscan.io/address/0x8B41DcEfAe6064E6bc2A9B3ae20141d23EFD6cbd) |
 | ethReserveStabilizerWrapper        | [0xB24570Bc46efDf97b4Aa7f008B4268005Eb7A27E](https://etherscan.io/address/0xB24570Bc46efDf97b4Aa7f008B4268005Eb7A27E) |
 | daiBondingCurveWrapper             | [0x2547d76E2447E67F29d6bFeE5d46FDd2183c88E4](https://etherscan.io/address/0x2547d76E2447E67F29d6bFeE5d46FDd2183c88E4) |
-| raiBondingCurveWrapper             | [0xc42e155788f9f599Fd437C7455F63810A395a81f](https://etherscan.io/address/0xc42e155788f9f599Fd437C7455F63810A395a81f) |
-| dpiBondingCurveWrapper             | [0x60B63eF8f461355207fE1d8102dda938bbd8c3fB](https://etherscan.io/address/0x60B63eF8f461355207fE1d8102dda938bbd8c3fB) |
 | rariPool19DpiPCVDepositWrapper     | [0x9a774a1B1208C323EDeD05E6Daf592E6E59cAa55](https://etherscan.io/address/0x9a774a1B1208C323EDeD05E6Daf592E6E59cAa55) |
 | ethLidoPCVDepositWrapper           | [0xA271fF86426c7fdAaAE72603e6Ce68c892d69ED7](https://etherscan.io/address/0xA271fF86426c7fdAaAE72603e6Ce68c892d69ED7) |
 | compoundDaiPCVDepositWrapper       | [0xfDe7077AAEcDaf2C4B85261Aa858c96A7E737a61](https://etherscan.io/address/0xfDe7077AAEcDaf2C4B85261Aa858c96A7E737a61) |
@@ -185,8 +179,9 @@
 ## Keeper
 
 
-| Name | Address |
-| ---- | ------- |
+| Name                          | Address                                                                                                               |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| collateralizationOracleKeeper | [0x62378C316a6161A613D02E11F65290aED79B3eD5](https://etherscan.io/address/0x62378C316a6161A613D02E11F65290aED79B3eD5) |
 
 
 ---
@@ -198,7 +193,6 @@
 | Name                                | Address                                                                                                               |
 | ----------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
 | aaveTribeIncentivesController       | [0xDee5c1662bBfF8f80f7c572D8091BF251b3B0dAB](https://etherscan.io/address/0xDee5c1662bBfF8f80f7c572D8091BF251b3B0dAB) |
-| aaveTribeIncentivesControllerProxy  | [0xDee5c1662bBfF8f80f7c572D8091BF251b3B0dAB](https://etherscan.io/address/0xDee5c1662bBfF8f80f7c572D8091BF251b3B0dAB) |
 | aaveTribeIncentivesControllerImpl   | [0xFF865335401F12B88fa3FF5A3a51685A7f224191](https://etherscan.io/address/0xFF865335401F12B88fa3FF5A3a51685A7f224191) |
 | erc20Dripper                        | [0x3Fe0EAD3500e767F0F8bC2d3B5AF7755B1b21A6a](https://etherscan.io/address/0x3Fe0EAD3500e767F0F8bC2d3B5AF7755B1b21A6a) |
 | rewardsDistributorAdmin             | [0x4e979E8b136Cd7BdEBB83ea50a599C3BED1e15c0](https://etherscan.io/address/0x4e979E8b136Cd7BdEBB83ea50a599C3BED1e15c0) |
