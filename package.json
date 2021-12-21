@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "--- description: \"The Fei Protocol Documentation \\U0001F332\" ---",
   "scripts": {
-    "address": "npx ts-node scripts/address.js"
+    "address": "npx ts-node scripts/address.js",
+    "docgen": "npx ts-node scripts/docgen.js"
   },
   "repository": {
     "type": "git",
