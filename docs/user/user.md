@@ -11,8 +11,8 @@
 
 ## DAI Minting and Redemption Limits
 
-The maximum amount of FEI that can be minted from a peg stability module at any given point in time is equal to the buffer plus all of the FEI that PSM holds at any given point in time. This function can be called on any PSM:
+The PSM allows users to both mint FEI by providing DAI and redeem their FEI for DAI. Both of these actions are rate limited.
 
-function buffer() public view returns(**uint256**);
+For redemptions, every 30 minutes, 5m DAI will be dripped into PSM if it has less than 5m DAI to allow continuous redemptions.
 
-The maximum amount of asset that can be redeemed from the PSM is the amount of asset in the PSM at the time of redemption. The asset amount can go down if the PSM is over the reserve threshold and the allocate function is called. The maximum amount up for redemption is the amount of asset in the PSM. As an example, if there is 10m worth of eth in the PSM, the maximum redemption amount is 10m - the 50bps fee which would mean a total of 10.05m FEI would need to be redeemed to take all of the existing ETH liquidity.
+FEI is minted from a buffer that is continually refilled and has a maximum balance of 10m FEI. Whenever the buffer contains under 10m FEI, the PSM adds 10k FEI per second to the buffer. 
