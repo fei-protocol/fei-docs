@@ -4,5 +4,9 @@ edit_uri: edit/main/docs/
 nav:
   - Overview: 'README.md'
   - User: 'user/user.md'
-  - Developer: 'developers/developers.md'
+  - Developer:
+     - Mainnet Addresses: 'developers/addresses.md'
+     - Protocol Contracts: 'developers/contracts/contracts.md'
+     - Permissions: 'developers/permissions.md'
+     - Bug Bounty: 'developers/bug-bounty.md'
   - Operator: 'operator/operator.md'
