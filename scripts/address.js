@@ -11,6 +11,8 @@ export function address() {
 
   const keys = Object.keys(addresses);
 
+  const artifacts = {}
+
   const title = [['Name', 'Address']];
   const categories = {
     'Core' : title,
@@ -29,6 +31,9 @@ export function address() {
     if (!categories[category]) {
       return;
     }
+
+    artifacts[addresses[key].artifactName] = category;
+
     const address = addresses[key].address;
     categories[category] = categories[category].concat([[key, `[${address}](https://etherscan.io/address/${address})`]]);
   });
@@ -42,4 +47,5 @@ export function address() {
   }
 
   console.log(`Done`);
+  return artifacts;
 }

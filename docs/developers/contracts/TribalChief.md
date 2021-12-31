@@ -1,0 +1,68 @@
+# TribalChief
+
+
+The idea for this TribalChief contract is to be the owner of tribe token that is deposited into this contract.This contract was forked from sushiswap and has been modified to distribute staking rewards in tribe. All legacy code that relied on MasterChef V1 has been removed so that this contract will pay out staking rewards in tribe. The assumption this code makes is that this MasterChief contract will be funded before going live and offering staking rewards. This contract will not have the ability to mint tribe.
+
+## Events
+
+
+ - ContractAdminRoleUpdate(bytes32,bytes32)
+ - CoreUpdate(address,address)
+ - Deposit(address,uint256,uint256,uint256)
+ - EmergencyWithdraw(address,uint256,uint256,address)
+ - Harvest(address,uint256,uint256)
+ - LogPoolAddition(uint256,uint256,address,address)
+ - LogPoolMultiplier(uint256,uint128,uint256)
+ - LogSetPool(uint256,uint256,address,bool)
+ - LogUpdatePool(uint256,uint128,uint256,uint256)
+ - NewTribePerBlock(uint256)
+ - Paused(address)
+ - PoolLocked(bool,uint256)
+ - TribeWithdraw(uint256)
+ - Unpaused(address)
+ - Withdraw(address,uint256,uint256,address)
+
+## Methods
+
+
+ - CONTRACT_ADMIN_ROLE()
+ - SCALE_FACTOR()
+ - TRIBE()
+ - add(uint120,address,address,(uint128,uint128)[])
+ - core()
+ - deposit(uint256,uint256,uint64)
+ - depositInfo(uint256,address,uint256)
+ - emergencyWithdraw(uint256,address)
+ - fei()
+ - feiBalance()
+ - getTotalStakedInPool(uint256,address)
+ - governorAddPoolMultiplier(uint256,uint64,uint64)
+ - governorWithdrawTribe(uint256)
+ - harvest(uint256,address)
+ - initialize(address,address)
+ - isContractAdmin(address)
+ - lockPool(uint256)
+ - massUpdatePools(uint256[])
+ - numPools()
+ - openUserDeposits(uint256,address)
+ - pause()
+ - paused()
+ - pendingRewards(uint256,address)
+ - poolInfo(uint256)
+ - resetRewards(uint256)
+ - rewardMultipliers(uint256,uint128)
+ - rewarder(uint256)
+ - set(uint256,uint120,address,bool)
+ - setContractAdminRole(bytes32)
+ - setCore(address)
+ - stakedToken(uint256)
+ - tribe()
+ - tribeBalance()
+ - tribePerBlock()
+ - unlockPool(uint256)
+ - unpause()
+ - updateBlockReward(uint256)
+ - updatePool(uint256)
+ - userInfo(uint256,address)
+ - withdrawAllAndHarvest(uint256,address)
+ - withdrawFromDeposit(uint256,uint256,address,uint256)

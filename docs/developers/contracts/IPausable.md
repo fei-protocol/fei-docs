@@ -1,0 +1,6 @@
+# IPausable
+
+## Methods
+
+
+ - paused()

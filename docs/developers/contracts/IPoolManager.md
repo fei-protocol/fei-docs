@@ -1,0 +1,6 @@
+# IPoolManager
+
+## Methods
+
+
+ - token()
