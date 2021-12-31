@@ -1,0 +1,6 @@
+# IAutoRewardsDistributor
+
+## Methods
+
+
+ - setAutoRewardsDistribution()
