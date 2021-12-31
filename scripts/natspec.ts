@@ -9,14 +9,11 @@ import json2md from 'json2md';
 //   TASK_COMPILE,
 // } from 'hardhat/builtin-tasks/task-names';
 
-export default async function () {
+export default async function (artifacts) {
   const config = {
     path: './docs/developers/contracts',
     clear: false,
-    only: [
-      // '^contracts/*',
-      'BondingCurve'
-    ],
+    only: Object.keys(artifacts),
     except: ['contracts/mock', 'contracts/external', 'contracts/test'],
     logging: true
   };
@@ -126,15 +123,22 @@ export default async function () {
       stateVariables: membersByType.stateVariable,
       methods: membersByType.function
     };
-    output[`${name}.md`] = json2md(toMarkdownJson(data));
+    output[name] = json2md(toMarkdownJson(data));
   }
 
+
   const files = Object.keys(output);
+
   for (const file of files) {
-    const path = `${outputDirectory}/${file}`;
+    const path = `${outputDirectory}/${file}.md`;
     config.logging && console.log(`Writing ${path}`);
     fs.writeFileSync(path, output[file],{flag:'w+'});
   }
+
+  const nav = [{'ul': files.map(f => `[${f}](${f}.md)`)}];
+  console.log(nav);
+  fs.writeFileSync(`${outputDirectory}/contracts.md`, json2md(nav), {flag:'w+'});
+
   return output;
 };
 
@@ -156,17 +160,23 @@ function toMarkdownJson(data) {
   // TODO add constructor, fallback, and receive
   // TODO add more granular docs for events and methods
 
-  output.push({ h2: 'Events' });
-
   const events = data.events;
-  const eventKeys = Object.keys(events);
-  output.push({ ul: eventKeys });
 
-  output.push({ h2: 'Methods' });
+  if (events) {
+    output.push({ h2: 'Events' });
+
+    const eventKeys = Object.keys(events);
+    output.push({ ul: eventKeys });
+  }
 
   const methods = data.methods;
-  const methodKeys = Object.keys(methods);
 
-  output.push({ ul: methodKeys });
+  if (methods) {
+    output.push({ h2: 'Methods' });
+    const methodKeys = Object.keys(methods);
+
+    output.push({ ul: methodKeys });
+  }
+
   return output;
 }
