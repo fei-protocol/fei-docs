@@ -43,11 +43,13 @@ export function address() {
       return;
     }
 
-    artifacts[addresses[key].artifactName] = category;
-    addresses[key].artifactName !== 'unknown' && artifactsCategoryMap[category].push(addresses[key].artifactName);
+    const artifactName = addresses[key].artifactName;
+    artifacts[artifactName] = category;
+    artifactName !== 'unknown' && artifactsCategoryMap[category].push(artifactName);
 
     const address = addresses[key].address;
-    categories[category] = categories[category].concat([[key, `[${address}](https://etherscan.io/address/${address})`]]);
+    const k = artifactName !== 'unknown' ? `[${key}](contracts/${artifactName}.md)` : key
+    categories[category] = categories[category].concat([[k, `[${address}](https://etherscan.io/address/${address})`]]);
   });
 
   const categoryList = Object.keys(categories);
