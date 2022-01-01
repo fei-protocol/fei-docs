@@ -5,6 +5,12 @@
 
 DEV NOTE: This is an auxiliary contract meant to be assigned as the admin of a {TransparentUpgradeableProxy}. For an explanation of why you would want to use this see the documentation for {TransparentUpgradeableProxy}.
 
+## Mainnet implementations
+
+| Name | Address |
+| ---- | ------- |
+| proxyAdmin | [0xf8c2b645988b7658E7748BA637fE25bdD46A704A](https://etherscan.io/address/0xf8c2b645988b7658E7748BA637fE25bdD46A704A) |
+
 ## Events
 
 #### OwnershipTransferred

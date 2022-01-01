@@ -7,6 +7,12 @@
 
 A FeiTimedMinter that mints only when called by an owner
 
+## Mainnet implementations
+
+| Name | Address |
+| ---- | ------- |
+| optimisticMinter | [0xE66c4De480Bd317054B5a3CF8E8689649d0728c9](https://etherscan.io/address/0xE66c4De480Bd317054B5a3CF8E8689649d0728c9) |
+
 ## Events
 
 #### BufferCapUpdate

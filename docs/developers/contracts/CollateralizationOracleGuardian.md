@@ -6,6 +6,12 @@
 > 
 > Author: Fei Protocol This contract needs to be granted the ORACLE_ADMIN role The guardian can leverage this contract to make small bounded changes to CR This is intended to be used only in emergencies when the base CollateralizationOracle is compromised The guardian should be able to approximate manual changes to CR via this contract without retaining too much power
 
+## Mainnet implementations
+
+| Name | Address |
+| ---- | ------- |
+| collateralizationOracleGuardian | [0x81De6bA8df84A4B679061952E171a27F096F3eAe](https://etherscan.io/address/0x81De6bA8df84A4B679061952E171a27F096F3eAe) |
+
 ## Events
 
 #### ContractAdminRoleUpdate

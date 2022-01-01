@@ -2,6 +2,12 @@
 
 # [Tribe](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/dao/Tribe.sol)
 
+## Mainnet implementations
+
+| Name | Address |
+| ---- | ------- |
+| tribe | [0xc7283b66Eb1EB5FB86327f08e1B5816b0720212B](https://etherscan.io/address/0xc7283b66Eb1EB5FB86327f08e1B5816b0720212B) |
+
 ## Events
 
 #### Approval

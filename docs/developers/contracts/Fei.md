@@ -6,6 +6,12 @@
 > 
 > Author: Fei Protocol
 
+## Mainnet implementations
+
+| Name | Address |
+| ---- | ------- |
+| fei | [0x956F47F50A910163D8BF957Cf5846D573E7f87CA](https://etherscan.io/address/0x956F47F50A910163D8BF957Cf5846D573E7f87CA) |
+
 ## Events
 
 #### Approval

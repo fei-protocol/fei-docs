@@ -9,6 +9,12 @@
 
 a contract to read manipulation resistant balances from BPTs
 
+## Mainnet implementations
+
+| Name | Address |
+| ---- | ------- |
+| feiBuybackLensNoFee | [0x89DfBC12001b41985eFAbd7dFCae6a77B22E4Ec3](https://etherscan.io/address/0x89DfBC12001b41985eFAbd7dFCae6a77B22E4Ec3) |
+
 ## Methods
 
 #### VAULT

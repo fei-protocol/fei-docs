@@ -9,6 +9,13 @@
 
 Reads a list of PCVDeposit that report their amount of collateral         and the amount of protocol-owned FEI they manage, to deduce the         protocol-wide collateralization ratio.
 
+## Mainnet implementations
+
+| Name | Address |
+| ---- | ------- |
+| collateralizationOracleWrapper | [0xd1866289B4Bd22D453fFF676760961e0898EE9BF](https://etherscan.io/address/0xd1866289B4Bd22D453fFF676760961e0898EE9BF) |
+| collateralizationOracleWrapperImpl | [0x656aA9c9875eB089b11869d4730d6963D25E76ad](https://etherscan.io/address/0x656aA9c9875eB089b11869d4730d6963D25E76ad) |
+
 ## Events
 
 #### CachedValueUpdate

@@ -2,7 +2,7 @@ import { address } from './address.js';
 import { permissionsDocs } from './permissions.js';
 import natspec from './natspec';
 
-const { artifacts, artifactsCategoryMap } = address(); // also generates contract addresses md file
+const { artifacts, artifactsCategoryMap, artifactImplMap } = address(); // also generates contract addresses md file
 permissionsDocs();
 
-natspec(artifacts, artifactsCategoryMap);
+natspec(artifacts, artifactsCategoryMap, artifactImplMap);

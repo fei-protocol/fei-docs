@@ -9,6 +9,16 @@
 
 Reads two oracles and returns their product
 
+## Mainnet implementations
+
+| Name | Address |
+| ---- | ------- |
+| balUsdCompositeOracle | [0xDe0407851AEC6F073A63D27C7D29805CCD59D3e0](https://etherscan.io/address/0xDe0407851AEC6F073A63D27C7D29805CCD59D3e0) |
+| chainlinkRaiUsdCompositeOracle | [0x392b1d29eDab680c5CA778D3A32b8284859BFBB0](https://etherscan.io/address/0x392b1d29eDab680c5CA778D3A32b8284859BFBB0) |
+| compositeOracle | [0x8721f9EAba0B9081069970bCBce38763D3D4f28E](https://etherscan.io/address/0x8721f9EAba0B9081069970bCBce38763D3D4f28E) |
+| creamUsdCompositeOracle | [0x2BDca027c7f57eD9AC1769Ba3a3D64600578bA49](https://etherscan.io/address/0x2BDca027c7f57eD9AC1769Ba3a3D64600578bA49) |
+| tribeUsdCompositeOracle | [0xD7B8207f8644ee5cc60095023a8fcb8BdCF54732](https://etherscan.io/address/0xD7B8207f8644ee5cc60095023a8fcb8BdCF54732) |
+
 ## Events
 
 #### ContractAdminRoleUpdate

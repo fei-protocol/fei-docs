@@ -6,6 +6,12 @@
 > 
 > Author: Fei Protocol This contract will be the unique TRIBE minting contract.  All minting is subject to an annual inflation rate limit. For example if circulating supply is 1m and inflation is capped at 10%, then no more than 100k TRIBE can enter circulation in the following year. The contract will increase (decrease) the rate limit proportionally as supply increases (decreases) Governance and admins can only lower the max inflation %.  They can also exclude (unexclude) addresses' TRIBE balances from the circulating supply.  The minter's balance is excluded by default. ACCESS_CONTROL: This contract follows a somewhat unique access control pattern.  It has a contract admin which is NOT intended for optimistic approval, but rather for contracts such as the TribeReserveStabilizer. An additional potential contract admin is one which automates the inclusion and removal of excluded deposits from on-chain timelocks. Additionally, the ability to transfer the tribe minter role is held by the contract *owner* rather than governor or admin. The owner will intially be the DAO timelock. This keeps the power to transfer or burn TRIBE minting rights isolated.
 
+## Mainnet implementations
+
+| Name | Address |
+| ---- | ------- |
+| tribeMinter | [0xFC3532b443383d9022b1B2c6FD5Fd0895943360A](https://etherscan.io/address/0xFC3532b443383d9022b1B2c6FD5Fd0895943360A) |
+
 ## Events
 
 #### AnnualMaxInflationUpdate

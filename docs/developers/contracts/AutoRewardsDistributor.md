@@ -5,6 +5,12 @@
 
 Controller Contract to set tribe per block in Rewards Distributor Admin on Rari
 
+## Mainnet implementations
+
+| Name | Address |
+| ---- | ------- |
+| autoRewardsDistributor | [0x61be49dfbd869a601fea076e1a1379903e61a895](https://etherscan.io/address/0x61be49dfbd869a601fea076e1a1379903e61a895) |
+
 ## Events
 
 #### ContractAdminRoleUpdate

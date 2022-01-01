@@ -2,6 +2,15 @@
 
 # [CErc20Delegator](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/external/CErc20Delegator.sol)
 
+## Mainnet implementations
+
+| Name | Address |
+| ---- | ------- |
+| rariPool8Dai | [0x7e9cE3CAa9910cc048590801e64174957Ed41d43](https://etherscan.io/address/0x7e9cE3CAa9910cc048590801e64174957Ed41d43) |
+| rariPool8Eth | [0xbB025D470162CC5eA24daF7d4566064EE7f5F111](https://etherscan.io/address/0xbB025D470162CC5eA24daF7d4566064EE7f5F111) |
+| rariPool8Fei | [0xd8553552f8868C1Ef160eEdf031cF0BCf9686945](https://etherscan.io/address/0xd8553552f8868C1Ef160eEdf031cF0BCf9686945) |
+| rariPool8Tribe | [0xFd3300A9a74b3250F1b2AbC12B47611171910b07](https://etherscan.io/address/0xFd3300A9a74b3250F1b2AbC12B47611171910b07) |
+
 ## Events
 
 #### Approval

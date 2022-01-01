@@ -6,6 +6,12 @@
 > 
 > Author: Fei Protocol
 
+## Mainnet implementations
+
+| Name | Address |
+| ---- | ------- |
+| tribeReserveStabilizer | [0xE1A468418f4D8D3F070A06d49b3575A9562b6CfD](https://etherscan.io/address/0xE1A468418f4D8D3F070A06d49b3575A9562b6CfD) |
+
 ## Events
 
 #### BackupOracleUpdate
