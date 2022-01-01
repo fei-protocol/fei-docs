@@ -8,7 +8,7 @@ export default async function (artifacts, artifactsCategoryMap) {
     path: './docs/developers/contracts',
     clear: false,
     only: Object.keys(artifacts).map(x => `/${x}`),
-    except: ['contracts/mock', 'contracts/external', 'contracts/test'],
+    except: ['contracts/mock', 'contracts/test'],
     logging: true
   };
 

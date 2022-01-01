@@ -1,67 +1,71 @@
 ## Core
 
 
- - [TribeMinter](TribeMinter.md)
- - [PCVGuardian](PCVGuardian.md)
- - [BalancerLBPSwapper](BalancerLBPSwapper.md)
- - [PCVEquityMinter](PCVEquityMinter.md)
- - [CollateralizationOracleGuardian](CollateralizationOracleGuardian.md)
  - [Core](Core.md)
  - [Fei](Fei.md)
+ - [BalancerLBPSwapper](BalancerLBPSwapper.md)
  - [OwnableTimedMinter](OwnableTimedMinter.md)
+ - [PCVEquityMinter](PCVEquityMinter.md)
+ - [PCVGuardian](PCVGuardian.md)
  - [ProxyAdmin](ProxyAdmin.md)
- - [RatioPCVController](RatioPCVController.md)
+ - [RatioPCVControllerV2](RatioPCVControllerV2.md)
  - [Tribe](Tribe.md)
+ - [TribeMinter](TribeMinter.md)
 
 ## Governance
 
 
  - [FeiDAO](FeiDAO.md)
- - [Timelock](Timelock.md)
  - [FeiDAOTimelock](FeiDAOTimelock.md)
  - [OptimisticTimelock](OptimisticTimelock.md)
+ - [Timelock](Timelock.md)
 
 ## Peg
 
 
  - [PCVDripController](PCVDripController.md)
- - [TribeReserveStabilizer](TribeReserveStabilizer.md)
- - [PriceBoundPSM](PriceBoundPSM.md)
  - [EthBondingCurve](EthBondingCurve.md)
- - [BondingCurve](BondingCurve.md)
+ - [PriceBoundPSM](PriceBoundPSM.md)
  - [EthReserveStabilizer](EthReserveStabilizer.md)
+ - [TribeReserveStabilizer](TribeReserveStabilizer.md)
 
 ## PCV
 
 
  - [AngleUniswapPCVDeposit](AngleUniswapPCVDeposit.md)
- - [CurvePCVDepositPlainPool](CurvePCVDepositPlainPool.md)
+ - [BAMMDeposit](BAMMDeposit.md)
+ - [BalancerPCVDepositWeightedPool](BalancerPCVDepositWeightedPool.md)
  - [ConvexPCVDeposit](ConvexPCVDeposit.md)
+ - [CurvePCVDepositPlainPool](CurvePCVDepositPlainPool.md)
+ - [UniswapPCVDeposit](UniswapPCVDeposit.md)
+ - [EthTokemakPCVDeposit](EthTokemakPCVDeposit.md)
+ - [ERC20CompoundPCVDeposit](ERC20CompoundPCVDeposit.md)
+ - [PCVDepositWrapper](PCVDepositWrapper.md)
+ - [ERC20PCVDepositWrapper](ERC20PCVDepositWrapper.md)
+ - [BPTLens](BPTLens.md)
+
+## PCV_V1
+
+
  - [AavePCVDeposit](AavePCVDeposit.md)
  - [ERC20CompoundPCVDeposit](ERC20CompoundPCVDeposit.md)
  - [EthCompoundPCVDeposit](EthCompoundPCVDeposit.md)
- - [UniswapPCVDeposit](UniswapPCVDeposit.md)
  - [EthLidoPCVDeposit](EthLidoPCVDeposit.md)
  - [SnapshotDelegatorPCVDeposit](SnapshotDelegatorPCVDeposit.md)
- - [BalancerLBPSwapper](BalancerLBPSwapper.md)
- - [EthTokemakPCVDeposit](EthTokemakPCVDeposit.md)
- - [ERC20TokemakPCVDeposit](ERC20TokemakPCVDeposit.md)
 
 ## Collateralization
 
 
- - [BPTLens](BPTLens.md)
- - [PCVDepositWrapper](PCVDepositWrapper.md)
- - [ERC20PCVDepositWrapper](ERC20PCVDepositWrapper.md)
- - [StaticPCVDepositWrapper](StaticPCVDepositWrapper.md)
  - [CollateralizationOracle](CollateralizationOracle.md)
+ - [CollateralizationOracleGuardian](CollateralizationOracleGuardian.md)
  - [CollateralizationOracleWrapper](CollateralizationOracleWrapper.md)
+ - [NamedStaticPCVDepositWrapper](NamedStaticPCVDepositWrapper.md)
 
 ## Oracle
 
 
- - [ChainlinkOracleWrapper](ChainlinkOracleWrapper.md)
  - [CompositeOracle](CompositeOracle.md)
+ - [ChainlinkOracleWrapper](ChainlinkOracleWrapper.md)
  - [ConstantOracle](ConstantOracle.md)
 
 ## Keeper
@@ -73,12 +77,14 @@
 
 
  - [IAaveIncentivesController](IAaveIncentivesController.md)
+ - [AutoRewardsDistributor](AutoRewardsDistributor.md)
  - [ERC20Dripper](ERC20Dripper.md)
  - [RewardsDistributorAdmin](RewardsDistributorAdmin.md)
- - [AutoRewardsDistributor](AutoRewardsDistributor.md)
  - [StakingTokenWrapper](StakingTokenWrapper.md)
+ - [STWBulkHarvest](STWBulkHarvest.md)
  - [TribalChief](TribalChief.md)
- - [TribalChiefSync](TribalChiefSync.md)
+ - [TribalChiefSyncV2](TribalChiefSyncV2.md)
+ - [VotiumBriber](VotiumBriber.md)
 
 ## FeiRari
 
