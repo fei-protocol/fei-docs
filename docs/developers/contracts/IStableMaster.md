@@ -1,4 +1,6 @@
-# IStableMaster
+[⬅️ Contracts](contracts.md)
+
+# [IStableMaster](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/pcv/angle/AngleUniswapPCVDeposit.sol)
 
 ## Methods
 
@@ -57,3 +59,5 @@ function unpause(bytes32,address) nonpayable
 | ----- | ---- | ----- |
 | agent | bytes32 |  |
 | poolManager | address |  |
+
+[⬅️ Contracts](contracts.md)

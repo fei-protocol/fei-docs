@@ -1,4 +1,6 @@
-# ConstantOracle
+[⬅️ Contracts](contracts.md)
+
+# [ConstantOracle](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/oracle/ConstantOracle.sol)
 
 > Constant oracle
 > 
@@ -275,3 +277,5 @@ function update() pure
 > updates the oracle price
 
 > no-op, oracle is fixed
+
+[⬅️ Contracts](contracts.md)

@@ -1,4 +1,6 @@
-# PCVDepositWrapper
+[⬅️ Contracts](contracts.md)
+
+# [PCVDepositWrapper](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/pcv/utils/PCVDepositWrapper.sol)
 
 
 a lightweight contract to wrap old PCV deposits to use the new interface 
@@ -89,3 +91,5 @@ function token() view returns(address)
 | Param | Type | Notes |
 | ----- | ---- | ----- |
 |  | address |  |
+
+[⬅️ Contracts](contracts.md)

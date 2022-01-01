@@ -1,4 +1,6 @@
-# AutoRewardsDistributor
+[⬅️ Contracts](contracts.md)
+
+# [AutoRewardsDistributor](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/staking/feirari/AutoRewardsDistributor.sol)
 
 
 Controller Contract to set tribe per block in Rewards Distributor Admin on Rari
@@ -350,3 +352,5 @@ function unpause() nonpayable
 ```
 
 > set pausable methods to unpaused
+
+[⬅️ Contracts](contracts.md)

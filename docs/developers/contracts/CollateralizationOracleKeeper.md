@@ -1,4 +1,6 @@
-# CollateralizationOracleKeeper
+[⬅️ Contracts](contracts.md)
+
+# [CollateralizationOracleKeeper](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/keeper/CollateralizationOracleKeeper.sol)
 
 > CollateralizationOracleKeeper
 
@@ -678,3 +680,5 @@ function unpause() nonpayable
 ```
 
 > set pausable methods to unpaused
+
+[⬅️ Contracts](contracts.md)

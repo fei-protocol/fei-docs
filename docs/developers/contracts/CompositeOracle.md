@@ -1,4 +1,6 @@
-# CompositeOracle
+[⬅️ Contracts](contracts.md)
+
+# [CompositeOracle](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/oracle/CompositeOracle.sol)
 
 > A composite oracle
 > 
@@ -299,3 +301,5 @@ function update() nonpayable
 ```
 
 > updates the oracle price
+
+[⬅️ Contracts](contracts.md)

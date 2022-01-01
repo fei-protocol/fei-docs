@@ -1,4 +1,6 @@
-# CoreRef
+[⬅️ Contracts](contracts.md)
+
+# [CoreRef](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/refs/CoreRef.sol)
 
 > A Reference to Core
 > 
@@ -222,3 +224,5 @@ function unpause() nonpayable
 ```
 
 > set pausable methods to unpaused
+
+[⬅️ Contracts](contracts.md)

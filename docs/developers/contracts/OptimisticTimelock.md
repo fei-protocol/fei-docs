@@ -1,4 +1,6 @@
-# OptimisticTimelock
+[⬅️ Contracts](contracts.md)
+
+# [OptimisticTimelock](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/dao/OptimisticTimelock.sol)
 
 ## Events
 
@@ -742,3 +744,5 @@ function updateDelay(uint256) nonpayable
 | Param | Type | Notes |
 | ----- | ---- | ----- |
 | newDelay | uint256 |  |
+
+[⬅️ Contracts](contracts.md)

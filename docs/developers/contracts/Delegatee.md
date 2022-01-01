@@ -1,4 +1,6 @@
-# Delegatee
+[⬅️ Contracts](contracts.md)
+
+# [Delegatee](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/dao/TimelockedDelegator.sol)
 
 > a proxy delegate contract for TRIBE
 > 
@@ -76,3 +78,5 @@ function withdraw() nonpayable
 ```
 
 > send TRIBE back to timelock and selfdestruct
+
+[⬅️ Contracts](contracts.md)

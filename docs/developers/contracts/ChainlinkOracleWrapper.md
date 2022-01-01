@@ -1,4 +1,6 @@
-# ChainlinkOracleWrapper
+[⬅️ Contracts](contracts.md)
+
+# [ChainlinkOracleWrapper](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/oracle/ChainlinkOracleWrapper.sol)
 
 > Chainlink oracle wrapper
 > 
@@ -299,3 +301,5 @@ function update() view
 > updates the oracle price
 
 > no-op, Chainlink is updated automatically
+
+[⬅️ Contracts](contracts.md)

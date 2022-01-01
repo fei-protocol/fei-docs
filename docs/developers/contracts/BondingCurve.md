@@ -1,4 +1,6 @@
-# BondingCurve
+[⬅️ Contracts](contracts.md)
+
+# [BondingCurve](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/bondingcurve/BondingCurve.sol)
 
 > a bonding curve for purchasing FEI with ERC-20 tokens
 > 
@@ -1028,3 +1030,5 @@ function updateOracle() nonpayable
 ```
 
 > updates the referenced oracle
+
+[⬅️ Contracts](contracts.md)

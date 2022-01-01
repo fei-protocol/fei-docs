@@ -1,4 +1,6 @@
-# CurvePCVDepositPlainPool
+[⬅️ Contracts](contracts.md)
+
+# [CurvePCVDepositPlainPool](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/pcv/curve/CurvePCVDepositPlainPool.sol)
 
 > CurvePCVDepositPlainPool: implementation for a PCVDeposit that deploys liquidity on Curve, in a plain pool (3 stable assets).
 > 
@@ -424,3 +426,5 @@ function withdrawOneCoin(uint256,address,uint256) nonpayable
 | coinIndexInPool | uint256 |  |
 | to | address |  |
 | amountUnderlying | uint256 |  |
+
+[⬅️ Contracts](contracts.md)

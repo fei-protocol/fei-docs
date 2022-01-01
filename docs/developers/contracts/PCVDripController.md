@@ -1,4 +1,6 @@
-# PCVDripController
+[⬅️ Contracts](contracts.md)
+
+# [PCVDripController](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/pcv/utils/PCVDripController.sol)
 
 > a PCV dripping controller
 > 
@@ -681,3 +683,5 @@ function unpause() nonpayable
 ```
 
 > set pausable methods to unpaused
+
+[⬅️ Contracts](contracts.md)

@@ -1,4 +1,6 @@
-# BPTLens
+[⬅️ Contracts](contracts.md)
+
+# [BPTLens](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/pcv/balancer/BPTLens.sol)
 
 > BPTLens
 > 
@@ -135,3 +137,5 @@ function resistantBalanceAndFei() view returns(uint256,uint256)
 | ----- | ---- | ----- |
 |  | uint256 |  |
 |  | uint256 |  |
+
+[⬅️ Contracts](contracts.md)

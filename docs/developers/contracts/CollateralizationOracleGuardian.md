@@ -1,4 +1,6 @@
-# CollateralizationOracleGuardian
+[⬅️ Contracts](contracts.md)
+
+# [CollateralizationOracleGuardian](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/oracle/collateralization/CollateralizationOracleGuardian.sol)
 
 > Fei Protocol's Collateralization Oracle Guardian
 > 
@@ -421,3 +423,5 @@ function unpause() nonpayable
 ```
 
 > set pausable methods to unpaused
+
+[⬅️ Contracts](contracts.md)

@@ -1,4 +1,6 @@
-# RewardsDistributorAdmin
+[⬅️ Contracts](contracts.md)
+
+# [RewardsDistributorAdmin](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/staking/feirari/RewardsDistributorAdmin.sol)
 
 
 this contract has its own internal ACL. The reasons for doing this and not leveraging core are twofold. One, it simplifies devops operations around adding and removing users, and two, by being self contained, it is more efficient as it does not need to make external calls to figure out who has a particular role.
@@ -639,3 +641,5 @@ function unpause() nonpayable
 ```
 
 > set pausable methods to unpaused
+
+[⬅️ Contracts](contracts.md)
