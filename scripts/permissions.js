@@ -23,7 +23,13 @@ export function permissionsDocs() {
 
     contracts.map((key, index) => {
       const address = addresses[key].address;
-      categories[category] = categories[category].concat([[key, `[${address}](https://etherscan.io/address/${address})`]]);
+      const artifactName = addresses[key].artifactName;
+
+      let k = key;
+      if (artifactName !== 'unknown') {
+        k = `[${key}](contracts/${artifactName}.md)`;
+      }
+      categories[category] = categories[category].concat([[k, `[${address}](https://etherscan.io/address/${address})`]]);
     });
 
     const str = markdownTable(categories[category]);
