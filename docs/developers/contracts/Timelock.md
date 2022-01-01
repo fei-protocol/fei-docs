@@ -1,4 +1,6 @@
-# Timelock
+[⬅️ Contracts](contracts.md)
+
+# [Timelock](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/dao/Timelock.sol)
 
 ## Events
 
@@ -292,3 +294,5 @@ function setPendingAdmin(address) nonpayable
 | Param | Type | Notes |
 | ----- | ---- | ----- |
 | pendingAdmin_ | address |  |
+
+[⬅️ Contracts](contracts.md)

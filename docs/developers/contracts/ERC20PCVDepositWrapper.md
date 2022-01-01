@@ -1,4 +1,6 @@
-# ERC20PCVDepositWrapper
+[⬅️ Contracts](contracts.md)
+
+# [ERC20PCVDepositWrapper](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/pcv/utils/ERC20PCVDepositWrapper.sol)
 
 
 a lightweight contract to wrap ERC20 holding PCV contracts
@@ -89,3 +91,5 @@ function tokenDeposit() view returns(address)
 | Param | Type | Notes |
 | ----- | ---- | ----- |
 |  | address |  |
+
+[⬅️ Contracts](contracts.md)

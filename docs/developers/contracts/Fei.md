@@ -1,4 +1,6 @@
-# Fei
+[⬅️ Contracts](contracts.md)
+
+# [Fei](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/token/Fei.sol)
 
 > FEI stablecoin
 > 
@@ -630,3 +632,5 @@ function unpause() nonpayable
 ```
 
 > set pausable methods to unpaused
+
+[⬅️ Contracts](contracts.md)

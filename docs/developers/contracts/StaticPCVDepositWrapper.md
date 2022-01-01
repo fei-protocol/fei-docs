@@ -1,4 +1,6 @@
-# StaticPCVDepositWrapper
+[⬅️ Contracts](contracts.md)
+
+# [StaticPCVDepositWrapper](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/pcv/utils/StaticPCVDepositWrapper.sol)
 
 
 a contract to report static PCV data to cover PCV not held with a reliable oracle or on-chain reading 
@@ -357,3 +359,5 @@ function unpause() nonpayable
 ```
 
 > set pausable methods to unpaused
+
+[⬅️ Contracts](contracts.md)

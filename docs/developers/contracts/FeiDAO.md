@@ -1,4 +1,6 @@
-# FeiDAO
+[⬅️ Contracts](contracts.md)
+
+# [FeiDAO](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/dao/FeiDAO.sol)
 
 ## Events
 
@@ -869,3 +871,5 @@ function votingPeriod() view returns(uint256)
 | Param | Type | Notes |
 | ----- | ---- | ----- |
 |  | uint256 |  |
+
+[⬅️ Contracts](contracts.md)

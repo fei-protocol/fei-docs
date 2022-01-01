@@ -1,4 +1,6 @@
-# TribalChiefSync
+[⬅️ Contracts](contracts.md)
+
+# [TribalChiefSync](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/staking/TribalChiefSync.sol)
 
 > TribalChief Synchronize contract This contract is able to keep the tribalChief and autoRewardsDistributor in sync when either: 1. adding pools or  2. updating block rewards It needs the EXECUTOR role on the optimistic timelock, so it can atomically trigger the 3 actions
 
@@ -105,3 +107,5 @@ function tribalChief() view returns(address)
 | Param | Type | Notes |
 | ----- | ---- | ----- |
 |  | address |  |
+
+[⬅️ Contracts](contracts.md)

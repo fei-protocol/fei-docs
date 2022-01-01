@@ -1,4 +1,6 @@
-# TribalChief
+[⬅️ Contracts](contracts.md)
+
+# [TribalChief](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/staking/TribalChief.sol)
 
 
 The idea for this TribalChief contract is to be the owner of tribe token that is deposited into this contract.This contract was forked from sushiswap and has been modified to distribute staking rewards in tribe. All legacy code that relied on MasterChef V1 has been removed so that this contract will pay out staking rewards in tribe. The assumption this code makes is that this MasterChief contract will be funded before going live and offering staking rewards. This contract will not have the ability to mint tribe.
@@ -862,3 +864,5 @@ function withdrawFromDeposit(uint256,uint256,address,uint256) nonpayable
 | amount | uint256 | Token amount to withdraw. |
 | to | address | Receiver of the tokens. |
 | index | uint256 |  |
+
+[⬅️ Contracts](contracts.md)

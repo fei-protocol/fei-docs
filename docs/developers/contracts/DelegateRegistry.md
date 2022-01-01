@@ -1,4 +1,6 @@
-# DelegateRegistry
+[⬅️ Contracts](contracts.md)
+
+# [DelegateRegistry](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/pcv/snapshot/SnapshotDelegatorPCVDeposit.sol)
 
 ## Methods
 
@@ -45,3 +47,5 @@ function setDelegate(bytes32,address) nonpayable
 | ----- | ---- | ----- |
 | id | bytes32 |  |
 | delegate | address |  |
+
+[⬅️ Contracts](contracts.md)

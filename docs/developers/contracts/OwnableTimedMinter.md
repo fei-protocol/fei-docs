@@ -1,4 +1,6 @@
-# OwnableTimedMinter
+[⬅️ Contracts](contracts.md)
+
+# [OwnableTimedMinter](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/token/minter/OwnableTimedMinter.sol)
 
 > OwnableTimedMinter
 
@@ -713,3 +715,5 @@ function unpause() nonpayable
 ```
 
 > set pausable methods to unpaused
+
+[⬅️ Contracts](contracts.md)

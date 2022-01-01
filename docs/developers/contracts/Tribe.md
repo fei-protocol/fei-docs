@@ -1,4 +1,6 @@
-# Tribe
+[⬅️ Contracts](contracts.md)
+
+# [Tribe](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/dao/Tribe.sol)
 
 ## Events
 
@@ -498,3 +500,5 @@ function transferFrom(address,address,uint256) nonpayable returns(bool)
 | Param | Type | Notes |
 | ----- | ---- | ----- |
 |  | bool |  |
+
+[⬅️ Contracts](contracts.md)

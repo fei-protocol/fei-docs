@@ -1,4 +1,6 @@
-# Core
+[⬅️ Contracts](contracts.md)
+
+# [Core](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/core/Core.sol)
 
 > Source of truth for Fei Protocol
 > 
@@ -681,3 +683,5 @@ function tribe() view returns(address)
 | Param | Type | Notes |
 | ----- | ---- | ----- |
 |  | address |  |
+
+[⬅️ Contracts](contracts.md)

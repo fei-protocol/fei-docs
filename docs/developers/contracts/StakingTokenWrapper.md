@@ -1,4 +1,6 @@
-# StakingTokenWrapper
+[⬅️ Contracts](contracts.md)
+
+# [StakingTokenWrapper](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/staking/StakingTokenWrapper.sol)
 
 > StakingTokenWrapper for TribalChief
 
@@ -303,3 +305,5 @@ function tribalChief() view returns(address)
 | Param | Type | Notes |
 | ----- | ---- | ----- |
 |  | address |  |
+
+[⬅️ Contracts](contracts.md)

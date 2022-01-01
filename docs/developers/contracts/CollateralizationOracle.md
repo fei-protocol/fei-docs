@@ -1,4 +1,6 @@
-# CollateralizationOracle
+[⬅️ Contracts](contracts.md)
+
+# [CollateralizationOracle](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/oracle/collateralization/CollateralizationOracle.sol)
 
 > Fei Protocol's Collateralization Oracle
 > 
@@ -578,3 +580,5 @@ function update() nonpayable
 ```
 
 > update all oracles required for this oracle to work that are not         paused themselves.
+
+[⬅️ Contracts](contracts.md)

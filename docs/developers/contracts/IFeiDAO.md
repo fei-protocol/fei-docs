@@ -1,4 +1,6 @@
-# IFeiDAO
+[⬅️ Contracts](contracts.md)
+
+# [IFeiDAO](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/dao/FeiDAOTimelock.sol)
 
 ## Methods
 
@@ -13,3 +15,5 @@ function updateTimelock(address) nonpayable
 | Param | Type | Notes |
 | ----- | ---- | ----- |
 | newTimelock | address |  |
+
+[⬅️ Contracts](contracts.md)

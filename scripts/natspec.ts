@@ -117,7 +117,7 @@ export default async function (artifacts, artifactsCategoryMap) {
       stateVariables: membersByType.stateVariable,
       methods: membersByType.function
     };
-    output[name] = json2md(toMarkdownJson(data));
+    output[name] = json2md(toMarkdownJson(data, contractName));
   }
 
 
@@ -146,10 +146,12 @@ export default async function (artifacts, artifactsCategoryMap) {
   return output;
 };
 
-function toMarkdownJson(data) {
+function toMarkdownJson(data, contractName) {
   const output = [];
 
-  output.push({ h1: data.name });
+  output.push({link: { title: '⬅️ Contracts', source: 'contracts.md' }});
+
+  output.push({ h1: `[${data.name}](https://github.com/fei-protocol/fei-protocol-core/blob/develop/${contractName.slice(0, contractName.lastIndexOf(':'))})`});
 
   if (data.author) {
     data.title && output.push({ blockquote: `${data.title}\n\nAuthor: ${data.author}` });
@@ -248,6 +250,6 @@ function toMarkdownJson(data) {
       }
     }
   }
-
+  output.push({link: { title: '⬅️ Contracts', source: 'contracts.md' }});
   return output;
 }

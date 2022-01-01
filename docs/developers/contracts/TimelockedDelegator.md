@@ -1,4 +1,6 @@
-# TimelockedDelegator
+[⬅️ Contracts](contracts.md)
+
+# [TimelockedDelegator](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/dao/TimelockedDelegator.sol)
 
 > a timelock for TRIBE allowing for sub-delegation
 > 
@@ -481,3 +483,5 @@ function undelegate(address) nonpayable returns(uint256)
 | Param | Type | Notes |
 | ----- | ---- | ----- |
 |  | uint256 |  |
+
+[⬅️ Contracts](contracts.md)

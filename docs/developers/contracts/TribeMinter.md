@@ -1,4 +1,6 @@
-# TribeMinter
+[⬅️ Contracts](contracts.md)
+
+# [TribeMinter](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/dao/TribeMinter.sol)
 
 > implementation for a TRIBE Minter Contract
 > 
@@ -639,3 +641,5 @@ function unpause() nonpayable
 ```
 
 > set pausable methods to unpaused
+
+[⬅️ Contracts](contracts.md)

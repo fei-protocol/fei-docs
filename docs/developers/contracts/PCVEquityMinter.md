@@ -1,4 +1,6 @@
-# PCVEquityMinter
+[⬅️ Contracts](contracts.md)
+
+# [PCVEquityMinter](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/token/minter/PCVEquityMinter.sol)
 
 > PCVEquityMinter
 
@@ -760,3 +762,5 @@ function unpause() nonpayable
 ```
 
 > set pausable methods to unpaused
+
+[⬅️ Contracts](contracts.md)

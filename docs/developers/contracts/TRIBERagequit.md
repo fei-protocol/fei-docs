@@ -1,4 +1,6 @@
-# TRIBERagequit
+[⬅️ Contracts](contracts.md)
+
+# [TRIBERagequit](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/merger/TribeRagequit.sol)
 
 > Contract to exchange TRIBE with FEI post-merger
 > 
@@ -386,3 +388,5 @@ function tribeTimelock() view returns(address)
 | Param | Type | Notes |
 | ----- | ---- | ----- |
 |  | address |  |
+
+[⬅️ Contracts](contracts.md)

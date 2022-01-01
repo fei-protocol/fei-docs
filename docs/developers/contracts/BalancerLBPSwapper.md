@@ -1,4 +1,6 @@
-# BalancerLBPSwapper
+[⬅️ Contracts](contracts.md)
+
+# [BalancerLBPSwapper](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/pcv/balancer/BalancerLBPSwapper.sol)
 
 > BalancerLBPSwapper
 > 
@@ -920,3 +922,5 @@ function withdrawERC20(address,address,uint256) nonpayable
 | token | address | address of the ERC20 to send |
 | to | address | address destination of the ERC20 |
 | amount | uint256 | quantity of ERC20 to send |
+
+[⬅️ Contracts](contracts.md)

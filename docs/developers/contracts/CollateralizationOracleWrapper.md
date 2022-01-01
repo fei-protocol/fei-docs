@@ -1,4 +1,6 @@
-# CollateralizationOracleWrapper
+[⬅️ Contracts](contracts.md)
+
+# [CollateralizationOracleWrapper](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/oracle/collateralization/CollateralizationOracleWrapper.sol)
 
 > Fei Protocol's Collateralization Oracle
 > 
@@ -688,3 +690,5 @@ function updateIfOutdated() nonpayable
 ```
 
 > this method reverts if the oracle is not outdated It is useful if the caller is incentivized for calling only when the deviation threshold or frequency has passed
+
+[⬅️ Contracts](contracts.md)
