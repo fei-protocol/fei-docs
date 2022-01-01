@@ -3,13 +3,13 @@ import hre from 'hardhat';
 import path from 'path';
 import json2md from 'json2md';
 
-export default async function (artifacts) {
+export default async function (artifacts, artifactsCategoryMap) {
   const config = {
     path: './docs/developers/contracts',
     clear: false,
-    only: Object.keys(artifacts),
+    only: Object.keys(artifacts).map(x => `/${x}`),
     except: ['contracts/mock', 'contracts/external', 'contracts/test'],
-    logging: false
+    logging: true
   };
 
   const output = {};
@@ -129,7 +129,18 @@ export default async function (artifacts) {
     fs.writeFileSync(path, output[file],{flag:'w+'});
   }
 
-  const nav = [{'ul': files.map(f => `[${f}](${f}.md)`)}];
+  const nav = [];
+
+  const categoryList = Object.keys(artifactsCategoryMap);
+  for (const category of categoryList) {
+    nav.push({h2: category});
+    const artifactNames = [...new Set(artifactsCategoryMap[category])];
+
+    const li = artifactNames.map(name => `[${name}](${name}.md)`);
+    nav.push({'ul': li});
+  }
+
+  // const nav = [{'ul': files.map(f => `[${f}](${f}.md)`)}];
   fs.writeFileSync(`${outputDirectory}/contracts.md`, json2md(nav), {flag:'w+'});
 
   return output;

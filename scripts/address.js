@@ -12,6 +12,17 @@ export function address() {
   const keys = Object.keys(addresses);
 
   const artifacts = {}
+  const artifactsCategoryMap = {
+    'Core' : [],
+    'Governance' : [],
+    'Peg' : [],
+    'PCV' : [],
+    'Collateralization' : [],
+    'Oracle' : [],
+    'Keeper' : [],
+    'Rewards' : [],
+    'FeiRari' : []
+  }
 
   const title = [['Name', 'Address']];
   const categories = {
@@ -33,6 +44,7 @@ export function address() {
     }
 
     artifacts[addresses[key].artifactName] = category;
+    addresses[key].artifactName !== 'unknown' && artifactsCategoryMap[category].push(addresses[key].artifactName);
 
     const address = addresses[key].address;
     categories[category] = categories[category].concat([[key, `[${address}](https://etherscan.io/address/${address})`]]);
@@ -47,5 +59,8 @@ export function address() {
   }
 
   console.log(`Done`);
-  return artifacts;
+  return {
+    artifacts,
+    artifactsCategoryMap
+  };
 }
