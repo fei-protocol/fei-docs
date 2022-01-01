@@ -3,7 +3,7 @@ import hre from 'hardhat';
 import path from 'path';
 import json2md from 'json2md';
 
-export default async function (artifacts, artifactsCategoryMap, artifactImplMap) {
+export default async function (artifacts, artifactsCategoryMap, artifactImplMap, artifactDependencyMap) {
   const config = {
     path: './docs/developers/contracts',
     clear: false,
@@ -116,7 +116,8 @@ export default async function (artifacts, artifactsCategoryMap, artifactImplMap)
       events: membersByType.event,
       stateVariables: membersByType.stateVariable,
       methods: membersByType.function,
-      implementations: artifactImplMap[name]
+      implementations: artifactImplMap[name],
+      related: artifactDependencyMap[name] ? [...artifactDependencyMap[name]] : [] // spread Set into array
     };
     output[name] = json2md(toMarkdownJson(data, contractName));
   }
@@ -168,6 +169,13 @@ function toMarkdownJson(data, contractName) {
   if (impls) {
     output.push({ h2: 'Mainnet implementations'});
     output.push({ table: { headers: ['Name', 'Address'], rows: impls}});
+  }
+
+  const deps = data.related;
+
+  if (deps.length) {
+    output.push({ h2: 'Related Contracts'});
+    output.push({ p: deps.map(x => `[${x}](${x}.md)`).join(', ')});
   }
 
   // TODO add constructor, fallback, and receive
