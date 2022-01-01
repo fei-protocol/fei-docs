@@ -10,3 +10,7 @@ nav:
      - Permissions: 'developers/permissions.md'
      - Bug Bounty: 'developers/bug-bounty.md'
   - Operator: 'operator/operator.md'
+
+theme:
+  name: mkdocs
+  navigation_depth: 4

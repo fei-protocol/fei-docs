@@ -2,6 +2,26 @@
 
 ## Methods
 
+#### deposit
 
- - deposit(uint256)
- - withdraw(uint256)
+```javascript
+function deposit(uint256) nonpayable
+```
+
+##### Params
+
+| Param | Type | Notes |
+| ----- | ---- | ----- |
+| amount | uint256 |  |
+
+#### withdraw
+
+```javascript
+function withdraw(uint256) nonpayable
+```
+
+##### Params
+
+| Param | Type | Notes |
+| ----- | ---- | ----- |
+| requestedAmount | uint256 |  |

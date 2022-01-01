@@ -2,5 +2,14 @@
 
 ## Methods
 
+#### exchange
 
- - exchange(uint256)
+```javascript
+function exchange(uint256) nonpayable
+```
+
+##### Params
+
+| Param | Type | Notes |
+| ----- | ---- | ----- |
+| amount | uint256 |  |

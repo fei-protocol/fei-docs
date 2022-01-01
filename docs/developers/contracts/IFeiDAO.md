@@ -2,5 +2,14 @@
 
 ## Methods
 
+#### updateTimelock
 
- - updateTimelock(address)
+```javascript
+function updateTimelock(address) nonpayable
+```
+
+##### Params
+
+| Param | Type | Notes |
+| ----- | ---- | ----- |
+| newTimelock | address |  |

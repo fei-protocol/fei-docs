@@ -2,5 +2,14 @@
 
 ## Methods
 
+#### token
 
- - token()
+```javascript
+function token() nonpayable returns(address)
+```
+
+##### Returns
+
+| Param | Type | Notes |
+| ----- | ---- | ----- |
+|  | address |  |

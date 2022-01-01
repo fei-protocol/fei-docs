@@ -2,5 +2,8 @@
 
 ## Methods
 
+#### mint
 
- - mint()
+```javascript
+function mint() payable
+```
