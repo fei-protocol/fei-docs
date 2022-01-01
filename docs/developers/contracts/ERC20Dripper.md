@@ -8,6 +8,11 @@
 | ---- | ------- |
 | erc20Dripper | [0x3Fe0EAD3500e767F0F8bC2d3B5AF7755B1b21A6a](https://etherscan.io/address/0x3Fe0EAD3500e767F0F8bC2d3B5AF7755B1b21A6a) |
 
+## Related Contracts
+
+
+[Core](Core.md), [Tribe](Tribe.md), [TribalChief](TribalChief.md), [TribeMinter](TribeMinter.md)
+
 ## Events
 
 #### ContractAdminRoleUpdate

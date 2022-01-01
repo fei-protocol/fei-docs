@@ -12,6 +12,11 @@
 | ---- | ------- |
 | collateralizationOracleGuardian | [0x81De6bA8df84A4B679061952E171a27F096F3eAe](https://etherscan.io/address/0x81De6bA8df84A4B679061952E171a27F096F3eAe) |
 
+## Related Contracts
+
+
+[Core](Core.md), [CollateralizationOracleWrapper](CollateralizationOracleWrapper.md)
+
 ## Events
 
 #### ContractAdminRoleUpdate

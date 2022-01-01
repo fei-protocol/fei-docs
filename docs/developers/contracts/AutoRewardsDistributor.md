@@ -11,6 +11,11 @@ Controller Contract to set tribe per block in Rewards Distributor Admin on Rari
 | ---- | ------- |
 | autoRewardsDistributor | [0x61be49dfbd869a601fea076e1a1379903e61a895](https://etherscan.io/address/0x61be49dfbd869a601fea076e1a1379903e61a895) |
 
+## Related Contracts
+
+
+[Core](Core.md), [RewardsDistributorAdmin](RewardsDistributorAdmin.md), [TribalChiefSyncV2](TribalChiefSyncV2.md), [TribalChief](TribalChief.md), [CErc20Delegator](CErc20Delegator.md)
+
 ## Events
 
 #### ContractAdminRoleUpdate

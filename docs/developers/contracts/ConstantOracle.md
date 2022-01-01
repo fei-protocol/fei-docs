@@ -16,6 +16,11 @@ Return a constant oracle price
 | oneConstantOracle | [0x2374800337c6BE8B935f96AA6c10b33f9F12Bd40](https://etherscan.io/address/0x2374800337c6BE8B935f96AA6c10b33f9F12Bd40) |
 | zeroConstantOracle | [0x43b99923CF06D6D9101110b595234670f73A4934](https://etherscan.io/address/0x43b99923CF06D6D9101110b595234670f73A4934) |
 
+## Related Contracts
+
+
+[Core](Core.md), [CollateralizationOracle](CollateralizationOracle.md)
+
 ## Events
 
 #### ContractAdminRoleUpdate
