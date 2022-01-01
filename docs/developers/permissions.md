@@ -6,13 +6,11 @@
 | bondingCurve                  | [0xB783c0E21763bEf9F2d04E6499abFbe23AdB7e1F](https://etherscan.io/address/0xB783c0E21763bEf9F2d04E6499abFbe23AdB7e1F) |
 | uniswapPCVDeposit             | [0x15958381E9E6dc98bD49655e36f524D2203a28bD](https://etherscan.io/address/0x15958381E9E6dc98bD49655e36f524D2203a28bD) |
 | feiDAOTimelock                | [0xd51dbA7a94e1adEa403553A8235C302cEbF41a3c](https://etherscan.io/address/0xd51dbA7a94e1adEa403553A8235C302cEbF41a3c) |
-| daiBondingCurve               | [0xC0afe0E649e32528666F993ce63822c3840e941a](https://etherscan.io/address/0xC0afe0E649e32528666F993ce63822c3840e941a) |
 | dpiUniswapPCVDeposit          | [0x902199755219A9f8209862d09F1891cfb34F59a3](https://etherscan.io/address/0x902199755219A9f8209862d09F1891cfb34F59a3) |
 | pcvEquityMinter               | [0x904Deb2Dac1EdfCBBb69b9c279aE5F75E57Cf5E9](https://etherscan.io/address/0x904Deb2Dac1EdfCBBb69b9c279aE5F75E57Cf5E9) |
 | collateralizationOracleKeeper | [0x62378C316a6161A613D02E11F65290aED79B3eD5](https://etherscan.io/address/0x62378C316a6161A613D02E11F65290aED79B3eD5) |
 | optimisticMinter              | [0xE66c4De480Bd317054B5a3CF8E8689649d0728c9](https://etherscan.io/address/0xE66c4De480Bd317054B5a3CF8E8689649d0728c9) |
 | agEurAngleUniswapPCVDeposit   | [0x7AC2Ab8143634419c5bc230A9f9955C3e29f64Ef](https://etherscan.io/address/0x7AC2Ab8143634419c5bc230A9f9955C3e29f64Ef) |
-| tribeRagequit                 | [0xE77d572F04904fFea40899FD907F7ADd6Ea5228A](https://etherscan.io/address/0xE77d572F04904fFea40899FD907F7ADd6Ea5228A) |
 | daiPSM                        | [0x210300C158f95E1342fD008aE417ef68311c49C2](https://etherscan.io/address/0x210300C158f95E1342fD008aE417ef68311c49C2) |
 
 
@@ -49,7 +47,7 @@
 | Name                         | Address                                                                                                               |
 | ---------------------------- | --------------------------------------------------------------------------------------------------------------------- |
 | feiDAOTimelock               | [0xd51dbA7a94e1adEa403553A8235C302cEbF41a3c](https://etherscan.io/address/0xd51dbA7a94e1adEa403553A8235C302cEbF41a3c) |
-| ratioPCVController           | [0xB1410aeCe2c65fE9e107c58b5aa32e91B18f0BC7](https://etherscan.io/address/0xB1410aeCe2c65fE9e107c58b5aa32e91B18f0BC7) |
+| ratioPCVControllerV2         | [0x221fff24FB66dA3c722c7C5B856956a6a30C0179](https://etherscan.io/address/0x221fff24FB66dA3c722c7C5B856956a6a30C0179) |
 | aaveEthPCVDripController     | [0xb3D63876d95d3a5e591D4DE536dC410b97244086](https://etherscan.io/address/0xb3D63876d95d3a5e591D4DE536dC410b97244086) |
 | compoundEthPCVDripController | [0xa84C8be28f3d560059339f06C6b6c5B23f53C58C](https://etherscan.io/address/0xa84C8be28f3d560059339f06C6b6c5B23f53C58C) |
 | pcvGuardian                  | [0x2D1b1b509B6432A73e3d798572f0648f6453a5D9](https://etherscan.io/address/0x2D1b1b509B6432A73e3d798572f0648f6453a5D9) |
@@ -86,9 +84,10 @@
 ## SWAP_ADMIN_ROLE
 
 
-| Name            | Address                                                                                                               |
-| --------------- | --------------------------------------------------------------------------------------------------------------------- |
-| pcvEquityMinter | [0x904Deb2Dac1EdfCBBb69b9c279aE5F75E57Cf5E9](https://etherscan.io/address/0x904Deb2Dac1EdfCBBb69b9c279aE5F75E57Cf5E9) |
+| Name               | Address                                                                                                               |
+| ------------------ | --------------------------------------------------------------------------------------------------------------------- |
+| pcvEquityMinter    | [0x904Deb2Dac1EdfCBBb69b9c279aE5F75E57Cf5E9](https://etherscan.io/address/0x904Deb2Dac1EdfCBBb69b9c279aE5F75E57Cf5E9) |
+| optimisticTimelock | [0xbC9C084a12678ef5B516561df902fdc426d95483](https://etherscan.io/address/0xbC9C084a12678ef5B516561df902fdc426d95483) |
 
 
 ---
@@ -120,6 +119,7 @@
 | Name               | Address                                                                                                               |
 | ------------------ | --------------------------------------------------------------------------------------------------------------------- |
 | optimisticTimelock | [0xbC9C084a12678ef5B516561df902fdc426d95483](https://etherscan.io/address/0xbC9C084a12678ef5B516561df902fdc426d95483) |
+| tribalChiefSyncV2  | [0xb41c594f9a6a2E0882212598337AF8145f63731b](https://etherscan.io/address/0xb41c594f9a6a2E0882212598337AF8145f63731b) |
 
 
 ---
