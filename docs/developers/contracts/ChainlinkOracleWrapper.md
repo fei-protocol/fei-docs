@@ -9,6 +9,21 @@
 
 Reads a Chainlink oracle value & wrap it under the standard Fei oracle interface
 
+## Mainnet implementations
+
+| Name | Address |
+| ---- | ------- |
+| chainlinkBALEthOracle | [0x7261D245454Daa070C77B2a26eA192E3a4c8F655](https://etherscan.io/address/0x7261D245454Daa070C77B2a26eA192E3a4c8F655) |
+| chainlinkCREAMEthOracle | [0xDE02522cDc4959117fe839a7326D80F9858f383C](https://etherscan.io/address/0xDE02522cDc4959117fe839a7326D80F9858f383C) |
+| chainlinkDaiUsdOracleWrapper | [0x231aDa12E273eDf3fA54CbD90c5C1a73129D5bb9](https://etherscan.io/address/0x231aDa12E273eDf3fA54CbD90c5C1a73129D5bb9) |
+| chainlinkDpiUsdOracleWrapper | [0xB594d2bd55Ede471e16b92AE6F7651648DA871c3](https://etherscan.io/address/0xB594d2bd55Ede471e16b92AE6F7651648DA871c3) |
+| chainlinkEthUsdOracleWrapper | [0xCd3c40AE1256922BA16C7872229385E20Bc8351e](https://etherscan.io/address/0xCd3c40AE1256922BA16C7872229385E20Bc8351e) |
+| chainlinkEurUsdOracleWrapper | [0xFb3a062236A7E08b572F17bc9Ad2bBc2becB87b1](https://etherscan.io/address/0xFb3a062236A7E08b572F17bc9Ad2bBc2becB87b1) |
+| chainlinkFeiEthOracleWrapper | [0x060Be7B51F78DFFd04749332fd306BA1228e7444](https://etherscan.io/address/0x060Be7B51F78DFFd04749332fd306BA1228e7444) |
+| chainlinkLUSDOracleWrapper | [0xe61d11ec732d556A26fb863B192052BEa03eF8B5](https://etherscan.io/address/0xe61d11ec732d556A26fb863B192052BEa03eF8B5) |
+| chainlinkRaiEthOracleWrapper | [0x3d49573ee6aFCBDe606F8a1c2AA1C498048E7190](https://etherscan.io/address/0x3d49573ee6aFCBDe606F8a1c2AA1C498048E7190) |
+| chainlinkTribeEthOracleWrapper | [0x061118ccabF0c2c62f05a2e3C2bd4379c0C70079](https://etherscan.io/address/0x061118ccabF0c2c62f05a2e3C2bd4379c0C70079) |
+
 ## Events
 
 #### ContractAdminRoleUpdate

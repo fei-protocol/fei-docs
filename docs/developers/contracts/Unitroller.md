@@ -2,6 +2,12 @@
 
 # [Unitroller](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/external/Unitroller.sol)
 
+## Mainnet implementations
+
+| Name | Address |
+| ---- | ------- |
+| rariPool8Comptroller | [0xc54172e34046c1653d1920d40333dd358c7a1af4](https://etherscan.io/address/0xc54172e34046c1653d1920d40333dd358c7a1af4) |
+
 ## Methods
 
 #### _acceptAdmin

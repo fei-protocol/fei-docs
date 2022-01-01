@@ -2,6 +2,13 @@
 
 # [FeiDAO](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/dao/FeiDAO.sol)
 
+## Mainnet implementations
+
+| Name | Address |
+| ---- | ------- |
+| feiDAO | [0x0BEF27FEB58e857046d630B2c03dFb7bae567494](https://etherscan.io/address/0x0BEF27FEB58e857046d630B2c03dFb7bae567494) |
+| tribeRariDAO | [0x637deEED4e4deb1D222650bD4B64192abf002c00](https://etherscan.io/address/0x637deEED4e4deb1D222650bD4B64192abf002c00) |
+
 ## Events
 
 #### ProposalCanceled

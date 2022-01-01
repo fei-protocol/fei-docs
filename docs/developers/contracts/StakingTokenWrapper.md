@@ -7,6 +7,21 @@
 
 Allows the TribalChief to distribute TRIBE to a beneficiary contract  The beneficiary is the sole holder of a dummy token staked in the TribalChief
 
+## Mainnet implementations
+
+| Name | Address |
+| ---- | ------- |
+| stakingTokenWrapperBribeD3pool | [0x462515dC7c21C728C8b7A777fDC89EEdAcF74537](https://etherscan.io/address/0x462515dC7c21C728C8b7A777fDC89EEdAcF74537) |
+| stakingTokenWrapperFOXLaaS | [0x3CD384ff1Fa1cbA8f06DF326AF4cbDA634aF94e8](https://etherscan.io/address/0x3CD384ff1Fa1cbA8f06DF326AF4cbDA634aF94e8) |
+| stakingTokenWrapperGROLaaS | [0x508629e8E0B96986Df4D0F1F60aadeF1d0FbaE96](https://etherscan.io/address/0x508629e8E0B96986Df4D0F1F60aadeF1d0FbaE96) |
+| stakingTokenWrapperKYLINLaaS | [0xFe266d143dB42a9835e2B1AB43B64a46278398cc](https://etherscan.io/address/0xFe266d143dB42a9835e2B1AB43B64a46278398cc) |
+| stakingTokenWrapperMStableLaaS | [0x9B9ad20Cd99Cac3B536b94497A18346d66db0379](https://etherscan.io/address/0x9B9ad20Cd99Cac3B536b94497A18346d66db0379) |
+| stakingTokenWrapperNEARLaaS | [0x3b3591a4f7FD386E9987Eb48d898e29b57c30c47](https://etherscan.io/address/0x3b3591a4f7FD386E9987Eb48d898e29b57c30c47) |
+| stakingTokenWrapperPoolTogetherLaaS | [0x6b018170311F3DA23c3fA62AFe1b2D0638522CCD](https://etherscan.io/address/0x6b018170311F3DA23c3fA62AFe1b2D0638522CCD) |
+| stakingTokenWrapperRari | [0xd81Be1B9A7895C996704A8DDa794BbA4454EeB90](https://etherscan.io/address/0xd81Be1B9A7895C996704A8DDa794BbA4454EeB90) |
+| stakingTokenWrapperSYNLaaS | [0x5Db85e395735Bb42eEB720Fe2EE69627d246e300](https://etherscan.io/address/0x5Db85e395735Bb42eEB720Fe2EE69627d246e300) |
+| stakingTokenWrapperUMALaaS | [0x90B336dFF819b9e4b3D9A32cabdcAB0E92836065](https://etherscan.io/address/0x90B336dFF819b9e4b3D9A32cabdcAB0E92836065) |
+
 ## Events
 
 #### Approval

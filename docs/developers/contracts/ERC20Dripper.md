@@ -2,6 +2,12 @@
 
 # [ERC20Dripper](https://github.com/fei-protocol/fei-protocol-core/blob/develop/contracts/pcv/utils/ERC20Dripper.sol)
 
+## Mainnet implementations
+
+| Name | Address |
+| ---- | ------- |
+| erc20Dripper | [0x3Fe0EAD3500e767F0F8bC2d3B5AF7755B1b21A6a](https://etherscan.io/address/0x3Fe0EAD3500e767F0F8bC2d3B5AF7755B1b21A6a) |
+
 ## Events
 
 #### ContractAdminRoleUpdate

@@ -6,6 +6,12 @@
 > 
 > Author: Fei Protocol
 
+## Mainnet implementations
+
+| Name | Address |
+| ---- | ------- |
+| bondingCurve | [0xB783c0E21763bEf9F2d04E6499abFbe23AdB7e1F](https://etherscan.io/address/0xB783c0E21763bEf9F2d04E6499abFbe23AdB7e1F) |
+
 ## Events
 
 #### Allocate

@@ -25,6 +25,10 @@ export function address() {
     'FeiRari' : []
   }
 
+  const artifactImplMap = {
+
+  }
+
   const title = [['Name', 'Address']];
   const categories = {
     'Core' : title,
@@ -47,10 +51,20 @@ export function address() {
 
     const artifactName = addresses[key].artifactName;
     artifacts[artifactName] = category;
-    artifactName !== 'unknown' && artifactsCategoryMap[category].push(artifactName);
 
+    let k = key;
     const address = addresses[key].address;
-    const k = artifactName !== 'unknown' ? `[${key}](contracts/${artifactName}.md)` : key
+
+    if (artifactName !== 'unknown') {
+      artifactsCategoryMap[category].push(artifactName);
+      k = `[${key}](contracts/${artifactName}.md)`;
+
+      if (!artifactImplMap[artifactName]) {
+        artifactImplMap[artifactName] = [];
+      }
+      artifactImplMap[artifactName].push([key, `[${address}](https://etherscan.io/address/${address})`]);
+    }
+
     categories[category] = categories[category].concat([[k, `[${address}](https://etherscan.io/address/${address})`]]);
   });
 
@@ -65,6 +79,7 @@ export function address() {
   console.log(`Done`);
   return {
     artifacts,
-    artifactsCategoryMap
+    artifactsCategoryMap,
+    artifactImplMap
   };
 }

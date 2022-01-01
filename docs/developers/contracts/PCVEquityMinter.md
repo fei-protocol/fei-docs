@@ -7,6 +7,12 @@
 
 A FeiTimedMinter that mints based on a percentage of PCV equity
 
+## Mainnet implementations
+
+| Name | Address |
+| ---- | ------- |
+| pcvEquityMinter | [0x904Deb2Dac1EdfCBBb69b9c279aE5F75E57Cf5E9](https://etherscan.io/address/0x904Deb2Dac1EdfCBBb69b9c279aE5F75E57Cf5E9) |
+
 ## Events
 
 #### APRUpdate

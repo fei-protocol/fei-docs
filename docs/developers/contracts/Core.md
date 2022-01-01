@@ -9,6 +9,12 @@
 
 maintains roles, access control, fei, tribe, genesisGroup, and the TRIBE treasury
 
+## Mainnet implementations
+
+| Name | Address |
+| ---- | ------- |
+| core | [0x8d5ED43dCa8C2F7dFB20CF7b53CC7E593635d7b9](https://etherscan.io/address/0x8d5ED43dCa8C2F7dFB20CF7b53CC7E593635d7b9) |
+
 ## Events
 
 #### FeiUpdate

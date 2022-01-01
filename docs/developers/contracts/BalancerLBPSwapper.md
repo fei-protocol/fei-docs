@@ -9,6 +9,13 @@
 
 an auction contract which cyclically sells one token for another using Balancer LBP
 
+## Mainnet implementations
+
+| Name | Address |
+| ---- | ------- |
+| feiTribeLBPSwapper | [0x16ef9601076d45e8cc564cDD91E5dF3Ae83dD3B3](https://etherscan.io/address/0x16ef9601076d45e8cc564cDD91E5dF3Ae83dD3B3) |
+| noFeeFeiTribeLBPSwapper | [0xC05FAF6C5C4bC1bD841AdFC92b3D3f20180F26E8](https://etherscan.io/address/0xC05FAF6C5C4bC1bD841AdFC92b3D3f20180F26E8) |
+
 ## Events
 
 #### BackupOracleUpdate

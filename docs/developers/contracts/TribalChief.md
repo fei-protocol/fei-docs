@@ -5,6 +5,13 @@
 
 The idea for this TribalChief contract is to be the owner of tribe token that is deposited into this contract.This contract was forked from sushiswap and has been modified to distribute staking rewards in tribe. All legacy code that relied on MasterChef V1 has been removed so that this contract will pay out staking rewards in tribe. The assumption this code makes is that this MasterChief contract will be funded before going live and offering staking rewards. This contract will not have the ability to mint tribe.
 
+## Mainnet implementations
+
+| Name | Address |
+| ---- | ------- |
+| tribalChief | [0x9e1076cC0d19F9B0b8019F384B0a29E48Ee46f7f](https://etherscan.io/address/0x9e1076cC0d19F9B0b8019F384B0a29E48Ee46f7f) |
+| tribalChiefImpl | [0x2d91362e8bcAA8826b482B531dcb170FC9d17777](https://etherscan.io/address/0x2d91362e8bcAA8826b482B531dcb170FC9d17777) |
+
 ## Events
 
 #### ContractAdminRoleUpdate
