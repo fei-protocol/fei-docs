@@ -13,6 +13,11 @@ A FeiTimedMinter that mints only when called by an owner
 | ---- | ------- |
 | optimisticMinter | [0xE66c4De480Bd317054B5a3CF8E8689649d0728c9](https://etherscan.io/address/0xE66c4De480Bd317054B5a3CF8E8689649d0728c9) |
 
+## Related Contracts
+
+
+[Core](Core.md), [OptimisticTimelock](OptimisticTimelock.md)
+
 ## Events
 
 #### BufferCapUpdate

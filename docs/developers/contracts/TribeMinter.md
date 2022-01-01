@@ -12,6 +12,11 @@
 | ---- | ------- |
 | tribeMinter | [0xFC3532b443383d9022b1B2c6FD5Fd0895943360A](https://etherscan.io/address/0xFC3532b443383d9022b1B2c6FD5Fd0895943360A) |
 
+## Related Contracts
+
+
+[Core](Core.md), [TribeReserveStabilizer](TribeReserveStabilizer.md), [Tribe](Tribe.md), [ERC20Dripper](ERC20Dripper.md), [FeiDAOTimelock](FeiDAOTimelock.md)
+
 ## Events
 
 #### AnnualMaxInflationUpdate

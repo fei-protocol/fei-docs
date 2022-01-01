@@ -13,6 +13,11 @@ A FeiTimedMinter that mints based on a percentage of PCV equity
 | ---- | ------- |
 | pcvEquityMinter | [0x904Deb2Dac1EdfCBBb69b9c279aE5F75E57Cf5E9](https://etherscan.io/address/0x904Deb2Dac1EdfCBBb69b9c279aE5F75E57Cf5E9) |
 
+## Related Contracts
+
+
+[Core](Core.md), [CollateralizationOracleWrapper](CollateralizationOracleWrapper.md), [BalancerLBPSwapper](BalancerLBPSwapper.md)
+
 ## Events
 
 #### APRUpdate

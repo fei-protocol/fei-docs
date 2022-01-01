@@ -12,6 +12,11 @@ The idea for this TribalChief contract is to be the owner of tribe token that is
 | tribalChief | [0x9e1076cC0d19F9B0b8019F384B0a29E48Ee46f7f](https://etherscan.io/address/0x9e1076cC0d19F9B0b8019F384B0a29E48Ee46f7f) |
 | tribalChiefImpl | [0x2d91362e8bcAA8826b482B531dcb170FC9d17777](https://etherscan.io/address/0x2d91362e8bcAA8826b482B531dcb170FC9d17777) |
 
+## Related Contracts
+
+
+[Core](Core.md), [AutoRewardsDistributor](AutoRewardsDistributor.md), [TribalChiefSyncV2](TribalChiefSyncV2.md), [OptimisticTimelock](OptimisticTimelock.md), [ERC20Dripper](ERC20Dripper.md), [StakingTokenWrapper](StakingTokenWrapper.md), [TribalChief](TribalChief.md), [ProxyAdmin](ProxyAdmin.md)
+
 ## Events
 
 #### ContractAdminRoleUpdate

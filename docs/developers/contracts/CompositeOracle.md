@@ -19,6 +19,11 @@ Reads two oracles and returns their product
 | creamUsdCompositeOracle | [0x2BDca027c7f57eD9AC1769Ba3a3D64600578bA49](https://etherscan.io/address/0x2BDca027c7f57eD9AC1769Ba3a3D64600578bA49) |
 | tribeUsdCompositeOracle | [0xD7B8207f8644ee5cc60095023a8fcb8BdCF54732](https://etherscan.io/address/0xD7B8207f8644ee5cc60095023a8fcb8BdCF54732) |
 
+## Related Contracts
+
+
+[Core](Core.md), [ChainlinkOracleWrapper](ChainlinkOracleWrapper.md), [CollateralizationOracle](CollateralizationOracle.md), [BalancerPCVDepositWeightedPool](BalancerPCVDepositWeightedPool.md), [TribeReserveStabilizer](TribeReserveStabilizer.md)
+
 ## Events
 
 #### ContractAdminRoleUpdate

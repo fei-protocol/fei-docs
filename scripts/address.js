@@ -1,6 +1,7 @@
 import dotenv from 'dotenv';
 import fs from 'fs';
 import addresses from '../fei-protocol-core/contract-addresses/mainnetAddresses';
+import dependencies from '../fei-protocol-core/contract-addresses/dependencies';
 import { markdownTable } from './markdown-table.js';
 
 dotenv.config();
@@ -25,9 +26,10 @@ export function address() {
     'FeiRari' : []
   }
 
-  const artifactImplMap = {
+  const artifactImplMap = {}
 
-  }
+  // map from artifact name => artifact name array
+  const artifactDependencyMap = {}
 
   const title = [['Name', 'Address']];
   const categories = {
@@ -63,6 +65,16 @@ export function address() {
         artifactImplMap[artifactName] = [];
       }
       artifactImplMap[artifactName].push([key, `[${address}](https://etherscan.io/address/${address})`]);
+
+      if (!artifactDependencyMap[artifactName]) {
+        artifactDependencyMap[artifactName] = new Set();
+      }
+
+      const deps = dependencies[key] ? dependencies[key].contractDependencies : [];
+      for (const dep of deps) {
+        const depArtifactName = addresses[dep].artifactName;
+        depArtifactName !== 'unknown' && artifactDependencyMap[artifactName].add(depArtifactName);
+      }
     }
 
     categories[category] = categories[category].concat([[k, `[${address}](https://etherscan.io/address/${address})`]]);
@@ -80,6 +92,7 @@ export function address() {
   return {
     artifacts,
     artifactsCategoryMap,
-    artifactImplMap
+    artifactImplMap,
+    artifactDependencyMap
   };
 }
