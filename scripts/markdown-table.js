@@ -1,4 +1,6 @@
 
+// Generates a md formatted table from an array of arrays where the sub-arrays are rows and the first entry is the headers
+// Copied from https://github.com/wooorm/markdown-table
 export function markdownTable(table, options = {}) {
   const align = (options.align || []).concat()
   const stringLength = options.stringLength || defaultStringLength
