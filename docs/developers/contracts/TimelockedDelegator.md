@@ -21,7 +21,7 @@ event BeneficiaryUpdate(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| _beneficiary indexed | address |  |
+| _beneficiary | address indexed |  |
 
 #### Delegate
 
@@ -33,7 +33,7 @@ event Delegate(address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| _delegatee indexed | address |  |
+| _delegatee | address indexed |  |
 | _amount | uint256 |  |
 
 #### DurationUpdate
@@ -59,7 +59,7 @@ event PendingBeneficiaryUpdate(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| _pendingBeneficiary indexed | address |  |
+| _pendingBeneficiary | address indexed |  |
 
 #### Release
 
@@ -71,8 +71,8 @@ event Release(address,address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| _beneficiary indexed | address |  |
-| _recipient indexed | address |  |
+| _beneficiary | address indexed |  |
+| _recipient | address indexed |  |
 | _amount | uint256 |  |
 
 #### TimerReset
@@ -97,7 +97,7 @@ event Undelegate(address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| _delegatee indexed | address |  |
+| _delegatee | address indexed |  |
 | _amount | uint256 |  |
 
 ## Methods
@@ -374,7 +374,7 @@ function remainingTime() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | remaining |
 
 #### setPendingBeneficiary
 
@@ -418,7 +418,7 @@ function timeSinceStart() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | timestamp |
 
 #### totalDelegated
 
@@ -482,6 +482,6 @@ function undelegate(address) nonpayable returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | the amount of TRIBE returned |
 
 [⬅️ Contracts](contracts.md)

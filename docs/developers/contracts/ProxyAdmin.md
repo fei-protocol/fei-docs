@@ -28,8 +28,8 @@ event OwnershipTransferred(address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| previousOwner indexed | address |  |
-| newOwner indexed | address |  |
+| previousOwner | address indexed |  |
+| newOwner | address indexed |  |
 
 ## Methods
 

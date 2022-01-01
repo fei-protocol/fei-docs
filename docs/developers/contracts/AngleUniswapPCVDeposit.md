@@ -29,8 +29,8 @@ event BackupOracleUpdate(address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldBackupOracle indexed | address |  |
-| newBackupOracle indexed | address |  |
+| oldBackupOracle | address indexed |  |
+| newBackupOracle | address indexed |  |
 
 #### ContractAdminRoleUpdate
 
@@ -42,8 +42,8 @@ event ContractAdminRoleUpdate(bytes32,bytes32)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldContractAdminRole indexed | bytes32 |  |
-| newContractAdminRole indexed | bytes32 |  |
+| oldContractAdminRole | bytes32 indexed |  |
+| newContractAdminRole | bytes32 indexed |  |
 
 #### CoreUpdate
 
@@ -55,8 +55,8 @@ event CoreUpdate(address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldCore indexed | address |  |
-| newCore indexed | address |  |
+| oldCore | address indexed |  |
+| newCore | address indexed |  |
 
 #### DecimalsNormalizerUpdate
 
@@ -81,7 +81,7 @@ event Deposit(address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| _from indexed | address |  |
+| _from | address indexed |  |
 | _amount | uint256 |  |
 
 #### InvertUpdate
@@ -120,8 +120,8 @@ event OracleUpdate(address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldOracle indexed | address |  |
-| newOracle indexed | address |  |
+| oldOracle | address indexed |  |
+| newOracle | address indexed |  |
 
 #### PairUpdate
 
@@ -133,8 +133,8 @@ event PairUpdate(address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldPair indexed | address |  |
-| newPair indexed | address |  |
+| oldPair | address indexed |  |
+| newPair | address indexed |  |
 
 #### Paused
 
@@ -170,9 +170,9 @@ event WithdrawERC20(address,address,address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| _caller indexed | address |  |
-| _token indexed | address |  |
-| _to indexed | address |  |
+| _caller | address indexed |  |
+| _token | address indexed |  |
+| _to | address indexed |  |
 | _amount | uint256 |  |
 
 #### WithdrawETH
@@ -185,8 +185,8 @@ event WithdrawETH(address,address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| _caller indexed | address |  |
-| _to indexed | address |  |
+| _caller | address indexed |  |
+| _to | address indexed |  |
 | _amount | uint256 |  |
 
 #### Withdrawal
@@ -199,8 +199,8 @@ event Withdrawal(address,address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| _caller indexed | address |  |
-| _to indexed | address |  |
+| _caller | address indexed |  |
+| _to | address indexed |  |
 | _amount | uint256 |  |
 
 ## Methods
@@ -307,7 +307,7 @@ function core() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | ICore implementation address |
 
 #### decimalsNormalizer
 
@@ -355,7 +355,7 @@ function fei() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | IFei implementation address |
 
 #### feiBalance
 
@@ -369,7 +369,7 @@ function feiBalance() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | fei amount held |
 
 #### getReserves
 
@@ -406,7 +406,7 @@ function invert((uint256)) pure returns(tuple)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | tuple |  |
+|  | tuple | the inverted peg as a Decimal |
 
 #### isContractAdmin
 
@@ -440,7 +440,7 @@ function liquidityOwned() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | amount of LP tokens |
 
 #### maxBasisPointsFromPegLP
 
@@ -550,7 +550,7 @@ function readOracle() view returns(tuple)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | tuple |  |
+|  | tuple | the peg as a Decimal |
 
 #### resistantBalanceAndFei
 
@@ -564,8 +564,8 @@ function resistantBalanceAndFei() view returns(uint256,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
-|  | uint256 |  |
+|  | uint256 | number of other token in pool |
+|  | uint256 | number of FEI in pool Derivation rETH, rFEI = resistant (ideal) ETH and FEI reserves, P = price of ETH in FEI: 1. rETH * rFEI = k 2. rETH = k / rFEI 3. rETH = (k * rETH) / (rFEI * rETH) 4. rETH ^ 2 = k / P 5. rETH = sqrt(k / P) and rFEI = k / rETH by 1. Finally scale the resistant reserves by the ratio owned by the contract |
 
 #### router
 
@@ -777,7 +777,7 @@ function tribe() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | IERC20 implementation address |
 
 #### tribeBalance
 
@@ -791,7 +791,7 @@ function tribeBalance() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | tribe amount held |
 
 #### unpause
 

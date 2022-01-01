@@ -3,11 +3,12 @@ import hre from 'hardhat';
 import path from 'path';
 import json2md from 'json2md';
 
+// writes a full set of contract documentation with smart links to other sections
 export default async function (artifacts, artifactsCategoryMap, artifactImplMap, artifactDependencyMap) {
   const config = {
     path: './docs/developers/contracts',
     clear: false,
-    only: Object.keys(artifacts).map(x => `/${x}`),
+    only: Object.keys(artifacts).map(x => `/${x}`), // only do contracts which appear in the artifacts map. The extra `/` prevents matching a substring in other artifacts
     except: ['contracts/mock', 'contracts/test'],
     logging: true
   };
@@ -26,6 +27,7 @@ export default async function (artifacts, artifactsCategoryMap, artifactImplMap,
 
   const contractNames = await hre.artifacts.getAllFullyQualifiedNames();
 
+  // Loop through every contract and compile the mardown data
   for (const contractName of contractNames) {
     if (config.only.length && !config.only.some((m) => contractName.match(m))) {
       config.logging && console.log(`skipping: ${contractName}`);
@@ -119,12 +121,15 @@ export default async function (artifacts, artifactsCategoryMap, artifactImplMap,
       implementations: artifactImplMap[name],
       related: artifactDependencyMap[name] ? [...artifactDependencyMap[name]] : [] // spread Set into array
     };
+
+    // first convert the data to markdown compatible json then use json2md to complete the conversion to md
     output[name] = json2md(toMarkdownJson(data, contractName));
   }
 
 
   const files = Object.keys(output);
 
+  // write the files to the config path
   for (const file of files) {
     const path = `${outputDirectory}/${file}.md`;
     config.logging && console.log(`Writing ${path}`);
@@ -133,6 +138,7 @@ export default async function (artifacts, artifactsCategoryMap, artifactImplMap,
 
   const nav = [];
 
+  // create a nav landing menu
   const categoryList = Object.keys(artifactsCategoryMap);
   for (const category of categoryList) {
     nav.push({h2: category});
@@ -151,10 +157,13 @@ export default async function (artifacts, artifactsCategoryMap, artifactImplMap,
 function toMarkdownJson(data, contractName) {
   const output = [];
 
+  // link back to nav
   output.push({link: { title: '⬅️ Contracts', source: 'contracts.md' }});
 
+  // title with github link
   output.push({ h1: `[${data.name}](https://github.com/fei-protocol/fei-protocol-core/blob/develop/${contractName.slice(0, contractName.lastIndexOf(':'))})`});
 
+  // add in title, author and natspec data
   if (data.author) {
     data.title && output.push({ blockquote: `${data.title}\n\nAuthor: ${data.author}` });
   } else {
@@ -165,14 +174,16 @@ function toMarkdownJson(data, contractName) {
 
   data.details && output.push({ p: `DEV NOTE: ${data.details}` });
 
+  // add in mainnet implementations section
   const impls = data.implementations;
   if (impls) {
     output.push({ h2: 'Mainnet implementations'});
     output.push({ table: { headers: ['Name', 'Address'], rows: impls}});
   }
 
-  const deps = data.related;
 
+  // add in related contracts section
+  const deps = data.related;
   if (deps.length) {
     output.push({ h2: 'Related Contracts'});
     output.push({ p: deps.map(x => `[${x}](${x}.md)`).join(', ')});
@@ -183,6 +194,7 @@ function toMarkdownJson(data, contractName) {
 
   const events = data.events;
 
+  // events data
   if (events) {
     output.push({ h2: 'Events' });
 
@@ -200,7 +212,7 @@ function toMarkdownJson(data, contractName) {
       } 
       for (const input of inputs) {
         const indexed = input.indexed ? ' indexed' : '';
-        rows.push([`${input.name}${indexed}`, input.type, ''])
+        rows.push([input.name, `${input.type}${indexed}`, '']);
       }
       const inputsTable = { headers: paramsHeader, rows: rows};
       output.push({h5: 'Params'});
@@ -210,6 +222,7 @@ function toMarkdownJson(data, contractName) {
 
   const methods = data.methods;
 
+  // methods data
   if (methods) {
     output.push({ h2: 'Methods' });
     const methodKeys = Object.keys(methods);
@@ -217,6 +230,8 @@ function toMarkdownJson(data, contractName) {
       const method = methods[methodName];
 
       const outputs = method.outputs;
+
+      // construct the full signature and function mutability/return values
       const returnValue = outputs.length ? ` returns(${outputs.map(x => x.type).join(',')})` : ''
 
       output.push({ h4: method.name});
@@ -235,6 +250,7 @@ function toMarkdownJson(data, contractName) {
         output.push({'blockquote': details});
       }
 
+      // add in params with optional natspec
       if (params.length) {
         const rows = [];
         const paramNatspec = method.params;
@@ -248,6 +264,7 @@ function toMarkdownJson(data, contractName) {
         output.push({table: inputsTable});
       }
 
+      // add in return values with optional natspec
       if (outputs.length) {
         const rows = [];
         const outputNatspec = method.returns;
@@ -256,7 +273,7 @@ function toMarkdownJson(data, contractName) {
         for (const output of outputs) {
           const notes = outputNatspec && outputNatspec[output.name];
           const altNotes = outputNatspec && outputNatspec[`_${i}`];
-          rows.push([output.name, output.type, notes || '']);
+          rows.push([output.name, output.type, notes || altNotes || '']);
           i+=1;
         }
         const outputsTable = { headers: paramsHeader, rows: rows};

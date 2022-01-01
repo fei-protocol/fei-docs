@@ -68,8 +68,8 @@ event ContractAdminRoleUpdate(bytes32,bytes32)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldContractAdminRole indexed | bytes32 |  |
-| newContractAdminRole indexed | bytes32 |  |
+| oldContractAdminRole | bytes32 indexed |  |
+| newContractAdminRole | bytes32 indexed |  |
 
 #### CoreUpdate
 
@@ -81,8 +81,8 @@ event CoreUpdate(address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldCore indexed | address |  |
-| newCore indexed | address |  |
+| oldCore | address indexed |  |
+| newCore | address indexed |  |
 
 #### OwnershipTransferred
 
@@ -94,8 +94,8 @@ event OwnershipTransferred(address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| previousOwner indexed | address |  |
-| newOwner indexed | address |  |
+| previousOwner | address indexed |  |
+| newOwner | address indexed |  |
 
 #### Paused
 
@@ -132,8 +132,8 @@ event TribeRewardsDripperUpdate(address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldTribeRewardsDripper indexed | address |  |
-| newTribeRewardsDripper indexed | address |  |
+| oldTribeRewardsDripper | address indexed |  |
+| newTribeRewardsDripper | address indexed |  |
 
 #### TribeTreasuryUpdate
 
@@ -145,8 +145,8 @@ event TribeTreasuryUpdate(address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldTribeTreasury indexed | address |  |
-| newTribeTreasury indexed | address |  |
+| oldTribeTreasury | address indexed |  |
+| newTribeTreasury | address indexed |  |
 
 #### Unpaused
 
@@ -246,7 +246,7 @@ function core() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | ICore implementation address |
 
 #### doPartialAction
 
@@ -274,7 +274,7 @@ function fei() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | IFei implementation address |
 
 #### feiBalance
 
@@ -288,7 +288,7 @@ function feiBalance() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | fei amount held |
 
 #### idealBufferCap
 
@@ -587,7 +587,7 @@ function tribe() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | IERC20 implementation address |
 
 #### tribeBalance
 
@@ -601,7 +601,7 @@ function tribeBalance() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | tribe amount held |
 
 #### tribeCirculatingSupply
 

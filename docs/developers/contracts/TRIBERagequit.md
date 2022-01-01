@@ -21,7 +21,7 @@ event Accept(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| dao indexed | address |  |
+| dao | address indexed |  |
 
 #### Enabled
 
@@ -33,7 +33,7 @@ event Enabled(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| caller indexed | address |  |
+| caller | address indexed |  |
 
 #### Exchange
 
@@ -45,7 +45,7 @@ event Exchange(address,uint256,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| from indexed | address |  |
+| from | address indexed |  |
 | amountIn | uint256 |  |
 | amountOut | uint256 |  |
 
@@ -115,7 +115,7 @@ function exchangeRate(uint256) view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | the new intrinsicValueExchangeRateBase |
 
 #### fei
 
@@ -329,7 +329,7 @@ function setExchangeRate(uint256) nonpayable returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | the new exchange rate |
 
 #### tribe
 

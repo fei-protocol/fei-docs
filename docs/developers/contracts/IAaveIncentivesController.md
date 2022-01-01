@@ -26,7 +26,7 @@ event AssetConfigUpdated(address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| asset indexed | address |  |
+| asset | address indexed |  |
 | emission | uint256 |  |
 
 #### AssetIndexUpdated
@@ -39,7 +39,7 @@ event AssetIndexUpdated(address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| asset indexed | address |  |
+| asset | address indexed |  |
 | index | uint256 |  |
 
 #### ClaimerSet
@@ -52,8 +52,8 @@ event ClaimerSet(address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| user indexed | address |  |
-| claimer indexed | address |  |
+| user | address indexed |  |
+| claimer | address indexed |  |
 
 #### DistributionEndUpdated
 
@@ -77,7 +77,7 @@ event RewardsAccrued(address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| user indexed | address |  |
+| user | address indexed |  |
 | amount | uint256 |  |
 
 #### RewardsClaimed
@@ -90,9 +90,9 @@ event RewardsClaimed(address,address,address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| user indexed | address |  |
-| to indexed | address |  |
-| claimer indexed | address |  |
+| user | address indexed |  |
+| to | address indexed |  |
+| claimer | address indexed |  |
 | amount | uint256 |  |
 
 #### UserIndexUpdated
@@ -105,8 +105,8 @@ event UserIndexUpdated(address,address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| user indexed | address |  |
-| asset indexed | address |  |
+| user | address indexed |  |
+| asset | address indexed |  |
 | index | uint256 |  |
 
 ## Methods
@@ -123,7 +123,7 @@ function DISTRIBUTION_END() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | The end of the distribution* |
 
 #### REWARD_TOKEN
 
@@ -159,7 +159,7 @@ function claimRewards(address[],uint256,address) nonpayable returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | Rewards claimed* |
 
 #### claimRewardsOnBehalf
 
@@ -182,7 +182,7 @@ function claimRewardsOnBehalf(address[],uint256,address,address) nonpayable retu
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | Rewards claimed* |
 
 #### configureAssets
 
@@ -217,7 +217,7 @@ function getAssetData(address) view returns(uint256,uint256,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | The asset index, the emission per second and the last updated timestamp* |
 |  | uint256 |  |
 |  | uint256 |  |
 
@@ -239,7 +239,7 @@ function getClaimer(address) view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | The claimer address |
 
 #### getDistributionEnd
 
@@ -253,7 +253,7 @@ function getDistributionEnd() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | The end of the distribution* |
 
 #### getRewardsBalance
 
@@ -274,7 +274,7 @@ function getRewardsBalance(address[],address) view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | The rewards* |
 
 #### getUserAssetData
 
@@ -295,7 +295,7 @@ function getUserAssetData(address,address) view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | The new index* |
 
 #### getUserUnclaimedRewards
 
@@ -315,7 +315,7 @@ function getUserUnclaimedRewards(address) view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | the unclaimed user rewards |
 
 #### handleAction
 

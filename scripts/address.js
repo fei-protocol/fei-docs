@@ -12,7 +12,10 @@ export function address() {
 
   const keys = Object.keys(addresses);
 
+  // Map of artifacts to their category
   const artifacts = {}
+
+  // Map of categories to the list of artifacts it contains
   const artifactsCategoryMap = {
     'Core' : [],
     'Governance' : [],
@@ -26,9 +29,12 @@ export function address() {
     'FeiRari' : []
   }
 
+  // Map of artifacts to the list of implementations and their etherscan links
+  // used for "Mainnet implementations" sections of contract docs
   const artifactImplMap = {}
 
-  // map from artifact name => artifact name array
+  // map from artifact name => artifact name Set of dependent artifacts
+  // used for "Related Contracts" sections of the contract docs
   const artifactDependencyMap = {}
 
   const title = [['Name', 'Address']];
@@ -48,6 +54,7 @@ export function address() {
   keys.map((key, index) => {
     const category = addresses[key].category;
     if (!categories[category]) {
+      // exclude contract categories not listed above
       return;
     }
 
@@ -57,9 +64,10 @@ export function address() {
     let k = key;
     const address = addresses[key].address;
 
+    // if there is a known artifact, add it to various context maps
     if (artifactName !== 'unknown') {
       artifactsCategoryMap[category].push(artifactName);
-      k = `[${key}](contracts/${artifactName}.md)`;
+      k = `[${key}](contracts/${artifactName}.md)`; // link the contract docs from addresses page
 
       if (!artifactImplMap[artifactName]) {
         artifactImplMap[artifactName] = [];
@@ -70,6 +78,7 @@ export function address() {
         artifactDependencyMap[artifactName] = new Set();
       }
 
+      // if present in dependencies file, append all dependencies to map
       const deps = dependencies[key] ? dependencies[key].contractDependencies : [];
       for (const dep of deps) {
         const depArtifactName = addresses[dep].artifactName;
@@ -77,10 +86,13 @@ export function address() {
       }
     }
 
+    // compiling the lists by category for the addresses file
     categories[category] = categories[category].concat([[k, `[${address}](https://etherscan.io/address/${address})`]]);
   });
 
   const categoryList = Object.keys(categories);
+  // convert to markdown tables by category and add
+  // TODO: deprecate markdown-table.js in favor of json2md
   for (var i = 0; i < categoryList.length; i++) {
     const category = categoryList[i];
     const str = markdownTable(categories[category]);

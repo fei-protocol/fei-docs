@@ -29,8 +29,8 @@ event ContractAdminRoleUpdate(bytes32,bytes32)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldContractAdminRole indexed | bytes32 |  |
-| newContractAdminRole indexed | bytes32 |  |
+| oldContractAdminRole | bytes32 indexed |  |
+| newContractAdminRole | bytes32 indexed |  |
 
 #### CoreUpdate
 
@@ -42,8 +42,8 @@ event CoreUpdate(address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldCore indexed | address |  |
-| newCore indexed | address |  |
+| oldCore | address indexed |  |
+| newCore | address indexed |  |
 
 #### Deposit
 
@@ -55,7 +55,7 @@ event Deposit(address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| _from indexed | address |  |
+| _from | address indexed |  |
 | _amount | uint256 |  |
 
 #### Paused
@@ -104,9 +104,9 @@ event WithdrawERC20(address,address,address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| _caller indexed | address |  |
-| _token indexed | address |  |
-| _to indexed | address |  |
+| _caller | address indexed |  |
+| _token | address indexed |  |
+| _to | address indexed |  |
 | _amount | uint256 |  |
 
 #### WithdrawETH
@@ -119,8 +119,8 @@ event WithdrawETH(address,address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| _caller indexed | address |  |
-| _to indexed | address |  |
+| _caller | address indexed |  |
+| _to | address indexed |  |
 | _amount | uint256 |  |
 
 #### Withdrawal
@@ -133,8 +133,8 @@ event Withdrawal(address,address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| _caller indexed | address |  |
-| _to indexed | address |  |
+| _caller | address indexed |  |
+| _to | address indexed |  |
 | _amount | uint256 |  |
 
 ## Methods
@@ -193,7 +193,7 @@ function core() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | ICore implementation address |
 
 #### deposit
 
@@ -217,7 +217,7 @@ function fei() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | IFei implementation address |
 
 #### feiBalance
 
@@ -231,7 +231,7 @@ function feiBalance() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | fei amount held |
 
 #### isContractAdmin
 
@@ -380,7 +380,7 @@ function tribe() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | IERC20 implementation address |
 
 #### tribeBalance
 
@@ -394,7 +394,7 @@ function tribeBalance() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | tribe amount held |
 
 #### unpause
 

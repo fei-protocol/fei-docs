@@ -29,8 +29,8 @@ event Approval(address,address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| owner indexed | address |  |
-| spender indexed | address |  |
+| owner | address indexed |  |
+| spender | address indexed |  |
 | value | uint256 |  |
 
 #### Burning
@@ -43,8 +43,8 @@ event Burning(address,address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| _to indexed | address |  |
-| _burner indexed | address |  |
+| _to | address indexed |  |
+| _burner | address indexed |  |
 | _amount | uint256 |  |
 
 #### ContractAdminRoleUpdate
@@ -57,8 +57,8 @@ event ContractAdminRoleUpdate(bytes32,bytes32)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldContractAdminRole indexed | bytes32 |  |
-| newContractAdminRole indexed | bytes32 |  |
+| oldContractAdminRole | bytes32 indexed |  |
+| newContractAdminRole | bytes32 indexed |  |
 
 #### CoreUpdate
 
@@ -70,8 +70,8 @@ event CoreUpdate(address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldCore indexed | address |  |
-| newCore indexed | address |  |
+| oldCore | address indexed |  |
+| newCore | address indexed |  |
 
 #### IncentiveContractUpdate
 
@@ -83,8 +83,8 @@ event IncentiveContractUpdate(address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| _incentivized indexed | address |  |
-| _incentiveContract indexed | address |  |
+| _incentivized | address indexed |  |
+| _incentiveContract | address indexed |  |
 
 #### Minting
 
@@ -96,8 +96,8 @@ event Minting(address,address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| _to indexed | address |  |
-| _minter indexed | address |  |
+| _to | address indexed |  |
+| _minter | address indexed |  |
 | _amount | uint256 |  |
 
 #### Paused
@@ -122,8 +122,8 @@ event Transfer(address,address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| from indexed | address |  |
-| to indexed | address |  |
+| from | address indexed |  |
+| to | address indexed |  |
 | value | uint256 |  |
 
 #### Unpaused
@@ -281,7 +281,7 @@ function core() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | ICore implementation address |
 
 #### decimals
 
@@ -330,7 +330,7 @@ function fei() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | IFei implementation address |
 
 #### feiBalance
 
@@ -344,7 +344,7 @@ function feiBalance() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | fei amount held |
 
 #### incentiveContract
 
@@ -620,7 +620,7 @@ function tribe() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | IERC20 implementation address |
 
 #### tribeBalance
 
@@ -634,7 +634,7 @@ function tribeBalance() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | tribe amount held |
 
 #### unpause
 

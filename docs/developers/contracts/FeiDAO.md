@@ -140,7 +140,7 @@ event VoteCast(address,uint256,uint8,uint256,string)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| voter indexed | address |  |
+| voter | address indexed |  |
 | proposalId | uint256 |  |
 | support | uint8 |  |
 | weight | uint256 |  |

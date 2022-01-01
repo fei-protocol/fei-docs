@@ -25,8 +25,8 @@ event Approval(address,address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| owner indexed | address |  |
-| spender indexed | address |  |
+| owner | address indexed |  |
+| spender | address indexed |  |
 | amount | uint256 |  |
 
 #### DelegateChanged
@@ -39,9 +39,9 @@ event DelegateChanged(address,address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| delegator indexed | address |  |
-| fromDelegate indexed | address |  |
-| toDelegate indexed | address |  |
+| delegator | address indexed |  |
+| fromDelegate | address indexed |  |
+| toDelegate | address indexed |  |
 
 #### DelegateVotesChanged
 
@@ -53,7 +53,7 @@ event DelegateVotesChanged(address,uint256,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| delegate indexed | address |  |
+| delegate | address indexed |  |
 | previousBalance | uint256 |  |
 | newBalance | uint256 |  |
 
@@ -80,8 +80,8 @@ event Transfer(address,address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| from indexed | address |  |
-| to indexed | address |  |
+| from | address indexed |  |
+| to | address indexed |  |
 | amount | uint256 |  |
 
 ## Methods
@@ -147,7 +147,7 @@ function allowance(address,address) view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | The number of tokens approved |
 
 #### approve
 
@@ -170,7 +170,7 @@ function approve(address,uint256) nonpayable returns(bool)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | bool |  |
+|  | bool | Whether or not the approval succeeded |
 
 #### balanceOf
 
@@ -190,7 +190,7 @@ function balanceOf(address) view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | The number of tokens held |
 
 #### checkpoints
 
@@ -299,7 +299,7 @@ function getCurrentVotes(address) view returns(uint96)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint96 |  |
+|  | uint96 | The number of current votes for `account` |
 
 #### getPriorVotes
 
@@ -322,7 +322,7 @@ function getPriorVotes(address,uint256) view returns(uint96)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint96 |  |
+|  | uint96 | The number of votes the account had as of the given block |
 
 #### mint
 
@@ -488,7 +488,7 @@ function transfer(address,uint256) nonpayable returns(bool)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | bool |  |
+|  | bool | Whether or not the transfer succeeded |
 
 #### transferFrom
 
@@ -510,6 +510,6 @@ function transferFrom(address,address,uint256) nonpayable returns(bool)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | bool |  |
+|  | bool | Whether or not the transfer succeeded |
 
 [⬅️ Contracts](contracts.md)

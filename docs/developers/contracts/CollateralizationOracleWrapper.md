@@ -34,9 +34,9 @@ event CachedValueUpdate(address,uint256,uint256,int256)
 | Param | Type | Notes |
 | ----- | ---- | ----- |
 | from | address |  |
-| protocolControlledValue indexed | uint256 |  |
-| userCirculatingFei indexed | uint256 |  |
-| protocolEquity indexed | int256 |  |
+| protocolControlledValue | uint256 indexed |  |
+| userCirculatingFei | uint256 indexed |  |
+| protocolEquity | int256 indexed |  |
 
 #### CollateralizationOracleUpdate
 
@@ -49,8 +49,8 @@ event CollateralizationOracleUpdate(address,address,address)
 | Param | Type | Notes |
 | ----- | ---- | ----- |
 | from | address |  |
-| oldOracleAddress indexed | address |  |
-| newOracleAddress indexed | address |  |
+| oldOracleAddress | address indexed |  |
+| newOracleAddress | address indexed |  |
 
 #### ContractAdminRoleUpdate
 
@@ -62,8 +62,8 @@ event ContractAdminRoleUpdate(bytes32,bytes32)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldContractAdminRole indexed | bytes32 |  |
-| newContractAdminRole indexed | bytes32 |  |
+| oldContractAdminRole | bytes32 indexed |  |
+| newContractAdminRole | bytes32 indexed |  |
 
 #### CoreUpdate
 
@@ -75,8 +75,8 @@ event CoreUpdate(address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldCore indexed | address |  |
-| newCore indexed | address |  |
+| oldCore | address indexed |  |
+| newCore | address indexed |  |
 
 #### DeviationThresholdUpdate
 
@@ -89,8 +89,8 @@ event DeviationThresholdUpdate(address,uint256,uint256)
 | Param | Type | Notes |
 | ----- | ---- | ----- |
 | from | address |  |
-| oldThreshold indexed | uint256 |  |
-| newThreshold indexed | uint256 |  |
+| oldThreshold | uint256 indexed |  |
+| newThreshold | uint256 indexed |  |
 
 #### DurationUpdate
 
@@ -249,7 +249,7 @@ function core() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | ICore implementation address |
 
 #### deviationThresholdBasisPoints
 
@@ -291,7 +291,7 @@ function fei() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | IFei implementation address |
 
 #### feiBalance
 
@@ -305,7 +305,7 @@ function feiBalance() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | fei amount held |
 
 #### initialize
 
@@ -517,7 +517,7 @@ function remainingTime() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | remaining |
 
 #### setCache
 
@@ -649,7 +649,7 @@ function timeSinceStart() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | timestamp |
 
 #### tribe
 
@@ -663,7 +663,7 @@ function tribe() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | IERC20 implementation address |
 
 #### tribeBalance
 
@@ -677,7 +677,7 @@ function tribeBalance() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | tribe amount held |
 
 #### unpause
 

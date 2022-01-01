@@ -57,8 +57,8 @@ event ContractAdminRoleUpdate(bytes32,bytes32)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldContractAdminRole indexed | bytes32 |  |
-| newContractAdminRole indexed | bytes32 |  |
+| oldContractAdminRole | bytes32 indexed |  |
+| newContractAdminRole | bytes32 indexed |  |
 
 #### CoreUpdate
 
@@ -70,8 +70,8 @@ event CoreUpdate(address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldCore indexed | address |  |
-| newCore indexed | address |  |
+| oldCore | address indexed |  |
+| newCore | address indexed |  |
 
 #### DripAmountUpdate
 
@@ -96,8 +96,8 @@ event Dripped(address,address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| source indexed | address |  |
-| target indexed | address |  |
+| source | address indexed |  |
+| target | address indexed |  |
 | amount | uint256 |  |
 
 #### DurationUpdate
@@ -161,8 +161,8 @@ event SourceUpdate(address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldSource indexed | address |  |
-| newSource indexed | address |  |
+| oldSource | address indexed |  |
+| newSource | address indexed |  |
 
 #### TargetUpdate
 
@@ -174,8 +174,8 @@ event TargetUpdate(address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldTarget indexed | address |  |
-| newTarget indexed | address |  |
+| oldTarget | address indexed |  |
+| newTarget | address indexed |  |
 
 #### TimerReset
 
@@ -273,7 +273,7 @@ function core() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | ICore implementation address |
 
 #### doPartialAction
 
@@ -351,7 +351,7 @@ function fei() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | IFei implementation address |
 
 #### feiBalance
 
@@ -365,7 +365,7 @@ function feiBalance() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | fei amount held |
 
 #### incentiveAmount
 
@@ -489,7 +489,7 @@ function remainingTime() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | remaining |
 
 #### setBufferCap
 
@@ -659,7 +659,7 @@ function timeSinceStart() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | timestamp |
 
 #### tribe
 
@@ -673,7 +673,7 @@ function tribe() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | IERC20 implementation address |
 
 #### tribeBalance
 
@@ -687,7 +687,7 @@ function tribeBalance() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | tribe amount held |
 
 #### unpause
 
