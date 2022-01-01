@@ -28,8 +28,8 @@ event Approval(address,address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| owner indexed | address |  |
-| spender indexed | address |  |
+| owner | address indexed |  |
+| spender | address indexed |  |
 | value | uint256 |  |
 
 #### Transfer
@@ -42,8 +42,8 @@ event Transfer(address,address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| from indexed | address |  |
-| to indexed | address |  |
+| from | address indexed |  |
+| to | address indexed |  |
 | value | uint256 |  |
 
 ## Methods

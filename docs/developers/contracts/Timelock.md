@@ -25,8 +25,8 @@ event CancelTransaction(bytes32,address,uint256,string,bytes,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| txHash indexed | bytes32 |  |
-| target indexed | address |  |
+| txHash | bytes32 indexed |  |
+| target | address indexed |  |
 | value | uint256 |  |
 | signature | string |  |
 | data | bytes |  |
@@ -42,8 +42,8 @@ event ExecuteTransaction(bytes32,address,uint256,string,bytes,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| txHash indexed | bytes32 |  |
-| target indexed | address |  |
+| txHash | bytes32 indexed |  |
+| target | address indexed |  |
 | value | uint256 |  |
 | signature | string |  |
 | data | bytes |  |
@@ -59,7 +59,7 @@ event NewAdmin(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| newAdmin indexed | address |  |
+| newAdmin | address indexed |  |
 
 #### NewDelay
 
@@ -71,7 +71,7 @@ event NewDelay(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| newDelay indexed | uint256 |  |
+| newDelay | uint256 indexed |  |
 
 #### NewPendingAdmin
 
@@ -83,7 +83,7 @@ event NewPendingAdmin(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| newPendingAdmin indexed | address |  |
+| newPendingAdmin | address indexed |  |
 
 #### QueueTransaction
 
@@ -95,8 +95,8 @@ event QueueTransaction(bytes32,address,uint256,string,bytes,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| txHash indexed | bytes32 |  |
-| target indexed | address |  |
+| txHash | bytes32 indexed |  |
+| target | address indexed |  |
 | value | uint256 |  |
 | signature | string |  |
 | data | bytes |  |

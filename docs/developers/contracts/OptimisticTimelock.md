@@ -25,8 +25,8 @@ event CallExecuted(bytes32,uint256,address,uint256,bytes)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| id indexed | bytes32 |  |
-| index indexed | uint256 |  |
+| id | bytes32 indexed |  |
+| index | uint256 indexed |  |
 | target | address |  |
 | value | uint256 |  |
 | data | bytes |  |
@@ -41,8 +41,8 @@ event CallScheduled(bytes32,uint256,address,uint256,bytes,bytes32,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| id indexed | bytes32 |  |
-| index indexed | uint256 |  |
+| id | bytes32 indexed |  |
+| index | uint256 indexed |  |
 | target | address |  |
 | value | uint256 |  |
 | data | bytes |  |
@@ -59,7 +59,7 @@ event Cancelled(bytes32)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| id indexed | bytes32 |  |
+| id | bytes32 indexed |  |
 
 #### ContractAdminRoleUpdate
 
@@ -71,8 +71,8 @@ event ContractAdminRoleUpdate(bytes32,bytes32)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldContractAdminRole indexed | bytes32 |  |
-| newContractAdminRole indexed | bytes32 |  |
+| oldContractAdminRole | bytes32 indexed |  |
+| newContractAdminRole | bytes32 indexed |  |
 
 #### CoreUpdate
 
@@ -84,8 +84,8 @@ event CoreUpdate(address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldCore indexed | address |  |
-| newCore indexed | address |  |
+| oldCore | address indexed |  |
+| newCore | address indexed |  |
 
 #### MinDelayChange
 
@@ -122,9 +122,9 @@ event RoleAdminChanged(bytes32,bytes32,bytes32)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| role indexed | bytes32 |  |
-| previousAdminRole indexed | bytes32 |  |
-| newAdminRole indexed | bytes32 |  |
+| role | bytes32 indexed |  |
+| previousAdminRole | bytes32 indexed |  |
+| newAdminRole | bytes32 indexed |  |
 
 #### RoleGranted
 
@@ -136,9 +136,9 @@ event RoleGranted(bytes32,address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| role indexed | bytes32 |  |
-| account indexed | address |  |
-| sender indexed | address |  |
+| role | bytes32 indexed |  |
+| account | address indexed |  |
+| sender | address indexed |  |
 
 #### RoleRevoked
 
@@ -150,9 +150,9 @@ event RoleRevoked(bytes32,address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| role indexed | bytes32 |  |
-| account indexed | address |  |
-| sender indexed | address |  |
+| role | bytes32 indexed |  |
+| account | address indexed |  |
+| sender | address indexed |  |
 
 #### Unpaused
 
@@ -264,7 +264,7 @@ function core() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | ICore implementation address |
 
 #### execute
 
@@ -314,7 +314,7 @@ function fei() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | IFei implementation address |
 
 #### feiBalance
 
@@ -328,7 +328,7 @@ function feiBalance() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | fei amount held |
 
 #### getMinDelay
 
@@ -718,7 +718,7 @@ function tribe() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | IERC20 implementation address |
 
 #### tribeBalance
 
@@ -732,7 +732,7 @@ function tribeBalance() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | tribe amount held |
 
 #### unpause
 

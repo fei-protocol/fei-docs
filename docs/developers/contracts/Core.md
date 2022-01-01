@@ -32,7 +32,7 @@ event FeiUpdate(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| _fei indexed | address |  |
+| _fei | address indexed |  |
 
 #### GenesisGroupUpdate
 
@@ -44,7 +44,7 @@ event GenesisGroupUpdate(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| _genesisGroup indexed | address |  |
+| _genesisGroup | address indexed |  |
 
 #### GenesisPeriodComplete
 
@@ -68,9 +68,9 @@ event RoleAdminChanged(bytes32,bytes32,bytes32)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| role indexed | bytes32 |  |
-| previousAdminRole indexed | bytes32 |  |
-| newAdminRole indexed | bytes32 |  |
+| role | bytes32 indexed |  |
+| previousAdminRole | bytes32 indexed |  |
+| newAdminRole | bytes32 indexed |  |
 
 #### RoleGranted
 
@@ -82,9 +82,9 @@ event RoleGranted(bytes32,address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| role indexed | bytes32 |  |
-| account indexed | address |  |
-| sender indexed | address |  |
+| role | bytes32 indexed |  |
+| account | address indexed |  |
+| sender | address indexed |  |
 
 #### RoleRevoked
 
@@ -96,9 +96,9 @@ event RoleRevoked(bytes32,address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| role indexed | bytes32 |  |
-| account indexed | address |  |
-| sender indexed | address |  |
+| role | bytes32 indexed |  |
+| account | address indexed |  |
+| sender | address indexed |  |
 
 #### TribeAllocation
 
@@ -110,7 +110,7 @@ event TribeAllocation(address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| _to indexed | address |  |
+| _to | address indexed |  |
 | _amount | uint256 |  |
 
 #### TribeUpdate
@@ -123,7 +123,7 @@ event TribeUpdate(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| _tribe indexed | address |  |
+| _tribe | address indexed |  |
 
 ## Methods
 
@@ -436,7 +436,7 @@ function isBurner(address) view returns(bool)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | bool |  |
+|  | bool | true _address is a burner |
 
 #### isGovernor
 
@@ -456,7 +456,7 @@ function isGovernor(address) view returns(bool)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | bool |  |
+|  | bool | true _address is a governor |
 
 #### isGuardian
 
@@ -476,7 +476,7 @@ function isGuardian(address) view returns(bool)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | bool |  |
+|  | bool | true _address is a guardian |
 
 #### isMinter
 
@@ -496,7 +496,7 @@ function isMinter(address) view returns(bool)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | bool |  |
+|  | bool | true _address is a minter |
 
 #### isPCVController
 
@@ -516,7 +516,7 @@ function isPCVController(address) view returns(bool)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | bool |  |
+|  | bool | true _address is a controller |
 
 #### renounceRole
 

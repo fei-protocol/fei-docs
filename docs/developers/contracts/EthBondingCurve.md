@@ -29,7 +29,7 @@ event Allocate(address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| caller indexed | address |  |
+| caller | address indexed |  |
 | amount | uint256 |  |
 
 #### AllocationUpdate
@@ -57,8 +57,8 @@ event BackupOracleUpdate(address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldBackupOracle indexed | address |  |
-| newBackupOracle indexed | address |  |
+| oldBackupOracle | address indexed |  |
+| newBackupOracle | address indexed |  |
 
 #### BufferUpdate
 
@@ -83,8 +83,8 @@ event ContractAdminRoleUpdate(bytes32,bytes32)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldContractAdminRole indexed | bytes32 |  |
-| newContractAdminRole indexed | bytes32 |  |
+| oldContractAdminRole | bytes32 indexed |  |
+| newContractAdminRole | bytes32 indexed |  |
 
 #### CoreUpdate
 
@@ -96,8 +96,8 @@ event CoreUpdate(address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldCore indexed | address |  |
-| newCore indexed | address |  |
+| oldCore | address indexed |  |
+| newCore | address indexed |  |
 
 #### DecimalsNormalizerUpdate
 
@@ -187,8 +187,8 @@ event OracleUpdate(address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldOracle indexed | address |  |
-| newOracle indexed | address |  |
+| oldOracle | address indexed |  |
+| newOracle | address indexed |  |
 
 #### Paused
 
@@ -212,7 +212,7 @@ event Purchase(address,uint256,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| to indexed | address |  |
+| to | address indexed |  |
 | amountIn | uint256 |  |
 | amountOut | uint256 |  |
 
@@ -400,7 +400,7 @@ function core() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | ICore implementation address |
 
 #### decimalsNormalizer
 
@@ -468,7 +468,7 @@ function fei() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | IFei implementation address |
 
 #### feiBalance
 
@@ -482,7 +482,7 @@ function feiBalance() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | fei amount held |
 
 #### getAllocation
 
@@ -535,7 +535,7 @@ function getCurrentPrice() view returns(tuple)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | tuple |  |
+|  | tuple | price reported as FEI per USD |
 
 #### incentiveAmount
 
@@ -571,7 +571,7 @@ function invert((uint256)) pure returns(tuple)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | tuple |  |
+|  | tuple | the inverted peg as a Decimal |
 
 #### isContractAdmin
 
@@ -704,7 +704,7 @@ function readOracle() view returns(tuple)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | tuple |  |
+|  | tuple | the peg as a Decimal |
 
 #### remainingTime
 
@@ -718,7 +718,7 @@ function remainingTime() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | remaining |
 
 #### reset
 
@@ -968,7 +968,7 @@ function timeSinceStart() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | timestamp |
 
 #### token
 
@@ -1010,7 +1010,7 @@ function tribe() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | IERC20 implementation address |
 
 #### tribeBalance
 
@@ -1024,7 +1024,7 @@ function tribeBalance() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | tribe amount held |
 
 #### unpause
 

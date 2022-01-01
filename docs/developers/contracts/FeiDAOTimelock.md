@@ -33,8 +33,8 @@ event CancelTransaction(bytes32,address,uint256,string,bytes,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| txHash indexed | bytes32 |  |
-| target indexed | address |  |
+| txHash | bytes32 indexed |  |
+| target | address indexed |  |
 | value | uint256 |  |
 | signature | string |  |
 | data | bytes |  |
@@ -50,8 +50,8 @@ event ContractAdminRoleUpdate(bytes32,bytes32)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldContractAdminRole indexed | bytes32 |  |
-| newContractAdminRole indexed | bytes32 |  |
+| oldContractAdminRole | bytes32 indexed |  |
+| newContractAdminRole | bytes32 indexed |  |
 
 #### CoreUpdate
 
@@ -63,8 +63,8 @@ event CoreUpdate(address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldCore indexed | address |  |
-| newCore indexed | address |  |
+| oldCore | address indexed |  |
+| newCore | address indexed |  |
 
 #### ExecuteTransaction
 
@@ -76,8 +76,8 @@ event ExecuteTransaction(bytes32,address,uint256,string,bytes,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| txHash indexed | bytes32 |  |
-| target indexed | address |  |
+| txHash | bytes32 indexed |  |
+| target | address indexed |  |
 | value | uint256 |  |
 | signature | string |  |
 | data | bytes |  |
@@ -93,7 +93,7 @@ event NewAdmin(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| newAdmin indexed | address |  |
+| newAdmin | address indexed |  |
 
 #### NewDelay
 
@@ -105,7 +105,7 @@ event NewDelay(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| newDelay indexed | uint256 |  |
+| newDelay | uint256 indexed |  |
 
 #### NewPendingAdmin
 
@@ -117,7 +117,7 @@ event NewPendingAdmin(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| newPendingAdmin indexed | address |  |
+| newPendingAdmin | address indexed |  |
 
 #### Paused
 
@@ -141,8 +141,8 @@ event QueueTransaction(bytes32,address,uint256,string,bytes,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| txHash indexed | bytes32 |  |
-| target indexed | address |  |
+| txHash | bytes32 indexed |  |
+| target | address indexed |  |
 | value | uint256 |  |
 | signature | string |  |
 | data | bytes |  |
@@ -282,7 +282,7 @@ function core() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | ICore implementation address |
 
 #### delay
 
@@ -332,7 +332,7 @@ function fei() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | IFei implementation address |
 
 #### feiBalance
 
@@ -346,7 +346,7 @@ function feiBalance() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | fei amount held |
 
 #### getTxHash
 
@@ -554,7 +554,7 @@ function tribe() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | IERC20 implementation address |
 
 #### tribeBalance
 
@@ -568,7 +568,7 @@ function tribeBalance() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | tribe amount held |
 
 #### unpause
 

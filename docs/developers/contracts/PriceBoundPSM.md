@@ -28,7 +28,7 @@ event AllocateSurplus(address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| caller indexed | address |  |
+| caller | address indexed |  |
 | amount | uint256 |  |
 
 #### BackupOracleUpdate
@@ -41,8 +41,8 @@ event BackupOracleUpdate(address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldBackupOracle indexed | address |  |
-| newBackupOracle indexed | address |  |
+| oldBackupOracle | address indexed |  |
+| newBackupOracle | address indexed |  |
 
 #### BufferCapUpdate
 
@@ -80,8 +80,8 @@ event ContractAdminRoleUpdate(bytes32,bytes32)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldContractAdminRole indexed | bytes32 |  |
-| newContractAdminRole indexed | bytes32 |  |
+| oldContractAdminRole | bytes32 indexed |  |
+| newContractAdminRole | bytes32 indexed |  |
 
 #### CoreUpdate
 
@@ -93,8 +93,8 @@ event CoreUpdate(address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldCore indexed | address |  |
-| newCore indexed | address |  |
+| oldCore | address indexed |  |
+| newCore | address indexed |  |
 
 #### DecimalsNormalizerUpdate
 
@@ -119,7 +119,7 @@ event Deposit(address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| _from indexed | address |  |
+| _from | address indexed |  |
 | _amount | uint256 |  |
 
 #### InvertUpdate
@@ -210,8 +210,8 @@ event OracleUpdate(address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldOracle indexed | address |  |
-| newOracle indexed | address |  |
+| oldOracle | address indexed |  |
+| newOracle | address indexed |  |
 
 #### Paused
 
@@ -312,9 +312,9 @@ event WithdrawERC20(address,address,address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| _caller indexed | address |  |
-| _token indexed | address |  |
-| _to indexed | address |  |
+| _caller | address indexed |  |
+| _token | address indexed |  |
+| _to | address indexed |  |
 | _amount | uint256 |  |
 
 #### WithdrawETH
@@ -327,8 +327,8 @@ event WithdrawETH(address,address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| _caller indexed | address |  |
-| _to indexed | address |  |
+| _caller | address indexed |  |
+| _to | address indexed |  |
 | _amount | uint256 |  |
 
 #### Withdrawal
@@ -341,8 +341,8 @@ event Withdrawal(address,address,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| _caller indexed | address |  |
-| _to indexed | address |  |
+| _caller | address indexed |  |
+| _to | address indexed |  |
 | _amount | uint256 |  |
 
 ## Methods
@@ -495,7 +495,7 @@ function core() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | ICore implementation address |
 
 #### decimalsNormalizer
 
@@ -557,7 +557,7 @@ function fei() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | IFei implementation address |
 
 #### feiBalance
 
@@ -571,7 +571,7 @@ function feiBalance() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | fei amount held |
 
 #### floor
 
@@ -675,7 +675,7 @@ function invert((uint256)) pure returns(tuple)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | tuple |  |
+|  | tuple | the inverted peg as a Decimal |
 
 #### isContractAdmin
 
@@ -825,7 +825,7 @@ function readOracle() view returns(tuple)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | tuple |  |
+|  | tuple | the peg as a Decimal |
 
 #### redeem
 
@@ -1128,7 +1128,7 @@ function tribe() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | IERC20 implementation address |
 
 #### tribeBalance
 
@@ -1142,7 +1142,7 @@ function tribeBalance() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | tribe amount held |
 
 #### underlyingToken
 

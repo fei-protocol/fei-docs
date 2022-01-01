@@ -29,8 +29,8 @@ event ContractAdminRoleUpdate(bytes32,bytes32)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldContractAdminRole indexed | bytes32 |  |
-| newContractAdminRole indexed | bytes32 |  |
+| oldContractAdminRole | bytes32 indexed |  |
+| newContractAdminRole | bytes32 indexed |  |
 
 #### CoreUpdate
 
@@ -42,8 +42,8 @@ event CoreUpdate(address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| oldCore indexed | address |  |
-| newCore indexed | address |  |
+| oldCore | address indexed |  |
+| newCore | address indexed |  |
 
 #### Deposit
 
@@ -55,10 +55,10 @@ event Deposit(address,uint256,uint256,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| user indexed | address |  |
-| pid indexed | uint256 |  |
+| user | address indexed |  |
+| pid | uint256 indexed |  |
 | amount | uint256 |  |
-| depositID indexed | uint256 |  |
+| depositID | uint256 indexed |  |
 
 #### EmergencyWithdraw
 
@@ -70,10 +70,10 @@ event EmergencyWithdraw(address,uint256,uint256,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| user indexed | address |  |
-| pid indexed | uint256 |  |
+| user | address indexed |  |
+| pid | uint256 indexed |  |
 | amount | uint256 |  |
-| to indexed | address |  |
+| to | address indexed |  |
 
 #### Harvest
 
@@ -85,8 +85,8 @@ event Harvest(address,uint256,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| user indexed | address |  |
-| pid indexed | uint256 |  |
+| user | address indexed |  |
+| pid | uint256 indexed |  |
 | amount | uint256 |  |
 
 #### LogPoolAddition
@@ -99,10 +99,10 @@ event LogPoolAddition(uint256,uint256,address,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| pid indexed | uint256 |  |
+| pid | uint256 indexed |  |
 | allocPoint | uint256 |  |
-| stakedToken indexed | address |  |
-| rewarder indexed | address |  |
+| stakedToken | address indexed |  |
+| rewarder | address indexed |  |
 
 #### LogPoolMultiplier
 
@@ -114,9 +114,9 @@ event LogPoolMultiplier(uint256,uint128,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| pid indexed | uint256 |  |
-| lockLength indexed | uint128 |  |
-| multiplier indexed | uint256 |  |
+| pid | uint256 indexed |  |
+| lockLength | uint128 indexed |  |
+| multiplier | uint256 indexed |  |
 
 #### LogSetPool
 
@@ -128,9 +128,9 @@ event LogSetPool(uint256,uint256,address,bool)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| pid indexed | uint256 |  |
+| pid | uint256 indexed |  |
 | allocPoint | uint256 |  |
-| rewarder indexed | address |  |
+| rewarder | address indexed |  |
 | overwrite | bool |  |
 
 #### LogUpdatePool
@@ -143,8 +143,8 @@ event LogUpdatePool(uint256,uint128,uint256,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| pid indexed | uint256 |  |
-| lastRewardBlock indexed | uint128 |  |
+| pid | uint256 indexed |  |
+| lastRewardBlock | uint128 indexed |  |
 | lpSupply | uint256 |  |
 | accTribePerShare | uint256 |  |
 
@@ -158,7 +158,7 @@ event NewTribePerBlock(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| amount indexed | uint256 |  |
+| amount | uint256 indexed |  |
 
 #### Paused
 
@@ -182,8 +182,8 @@ event PoolLocked(bool,uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| locked indexed | bool |  |
-| pid indexed | uint256 |  |
+| locked | bool indexed |  |
+| pid | uint256 indexed |  |
 
 #### TribeWithdraw
 
@@ -219,10 +219,10 @@ event Withdraw(address,uint256,uint256,address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-| user indexed | address |  |
-| pid indexed | uint256 |  |
+| user | address indexed |  |
+| pid | uint256 indexed |  |
 | amount | uint256 |  |
-| to indexed | address |  |
+| to | address indexed |  |
 
 ## Methods
 
@@ -297,7 +297,7 @@ function core() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | ICore implementation address |
 
 #### deposit
 
@@ -366,7 +366,7 @@ function fei() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | IFei implementation address |
 
 #### feiBalance
 
@@ -380,7 +380,7 @@ function feiBalance() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | fei amount held |
 
 #### getTotalStakedInPool
 
@@ -585,7 +585,7 @@ function pendingRewards(uint256,address) view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | pending TRIBE reward for a given user. |
 
 #### poolInfo
 
@@ -743,7 +743,7 @@ function tribe() view returns(address)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | address |  |
+|  | address | IERC20 implementation address |
 
 #### tribeBalance
 
@@ -757,7 +757,7 @@ function tribeBalance() view returns(uint256)
 
 | Param | Type | Notes |
 | ----- | ---- | ----- |
-|  | uint256 |  |
+|  | uint256 | tribe amount held |
 
 #### tribePerBlock
 
