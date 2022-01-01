@@ -2,5 +2,14 @@
 
 ## Methods
 
+#### governorWithdrawTribe
 
- - governorWithdrawTribe(uint256)
+```javascript
+function governorWithdrawTribe(uint256) nonpayable
+```
+
+##### Params
+
+| Param | Type | Notes |
+| ----- | ---- | ----- |
+| amount | uint256 |  |

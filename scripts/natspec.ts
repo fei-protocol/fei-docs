@@ -3,19 +3,13 @@ import hre from 'hardhat';
 import path from 'path';
 import json2md from 'json2md';
 
-// import { HardhatPluginError } from 'hardhat/plugins';
-
-// import {
-//   TASK_COMPILE,
-// } from 'hardhat/builtin-tasks/task-names';
-
 export default async function (artifacts) {
   const config = {
     path: './docs/developers/contracts',
     clear: false,
     only: Object.keys(artifacts),
     except: ['contracts/mock', 'contracts/external', 'contracts/test'],
-    logging: true
+    logging: false
   };
 
   const output = {};
@@ -136,7 +130,6 @@ export default async function (artifacts) {
   }
 
   const nav = [{'ul': files.map(f => `[${f}](${f}.md)`)}];
-  console.log(nav);
   fs.writeFileSync(`${outputDirectory}/contracts.md`, json2md(nav), {flag:'w+'});
 
   return output;
@@ -158,7 +151,7 @@ function toMarkdownJson(data) {
   data.details && output.push({ p: `DEV NOTE: ${data.details}` });
 
   // TODO add constructor, fallback, and receive
-  // TODO add more granular docs for events and methods
+  const paramsHeader = ['Param', 'Type', 'Notes'];
 
   const events = data.events;
 
@@ -166,7 +159,25 @@ function toMarkdownJson(data) {
     output.push({ h2: 'Events' });
 
     const eventKeys = Object.keys(events);
-    output.push({ ul: eventKeys });
+
+    for (const eventName of eventKeys) {
+      const event = events[eventName];
+      output.push({ h4: event.name });
+      output.push({ code: {language: 'javascript', content :`event ${eventName}`}});
+
+      const rows = [];
+      const inputs = event.inputs;
+      if (!inputs.length) {
+        continue;
+      } 
+      for (const input of inputs) {
+        const indexed = input.indexed ? ' indexed' : '';
+        rows.push([`${input.name}${indexed}`, input.type, ''])
+      }
+      const inputsTable = { headers: paramsHeader, rows: rows};
+      output.push({h5: 'Params'});
+      output.push({table: inputsTable});
+    }
   }
 
   const methods = data.methods;
@@ -174,8 +185,57 @@ function toMarkdownJson(data) {
   if (methods) {
     output.push({ h2: 'Methods' });
     const methodKeys = Object.keys(methods);
+    for (const methodName of methodKeys) {
+      const method = methods[methodName];
 
-    output.push({ ul: methodKeys });
+      const outputs = method.outputs;
+      const returnValue = outputs.length ? ` returns(${outputs.map(x => x.type).join(',')})` : ''
+
+      output.push({ h4: method.name});
+      output.push({ code: {language: 'javascript', content :`function ${methodName} ${method.stateMutability}${returnValue}`}});
+
+
+      const params = method.inputs;
+
+      const notes = method.notice;
+      if (notes) {
+        output.push({'blockquote': notes});
+      }
+
+      const details = method.details;
+      if (details) {
+        output.push({'blockquote': details});
+      }
+
+      if (params.length) {
+        const rows = [];
+        const paramNatspec = method.params;
+
+        for (const input of params) {
+          const notes = paramNatspec && paramNatspec[input.name];
+          rows.push([input.name, input.type, notes || '']);
+        }
+        const inputsTable = { headers: paramsHeader, rows: rows};
+        output.push({h5: 'Params'});
+        output.push({table: inputsTable});
+      }
+
+      if (outputs.length) {
+        const rows = [];
+        const outputNatspec = method.returns;
+
+        let i = 0;
+        for (const output of outputs) {
+          const notes = outputNatspec && outputNatspec[output.name];
+          const altNotes = outputNatspec && outputNatspec[`_${i}`];
+          rows.push([output.name, output.type, notes || '']);
+          i+=1;
+        }
+        const outputsTable = { headers: paramsHeader, rows: rows};
+        output.push({h5: 'Returns'});
+        output.push({table: outputsTable});
+      }
+    }
   }
 
   return output;

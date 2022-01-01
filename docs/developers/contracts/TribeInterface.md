@@ -2,5 +2,21 @@
 
 ## Methods
 
+#### getPriorVotes
 
- - getPriorVotes(address,uint256)
+```javascript
+function getPriorVotes(address,uint256) view returns(uint96)
+```
+
+##### Params
+
+| Param | Type | Notes |
+| ----- | ---- | ----- |
+| account | address |  |
+| blockNumber | uint256 |  |
+
+##### Returns
+
+| Param | Type | Notes |
+| ----- | ---- | ----- |
+|  | uint96 |  |

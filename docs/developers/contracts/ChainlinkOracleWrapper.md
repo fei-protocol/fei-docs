@@ -9,30 +9,293 @@ Reads a Chainlink oracle value & wrap it under the standard Fei oracle interface
 
 ## Events
 
+#### ContractAdminRoleUpdate
 
- - ContractAdminRoleUpdate(bytes32,bytes32)
- - CoreUpdate(address,address)
- - Paused(address)
- - Unpaused(address)
- - Update(uint256)
+```javascript
+event ContractAdminRoleUpdate(bytes32,bytes32)
+```
+
+##### Params
+
+| Param | Type | Notes |
+| ----- | ---- | ----- |
+| oldContractAdminRole indexed | bytes32 |  |
+| newContractAdminRole indexed | bytes32 |  |
+
+#### CoreUpdate
+
+```javascript
+event CoreUpdate(address,address)
+```
+
+##### Params
+
+| Param | Type | Notes |
+| ----- | ---- | ----- |
+| oldCore indexed | address |  |
+| newCore indexed | address |  |
+
+#### Paused
+
+```javascript
+event Paused(address)
+```
+
+##### Params
+
+| Param | Type | Notes |
+| ----- | ---- | ----- |
+| account | address |  |
+
+#### Unpaused
+
+```javascript
+event Unpaused(address)
+```
+
+##### Params
+
+| Param | Type | Notes |
+| ----- | ---- | ----- |
+| account | address |  |
+
+#### Update
+
+```javascript
+event Update(uint256)
+```
+
+##### Params
+
+| Param | Type | Notes |
+| ----- | ---- | ----- |
+| _peg | uint256 |  |
 
 ## Methods
 
+#### CONTRACT_ADMIN_ROLE
 
- - CONTRACT_ADMIN_ROLE()
- - chainlinkOracle()
- - core()
- - fei()
- - feiBalance()
- - isContractAdmin(address)
- - isOutdated()
- - oracleDecimalsNormalizer()
- - pause()
- - paused()
- - read()
- - setContractAdminRole(bytes32)
- - setCore(address)
- - tribe()
- - tribeBalance()
- - unpause()
- - update()
+```javascript
+function CONTRACT_ADMIN_ROLE() view returns(bytes32)
+```
+
+> a role used with a subset of governor permissions for this contract only
+
+##### Returns
+
+| Param | Type | Notes |
+| ----- | ---- | ----- |
+|  | bytes32 |  |
+
+#### chainlinkOracle
+
+```javascript
+function chainlinkOracle() view returns(address)
+```
+
+> the referenced chainlink oracle
+
+##### Returns
+
+| Param | Type | Notes |
+| ----- | ---- | ----- |
+|  | address |  |
+
+#### core
+
+```javascript
+function core() view returns(address)
+```
+
+> address of the Core contract referenced
+
+##### Returns
+
+| Param | Type | Notes |
+| ----- | ---- | ----- |
+|  | address |  |
+
+#### fei
+
+```javascript
+function fei() view returns(address)
+```
+
+> address of the Fei contract referenced by Core
+
+##### Returns
+
+| Param | Type | Notes |
+| ----- | ---- | ----- |
+|  | address |  |
+
+#### feiBalance
+
+```javascript
+function feiBalance() view returns(uint256)
+```
+
+> fei balance of contract
+
+##### Returns
+
+| Param | Type | Notes |
+| ----- | ---- | ----- |
+|  | uint256 |  |
+
+#### isContractAdmin
+
+```javascript
+function isContractAdmin(address) view returns(bool)
+```
+
+> returns whether a given address has the admin role for this contract
+
+##### Params
+
+| Param | Type | Notes |
+| ----- | ---- | ----- |
+| _admin | address |  |
+
+##### Returns
+
+| Param | Type | Notes |
+| ----- | ---- | ----- |
+|  | bool |  |
+
+#### isOutdated
+
+```javascript
+function isOutdated() view returns(bool)
+```
+
+> determine if read value is stale
+
+##### Returns
+
+| Param | Type | Notes |
+| ----- | ---- | ----- |
+|  | bool |  |
+
+#### oracleDecimalsNormalizer
+
+```javascript
+function oracleDecimalsNormalizer() view returns(uint256)
+```
+
+##### Returns
+
+| Param | Type | Notes |
+| ----- | ---- | ----- |
+|  | uint256 |  |
+
+#### pause
+
+```javascript
+function pause() nonpayable
+```
+
+> set pausable methods to paused
+
+#### paused
+
+```javascript
+function paused() view returns(bool)
+```
+
+> Returns true if the contract is paused, and false otherwise.
+
+##### Returns
+
+| Param | Type | Notes |
+| ----- | ---- | ----- |
+|  | bool |  |
+
+#### read
+
+```javascript
+function read() view returns(tuple,bool)
+```
+
+> read the oracle price
+
+##### Returns
+
+| Param | Type | Notes |
+| ----- | ---- | ----- |
+|  | tuple |  |
+|  | bool |  |
+
+#### setContractAdminRole
+
+```javascript
+function setContractAdminRole(bytes32) nonpayable
+```
+
+> sets a new admin role for this contract
+
+##### Params
+
+| Param | Type | Notes |
+| ----- | ---- | ----- |
+| newContractAdminRole | bytes32 |  |
+
+#### setCore
+
+```javascript
+function setCore(address) nonpayable
+```
+
+> set new Core reference address
+
+##### Params
+
+| Param | Type | Notes |
+| ----- | ---- | ----- |
+| newCore | address | the new core address |
+
+#### tribe
+
+```javascript
+function tribe() view returns(address)
+```
+
+> address of the Tribe contract referenced by Core
+
+##### Returns
+
+| Param | Type | Notes |
+| ----- | ---- | ----- |
+|  | address |  |
+
+#### tribeBalance
+
+```javascript
+function tribeBalance() view returns(uint256)
+```
+
+> tribe balance of contract
+
+##### Returns
+
+| Param | Type | Notes |
+| ----- | ---- | ----- |
+|  | uint256 |  |
+
+#### unpause
+
+```javascript
+function unpause() nonpayable
+```
+
+> set pausable methods to unpaused
+
+#### update
+
+```javascript
+function update() view
+```
+
+> updates the oracle price
+
+> no-op, Chainlink is updated automatically

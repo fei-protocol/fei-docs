@@ -2,5 +2,8 @@
 
 ## Methods
 
+#### setAutoRewardsDistribution
 
- - setAutoRewardsDistribution()
+```javascript
+function setAutoRewardsDistribution() nonpayable
+```
